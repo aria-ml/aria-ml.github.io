@@ -160,8 +160,15 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .about-body p:first-child{font-size:1.1rem;color:var(--fog);}
 .offices h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
 .office-list{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem;}
-.office{padding:.95rem 1.1rem;border:1px solid var(--rule);font-size:.86rem;color:var(--slate-2);}
-.office strong{display:block;color:var(--fog);margin-bottom:.2rem;font-weight:500;}
+.office-item{padding:.95rem 1.1rem;border:1px solid var(--rule);font-size:.86rem;color:var(--slate-2);cursor:pointer;transition:background .25s,border-color .25s;}
+.office-item:hover{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.15);}
+.office-item strong{display:block;color:var(--fog);margin-bottom:.2rem;font-weight:500;}
+.office-head{display:flex;justify-content:space-between;align-items:center;}
+.office-arr{font-size:1.2rem;font-weight:300;color:var(--teal);transition:transform .3s ease;line-height:1;}
+.office-detail{display:none;margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--rule);font-size:.8rem;color:var(--slate-2);line-height:1.5;}
+.office-detail.open{display:block;}
+.office-detail p{margin-bottom:.4rem;}
+.office-detail p:last-child{margin-bottom:0;}
 .contact-box{padding:1.7rem;border:1px solid var(--rule);margin-top:1rem;}
 .contact-box p{font-size:.88rem;color:var(--slate-2);line-height:1.65;margin-bottom:1.1rem;}
 
@@ -631,9 +638,50 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
           <div class="offices">
             <h4>Offices</h4>
             <div class="office-list">
-              <div class="office"><strong>Headquarters</strong>Madison, VA (Central Virginia)</div>
-              <div class="office"><strong>Washington DC Metro</strong>Old Town Alexandria, VA</div>
-              <div class="office"><strong>Pacific Northwest</strong>Seattle, WA (Westlake)</div>
+              <div class="office-item" onclick="toggleOffice('off-hq')">
+                <div class="office-head">
+                  <div><strong>Headquarters</strong>Madison, VA</div>
+                  <span class="office-arr" id="arr-off-hq">+</span>
+                </div>
+                <div class="office-detail" id="off-hq">
+                  <p>305 S Main St<br/>Madison, VA 22727</p>
+                  <p style="color:var(--teal);">(540) 423-0323</p>
+                  <p style="font-size:.75rem; margin-top:.6rem;">Near NAVSEA integration site, NGIC, and NSWCDD; Amtrak access to DCA.</p>
+                </div>
+              </div>
+              <div class="office-item" onclick="toggleOffice('off-dc')">
+                <div class="office-head">
+                  <div><strong>DC Metro</strong>Alexandria, VA</div>
+                  <span class="office-arr" id="arr-off-dc">+</span>
+                </div>
+                <div class="office-detail" id="off-dc">
+                  <p>113 S West St, Ste 205<br/>Alexandria, VA 22314</p>
+                  <p style="color:var(--teal);">(571) 655-4445</p>
+                  <p style="font-size:.75rem; margin-top:.6rem;">Metro access to the Pentagon and DCA airport; near NGA.</p>
+                </div>
+              </div>
+              <div class="office-item" onclick="toggleOffice('off-cva')">
+                <div class="office-head">
+                  <div><strong>Central Virginia</strong>Culpeper, VA</div>
+                  <span class="office-arr" id="arr-off-cva">+</span>
+                </div>
+                <div class="office-detail" id="off-cva">
+                  <p>209 N. Commerce St, Ste 200-300<br/>Culpeper, VA 22701</p>
+                  <p style="color:var(--teal);">(540) 423-0323</p>
+                  <p style="font-size:.75rem; margin-top:.6rem;">Near NAVSEA integration site, NGIC, and NSWCDD; Amtrak access to DCA.</p>
+                </div>
+              </div>
+              <div class="office-item" onclick="toggleOffice('off-sea')">
+                <div class="office-head">
+                  <div><strong>Pacific Northwest</strong>Seattle, WA</div>
+                  <span class="office-arr" id="arr-off-sea">+</span>
+                </div>
+                <div class="office-detail" id="off-sea">
+                  <p>1500 Westlake Ave N, Ste 001<br/>Seattle, WA 98109</p>
+                  <p style="color:var(--teal);">(206) 312-8181</p>
+                  <p style="font-size:.75rem; margin-top:.6rem;">Serving NAS Whidbey Island and NOPF Whidbey Island; adjacent to Amazon campus.</p>
+                </div>
+              </div>
             </div>
           </div>
           <div class="contact-box">
@@ -855,6 +903,19 @@ function toggleJob(id) {
   document.querySelectorAll('.job-detail').forEach(d => d.classList.remove('open'));
   document.querySelectorAll('.job-arrow').forEach(a => a.textContent = '→');
   if (!isOpen) { detail.classList.add('open'); arrow.textContent = '↓'; }
+}
+
+// ── OFFICE ACCORDION ──
+function toggleOffice(id) {
+  const detail = document.getElementById(id);
+  const arrow = document.getElementById('arr-' + id);
+  const isOpen = detail.classList.contains('open');
+  document.querySelectorAll('.office-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.office-arr').forEach(a => { a.style.transform = 'rotate(0deg)'; a.textContent = '+'; });
+  if (!isOpen) { 
+    detail.classList.add('open'); 
+    arrow.style.transform = 'rotate(45deg)'; 
+  }
 }
 
 // ── ROUTING ──
