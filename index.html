@@ -1326,6 +1326,22 @@ waveVis('acC');waveVis('cac');
     setTimeout(()=>{i=(i+1)%words.length;el.textContent=words[i];el.classList.remove('out');},220);
   },2000);
 })();
+
+// team page: rolling random highlight of discipline tags
+(function(){
+  const tags=Array.from(document.querySelectorAll('#page-team .discipline-tag'));
+  if(!tags.length)return;
+  const N=4;
+  tags.forEach(t=>t.classList.remove('hi'));
+  [...tags].sort(()=>Math.random()-.5).slice(0,N).forEach(t=>t.classList.add('hi'));
+  setInterval(()=>{
+    const on=tags.filter(t=>t.classList.contains('hi'));
+    const off=tags.filter(t=>!t.classList.contains('hi'));
+    if(!on.length||!off.length)return;
+    on[Math.floor(Math.random()*on.length)].classList.remove('hi');
+    off[Math.floor(Math.random()*off.length)].classList.add('hi');
+  },1200);
+})();
 </script>
 </body>
 </html>
