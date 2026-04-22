@@ -186,6 +186,14 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .values-box p{font-size:.91rem;color:var(--slate);line-height:1.72;}
 .apply-box{margin-top:2.5rem;padding:1.8rem;border:1px solid var(--rule-ink);background:var(--fog-2);}
 .apply-box p{font-size:.88rem;color:var(--slate);margin-bottom:1rem;}
+.job-detail{display:none;background:var(--fog-2);border-bottom:1px solid var(--rule-ink);}
+.job-detail.open{display:block;}
+.job-detail-inner{padding:2rem 2.2rem 2.4rem;}
+.job-detail-inner p{font-size:.93rem;color:var(--slate);line-height:1.72;}
+.job-section-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal-deep);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;}
+.job-ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.job-ul li{font-size:.88rem;color:var(--slate);line-height:1.55;padding-left:1rem;position:relative;}
+.job-ul li::before{content:'→';position:absolute;left:0;color:var(--teal-deep);font-size:.75rem;}
 .apply-box .fine{font-size:.78rem;margin-top:.9rem;margin-bottom:0;}
 
 /* FOOTER CTA */
@@ -270,7 +278,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
         <div class="panel-row"><span>domains</span> <span class="val hi">sonar · acoustics · AI/ML · computer_vision</span></div>
         <div class="panel-row"><span>methods</span> <span class="val">signal processing · deep learning</span></div>
         <div class="panel-row"><span>pipeline</span><span class="val">sim → train → deploy</span></div>
-        <div class="panel-row"><span>sponsors</span><span class="val">ONR · DARPA · CDAO · NAVSEA</span></div>
+        <div class="panel-row"><span>sponsors</span><span class="val">CDAO · NAVSEA · NAVAIR · NAWCAD · AFRL · DOJ · ONR</span></div>
         <div class="panel-row"><span>est.</span>    <span class="val">2010 · Alexandria, VA</span></div>
       </div>
     </div>
@@ -397,7 +405,13 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
     <div class="inner">
       <div class="sec-eyebrow">Capabilities</div>
       <h2 class="sec-title">Interdisciplinary research<br/>applied to <em>real systems.</em></h2>
-      <p style="color:var(--slate-2);max-width:660px;margin-bottom:.5rem;line-height:1.72;">ARiA applies broad interdisciplinary experience in acoustics, signal processing, machine learning / AI, modeling &amp; simulation, and cognitive science toward innovative basic and applied R&amp;D.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2.5rem;margin-top:1rem;">
+        <p style="color:var(--slate-2);line-height:1.75;">ARiA applies broad interdisciplinary experience in acoustics, signal processing, machine learning / AI, modeling &amp; simulation, and cognitive science toward innovative basic and applied R&amp;D.</p>
+        <div style="padding:1.4rem 1.6rem;border-left:2px solid var(--teal);background:rgba(43,212,196,.04);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;">Overcoming the Valley of Death</div>
+          <p style="font-size:.88rem;color:var(--slate-2);line-height:1.7;">Coupling research expertise with advanced development and validation of critical DoD systems, ARiA is uniquely poised to transition basic and applied research (DoD 6.1/6.2) to advanced technology development and beyond (DoD 6.3/6.4+).</p>
+        </div>
+      </div>
       <div class="cap-tabs" style="margin-top:2.5rem;">
         <button class="cap-tab active" onclick="switchTab(this,'ct-mlai')">Applied AI &amp; ML</button>
         <button class="cap-tab" onclick="switchTab(this,'ct-asip')">Acoustics &amp; Signal Processing</button>
@@ -408,7 +422,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
         <div class="cap-panel active" id="ct-mlai">
           <div>
             <h3>Machine Learning &amp; <em>Artificial Intelligence</em></h3>
-            <p>Broad expertise in ML and AI for multiple domains — from synthetic-aperture imagery to legal documents — using supervised, unsupervised, and semi-supervised techniques including deep learning, statistical learning, and formal logic approaches.</p>
+            <p>Broad expertise in ML and AI for multiple domains — from synthetic-aperture imagery to legal documents — using supervised, unsupervised, semi-supervised, active, and on-line learning techniques including deep learning, statistical learning, and formal logic approaches.</p>
             <ul>
               <li>dataeval: open-source Python library for dataset quality analysis and model-performance impact across computer vision tasks</li>
               <li>Deep learning for explainable classification and parametric synthesis of synthetic-aperture images</li>
@@ -424,14 +438,15 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
         <div class="cap-panel" id="ct-asip">
           <div>
             <h3>Array, Signal &amp; <em>Information Processing</em></h3>
-            <p>End-to-end expertise across ASW and MCM sonar processing chains, improving fielded systems and developing novel approaches including compressive sensing and topological signal processing.</p>
+            <p>End-to-end expertise across ASW and MCM sonar processing chains — from sensor-array data through detection, classification, and tracking — including biomimetic, physics-based, and perceptual approaches alongside novel compressive and topological methods.</p>
             <ul>
-              <li>Distributed sensor fusion for tactical ASW systems</li>
-              <li>Sparse processing for transmission-loss prediction</li>
+              <li>Machine-learning algorithms for automated pattern recognition</li>
+              <li>Detection and classification for passive and active sonar systems</li>
+              <li>Perceptual and cognitive signal-processing algorithms</li>
+              <li>Supervised, unsupervised, semi-supervised, active, and on-line learning</li>
+              <li>Sparse and compressive sensing and beamforming</li>
+              <li>Adaptive and environment-dependent signal processing</li>
               <li>Topological signal processing for MCM sonar echo classification</li>
-              <li>Compressive and model-based beamforming for detection</li>
-              <li>Adaptive matched-filtering, detection and normalization</li>
-              <li>Biomimetic algorithms for detection and classification of complex signals</li>
             </ul>
             <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAWCAD</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span></div></div>
           </div>
@@ -440,13 +455,14 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
         <div class="cap-panel" id="ct-gbst">
           <div>
             <h3>Game-Based &amp; <em>Simulation-Based Training</em></h3>
-            <p>An early adopter of game platforms for simulation-based training, ARiA integrates research models in commercial game engines and deploys on military tactical systems.</p>
+            <p>An early adopter of game platforms for simulation-based training, ARiA integrates research models in commercial game engines and deploys commercial-grade systems on military tactical platforms.</p>
             <ul>
               <li>WaveQuest™: game-based underwater acoustics education and training</li>
               <li>ESAIL™: 3D ASW visualization and interactive learning environment</li>
               <li>AIRS: VR spatial-disorientation training for pilots and nonpilot crew</li>
+              <li>Real-time physics-based modeling algorithms for simulation and training</li>
               <li>Fidelity-adaptive scenario generation algorithms (SAGE)</li>
-              <li>Real-time physics-based simulation engines</li>
+              <li>System engineering for real-time simulation applications</li>
             </ul>
             <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAWCTSD</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span></div></div>
           </div>
@@ -455,13 +471,14 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
         <div class="cap-panel" id="ct-capm">
           <div>
             <h3>Computational Acoustic &amp; <em>Psychoacoustic Modeling</em></h3>
-            <p>Models of sound propagation and scattering across diverse environments and human perception of those sounds, leveraging multi-core CPU and many-core GPU architectures.</p>
+            <p>Models of sound propagation and scattering across underwater, outdoor, and interior environments, and human perception of those sounds, leveraging multi-core CPU and many-core GPU architectures.</p>
             <ul>
+              <li>Computational models of propagation, reverberation, and scattering in ocean, sediment, elastic media, and air</li>
               <li>Edge-source modeling of midfrequency target scattering</li>
-              <li>Underwater acoustic modeling in uncertain environments</li>
               <li>Real-time acoustic simulation for training and tactical decision aids</li>
               <li>Synthetic target simulation in real sonar data via physical modeling</li>
-              <li>Helicopter and projectile noise propagation modeling</li>
+              <li>Fidelity assessment for simulation-based training</li>
+              <li>Scale-model validation studies</li>
               <li>Information-theoretic models of auditory detection and spatial hearing</li>
             </ul>
             <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span><span class="sponsor-tag">DoJ</span><span class="sponsor-tag">NY Supreme Court</span></div></div>
@@ -469,6 +486,34 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
           <div class="cap-visual"><canvas id="cac" width="600" height="450"></canvas></div>
         </div>
       </div>
+
+      <!-- Past Performance + General Info -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:4rem;border-top:1px solid var(--rule);padding-top:3.5rem;">
+        <div>
+          <div class="sec-eyebrow" style="margin-bottom:1.4rem;">Past Performance</div>
+          <div style="display:flex;flex-direction:column;gap:.8rem;">
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">WaveQuest™</strong>Design, development, and delivery of a video-game and underwater-acoustics physics engine for game-based sonar training and STEM education.</div>
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">SAGE™</strong>Design, development, and delivery of a machine-learning and expert-system technology for automated scenario design in simulation-based sonar training.</div>
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">Clutter Mitigation</strong>Clutter-adaptive waveform design, match filtering, and normalization for sonar systems operating in shallow water.</div>
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">Helicopter Noise Modeling</strong>Measurements, modeling, and signal processing for predicting auditory detection of helicopter noise in complex environments.</div>
+          </div>
+        </div>
+        <div>
+          <div class="sec-eyebrow" style="margin-bottom:1.4rem;">General Information</div>
+          <div style="border:1px solid var(--rule);padding:1.4rem;">
+            <div class="panel-row"><span>Founded</span><span class="val">19 March 2010</span></div>
+            <div class="panel-row"><span>CAGE Code</span><span class="val">5YYD1</span></div>
+            <div class="panel-row"><span>EIN</span><span class="val">27-2151428</span></div>
+            <div class="panel-row"><span>Primary NAICS</span><span class="val">541712</span></div>
+            <div class="panel-row"><span>Additional NAICS</span><span class="val">541380 · 541690 · 541720<br/>541511 · 541330 · 541990</span></div>
+            <div class="panel-row"><span>Status</span><span class="val">SBA Small Business</span></div>
+            <div class="panel-row"><span>Accounting</span><span class="val">DCAA Approved</span></div>
+            <div class="panel-row" style="border:none;"><span>Registration</span><span class="val">SAM · CCR · ORCA</span></div>
+          </div>
+          <a href="https://www.ariacoustics.com/main/wp-content/uploads/2012/09/ARiA-Capabilities-Statement.pdf" target="_blank" class="btn btn-ghost" style="margin-top:1.2rem;width:100%;justify-content:center;">Download Capabilities Statement →</a>
+        </div>
+      </div>
+
     </div>
   </section>
   <div class="footer-cta"><p>Interested in our capabilities?</p><a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Get in touch →</a></div>
@@ -620,9 +665,132 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
         <p>Strong candidates must value excellence and work with confidence — but without ego. Employees that thrive at ARiA have strongly-held, defensible ideas and advocate for what they believe is right, but are quick to exercise intellectual humility and acknowledge they can often be wrong.</p>
       </div>
       <div class="job-list">
-        <div class="job-item"><div class="job-info"><h3>Software Engineer / Senior Software Engineer</h3><div class="job-meta">ALL LOCATIONS · FULL TIME</div></div><span class="job-arrow">→</span></div>
-        <div class="job-item"><div class="job-info"><h3>R&amp;D Scientist / Engineer</h3><div class="job-meta">ALL LOCATIONS · FULL TIME</div></div><span class="job-arrow">→</span></div>
-        <div class="job-item"><div class="job-info"><h3>R&amp;D Intern</h3><div class="job-meta">ALL LOCATIONS · INTERNSHIP</div></div><span class="job-arrow">→</span></div>
+
+        <!-- Software Engineer -->
+        <div class="job-item" onclick="toggleJob('job-swe')">
+          <div class="job-info"><h3>Software Engineer / Senior Software Engineer</h3><div class="job-meta">ALL LOCATIONS · FULL TIME</div></div>
+          <span class="job-arrow" id="arr-job-swe">→</span>
+        </div>
+        <div class="job-detail" id="job-swe">
+          <div class="job-detail-inner">
+            <p>As a Software Engineer / Senior Software Engineer you will perform a variety of software engineering tasks working in close coordination with ARiA scientists and engineers, including design, development, and testing of numerical-simulation, scientific-visualization, machine-learning, and signal-processing software — supporting prototypes and products such as training tools integrated with real-time physics-based simulation and AI tools integrated with tactical systems.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.4rem;">
+              <div>
+                <div class="job-section-label">Responsibilities</div>
+                <ul class="job-ul">
+                  <li>Algorithm and software design, development, research, and testing</li>
+                  <li>Supporting transition of research algorithms to fielded systems</li>
+                  <li>Preparing documentation to summarize design and status</li>
+                  <li>Assisting with in-field integration, testing, and support</li>
+                </ul>
+              </div>
+              <div>
+                <div class="job-section-label">Requirements</div>
+                <ul class="job-ul">
+                  <li>Bachelor's degree or greater in Computer Science, Engineering, or equivalent</li>
+                  <li>Expertise in modern languages: C, C++, Golang, JavaScript, Python</li>
+                  <li>Experience with agile CI/CD frameworks and containerization (Docker, Kubernetes)</li>
+                  <li>U.S. citizenship required for security clearance eligibility</li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-top:1.4rem;">
+              <div class="job-section-label">Desirable Skills</div>
+              <div class="sponsor-list" style="margin-top:.6rem;">
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">GPGPU / CUDA</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Deep Learning (TF / PyTorch)</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Image Processing</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">NLP / Information Retrieval</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Signal Processing</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Sonar / Radar</span>
+              </div>
+            </div>
+            <a href="mailto:resumes@ariacoustics.com" class="btn btn-teal" style="margin-top:1.6rem;">Apply — resumes@ariacoustics.com →</a>
+          </div>
+        </div>
+
+        <!-- R&D Scientist -->
+        <div class="job-item" onclick="toggleJob('job-rnd')">
+          <div class="job-info"><h3>R&amp;D Scientist / Engineer</h3><div class="job-meta">ALL LOCATIONS · FULL TIME</div></div>
+          <span class="job-arrow" id="arr-job-rnd">→</span>
+        </div>
+        <div class="job-detail" id="job-rnd">
+          <div class="job-detail-inner">
+            <p>ARiA has multiple positions available for R&amp;D Scientists/Engineers at all levels — from new Ph.D. graduates to Senior and Principal — with expertise in numerical modeling, signal processing, and/or machine learning. You will perform basic and applied research and development in close coordination with other ARiA scientists and engineers.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.4rem;">
+              <div>
+                <div class="job-section-label">Responsibilities</div>
+                <ul class="job-ul">
+                  <li>Formulation and prototype implementation of original algorithms in numerical modeling, sonar signal processing, and/or ML/AI</li>
+                  <li>Testing and evaluation based on theoretical analysis and experiment</li>
+                  <li>Presentation of findings at scientific meetings and program reviews</li>
+                  <li>Serving as technical lead on projects, mentoring junior colleagues</li>
+                  <li>Supporting transition of research algorithms to operational prototypes</li>
+                </ul>
+              </div>
+              <div>
+                <div class="job-section-label">Requirements</div>
+                <ul class="job-ul">
+                  <li>Master's degree or greater (Ph.D. desirable) in Acoustics, EE, Computer Science, or equivalent</li>
+                  <li>Experience in signal processing for radar or sonar and/or ML for acoustic or image data</li>
+                  <li>Facility with C, C++, Java, Matlab, or Python</li>
+                  <li>U.S. citizenship required for security clearance eligibility</li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-top:1.4rem;">
+              <div class="job-section-label">Desirable Skills</div>
+              <div class="sponsor-list" style="margin-top:.6rem;">
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Navy Sonar Systems</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">GPGPU / CUDA</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Deep Learning (TF / PyTorch)</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">NLP / Information Retrieval</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Image Processing</span>
+              </div>
+            </div>
+            <a href="mailto:resumes@ariacoustics.com" class="btn btn-teal" style="margin-top:1.6rem;">Apply — resumes@ariacoustics.com →</a>
+          </div>
+        </div>
+
+        <!-- Intern -->
+        <div class="job-item" onclick="toggleJob('job-int')">
+          <div class="job-info"><h3>R&amp;D Intern</h3><div class="job-meta">ALL LOCATIONS · INTERNSHIP</div></div>
+          <span class="job-arrow" id="arr-job-int">→</span>
+        </div>
+        <div class="job-detail" id="job-int">
+          <div class="job-detail-inner">
+            <p>Entry-level Summer Intern (0–2+ years of experience) to support a range of projects including development and implementation of machine-learning algorithms and software, and design, development, and testing of machine-classification and cognitive systems, working in close coordination with ARiA scientists and engineers.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.4rem;">
+              <div>
+                <div class="job-section-label">Sample Tasks</div>
+                <ul class="job-ul">
+                  <li>Development of classification methods for sonar signal processing</li>
+                  <li>Deep learning to identify physical features in acoustic scattering data</li>
+                  <li>Information-retrieval tool for natural-language query of legal documents</li>
+                </ul>
+              </div>
+              <div>
+                <div class="job-section-label">Requirements</div>
+                <ul class="job-ul">
+                  <li>Pursuing undergraduate or graduate degree in CS, Engineering, Physics, or equivalent</li>
+                  <li>Exceptional ability to acquire new knowledge and skills</li>
+                  <li>Strong written and oral communication skills</li>
+                  <li>U.S. citizenship may be required depending on project</li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-top:1.4rem;">
+              <div class="job-section-label">Nice to Have</div>
+              <div class="sponsor-list" style="margin-top:.6rem;">
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Acoustics / Underwater Environment</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Signal Processing</span>
+                <span class="sponsor-tag" style="border-color:var(--rule-ink);color:var(--slate);">Machine Learning</span>
+              </div>
+            </div>
+            <a href="mailto:resumes@ariacoustics.com" class="btn btn-teal" style="margin-top:1.6rem;">Apply — resumes@ariacoustics.com →</a>
+          </div>
+        </div>
+
       </div>
       <div class="values-box">
         <h4>Our Commitment to You</h4>
@@ -679,6 +847,16 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
 </footer>
 
 <script>
+// ── JOB ACCORDION ──
+function toggleJob(id) {
+  const detail = document.getElementById(id);
+  const arrow = document.getElementById('arr-' + id);
+  const isOpen = detail.classList.contains('open');
+  document.querySelectorAll('.job-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.job-arrow').forEach(a => a.textContent = '→');
+  if (!isOpen) { detail.classList.add('open'); arrow.textContent = '↓'; }
+}
+
 // ── ROUTING ──
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
