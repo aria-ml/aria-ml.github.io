@@ -135,6 +135,7 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .proj-sec .sec-eyebrow::before{background:var(--teal-deep);}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-ink);border:1px solid var(--rule-ink);margin-top:3.5rem;}
 .proj-card{background:var(--fog);padding:2.2rem;cursor:pointer;transition:background .25s;position:relative;}
+a.proj-card{text-decoration:none;color:inherit;display:block;}
 .proj-card:hover{background:var(--fog-2);}
 .proj-tag{font-family:var(--mono);font-size:.66rem;color:var(--teal-deep);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;}
 .proj-card h3{font-family:var(--serif);font-weight:400;font-size:1.2rem;line-height:1.25;letter-spacing:-.015em;margin-bottom:.7rem;color:var(--ink);}
@@ -646,7 +647,7 @@ body.modal-open{overflow:hidden;}
       <h2 class="sec-title">Selected work in research<br/>and <em>deployment.</em></h2>
       <p style="color:var(--slate);max-width:640px;margin-top:.5rem;line-height:1.72;">A unified approach to modeling &amp; simulation that leverages deep domain knowledge within a state-of-the-art ML and knowledge-engineering framework.</p>
       <div class="proj-grid">
-        <div class="proj-card" style="background:var(--ink);color:var(--fog);grid-column:span 2;">
+        <a class="proj-card" href="https://github.com/aria-ml/dataeval" target="_blank" rel="noopener" style="background:var(--ink);color:var(--fog);grid-column:span 2;">
           <div class="proj-tag" style="color:var(--teal);">Featured · AI / ML · Open Source</div>
           <h3 style="color:var(--fog);font-size:1.6rem;">DataEval — Dataset Quality &amp; Model Performance Analysis</h3>
           <p style="color:var(--slate-2);max-width:620px;">A Python library for analyzing data quality and its impact on model performance across computer vision tasks. Funded through the Chief Digital and Artificial Intelligence Office (CDAO), DataEval supports rigorous analysis of datasets throughout the AI/ML lifecycle — from curation through training and evaluation.</p>
@@ -657,15 +658,15 @@ body.modal-open{overflow:hidden;}
             <span class="sponsor-tag" style="border-color:var(--rule);color:var(--slate-2);">Open Source</span>
           </div>
           <span class="proj-arrow" style="color:var(--teal);">↗</span>
-        </div>
-        <div class="proj-card"><div class="proj-tag">AI / ML</div><h3>MICA — Machine Interface for Contracting Assistance</h3><p>Natural-language QA system for federal acquisition regulations, combining semi-supervised statistical learning and formal logic reasoning.</p><span class="proj-arrow">↗</span></div>
-        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>ESAIL™ — Environment for Surface ASW Interactive Learning</h3><p>3D visualization platform for ASW training using physics simulation, data reconstruction, and interactive scenario analysis on tactical systems.</p><span class="proj-arrow">↗</span></div>
-        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>WaveQuest™</h3><p>Game-based education and training on underwater acoustics concepts with real-time fidelity-adaptive modeling &amp; simulation, produced with Filament Games.</p><span class="proj-arrow">↗</span></div>
-        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>AIRS — Spatial-Disorientation Awareness Training</h3><p>Portable VR simulation and game-based spatial-awareness training for mitigation of spatial-disorientation in pilots and nonpilot crew.</p><span class="proj-arrow">↗</span></div>
-        <div class="proj-card"><div class="proj-tag">AI / ML · Signal Processing</div><h3>SAGE™ — Synthetic ASW Generation Engine</h3><p>Novel automatic scenario generation for simulation-based training, integrating an inference engine with active semi-supervised ML for fidelity-adaptive ASW training.</p><span class="proj-arrow">↗</span></div>
-        <div class="proj-card"><div class="proj-tag">Signal Processing · Deep Learning</div><h3>Deep Representation Learning for ATR</h3><p>Unsupervised feature-space learning from large MCM and EOD sonar datasets, extending commercial image-recognition advances to Navy applications.</p><span class="proj-arrow">↗</span></div>
-        <div class="proj-card"><div class="proj-tag">Signal Processing</div><h3>Topological MCM Sonar Feature Investigation</h3><p>Algebraic-geometric methods and stratified-manifold learning for new feature-space representations of scattering from targets and clutter.</p><span class="proj-arrow">↗</span></div>
-        <div class="proj-card"><div class="proj-tag">Signal Processing · Acoustics</div><h3>Biologically Induced Sonar Reverberation Mitigation</h3><p>Data-driven, clutter-adaptive waveform synthesis and CFAR normalization based on physical models of resonant backscattering from fish aggregations.</p><span class="proj-arrow">↗</span></div>
+        </a>
+        <a class="proj-card" href="https://cdn.aaai.org/ocs/11717/11717-51262-1-PB.pdf" target="_blank" rel="noopener"><div class="proj-tag">AI / ML</div><h3>MICA — Machine Interface for Contracting Assistance</h3><p>Natural-language QA system for federal acquisition regulations, combining semi-supervised statistical learning and formal logic reasoning.</p><span class="proj-arrow">↗</span></a>
+        <a class="proj-card" href="https://www.ariacoustics.com/main/wp-content/uploads/2018/04/ESAIL.pdf" target="_blank" rel="noopener"><div class="proj-tag">Simulation · Training</div><h3>ESAIL™ — Environment for Surface ASW Interactive Learning</h3><p>3D visualization platform for ASW training using physics simulation, data reconstruction, and interactive scenario analysis on tactical systems.</p><span class="proj-arrow">↗</span></a>
+        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>WaveQuest™</h3><p>Game-based education and training on underwater acoustics concepts with real-time fidelity-adaptive modeling &amp; simulation, produced with Filament Games.</p></div>
+        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>AIRS — Spatial-Disorientation Awareness Training</h3><p>Portable VR simulation and game-based spatial-awareness training for mitigation of spatial-disorientation in pilots and nonpilot crew.</p></div>
+        <div class="proj-card"><div class="proj-tag">AI / ML · Signal Processing</div><h3>SAGE™ — Synthetic ASW Generation Engine</h3><p>Novel automatic scenario generation for simulation-based training, integrating an inference engine with active semi-supervised ML for fidelity-adaptive ASW training.</p></div>
+        <a class="proj-card" href="https://www.ariacoustics.com/main/wp-content/uploads/2018/04/DeepLearning_MCM_2017.pdf" target="_blank" rel="noopener"><div class="proj-tag">Signal Processing · Deep Learning</div><h3>Deep Representation Learning for ATR</h3><p>Unsupervised feature-space learning from large MCM and EOD sonar datasets, extending commercial image-recognition advances to Navy applications.</p><span class="proj-arrow">↗</span></a>
+        <div class="proj-card"><div class="proj-tag">Signal Processing</div><h3>Topological MCM Sonar Feature Investigation</h3><p>Algebraic-geometric methods and stratified-manifold learning for new feature-space representations of scattering from targets and clutter.</p></div>
+        <a class="proj-card" href="https://www.ariacoustics.com/main/wp-content/uploads/2018/04/FishClutter.pdf" target="_blank" rel="noopener"><div class="proj-tag">Signal Processing · Acoustics</div><h3>Biologically Induced Sonar Reverberation Mitigation</h3><p>Data-driven, clutter-adaptive waveform synthesis and CFAR normalization based on physical models of resonant backscattering from fish aggregations.</p><span class="proj-arrow">↗</span></a>
         <div class="proj-card" style="display:flex;align-items:center;justify-content:center;background:var(--fog-2);"><a href="#" class="btn btn-ghost" style="color:var(--ink);border-color:var(--rule-ink);" onclick="showPage('capabilities');return false;">View all capabilities →</a></div>
       </div>
     </div>
