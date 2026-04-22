@@ -172,6 +172,17 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .office-detail p:last-child{margin-bottom:0;}
 .contact-box{padding:1.7rem;border:1px solid var(--rule);margin-top:1rem;}
 .contact-box p{font-size:.88rem;color:var(--slate-2);line-height:1.65;margin-bottom:1.1rem;}
+.contact-sub{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:1.1rem;}
+.contact-row{display:grid;grid-template-columns:90px 1fr;gap:1.2rem;align-items:start;}
+.contact-row-label{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.13em;text-transform:uppercase;line-height:1.35;padding-top:.25rem;}
+.contact-row-val{font-size:.82rem;color:var(--slate-2);line-height:1.55;display:flex;flex-direction:column;gap:.35rem;}
+.contact-row-val a{color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;width:fit-content;transition:border-color .3s,color .3s;}
+.contact-row-val a:hover{border-color:var(--teal);color:var(--teal);}
+.contact-row-val.plain{color:var(--fog);}
+.contact-row-note{font-size:.72rem;color:var(--slate);margin-top:.25rem;font-style:italic;}
+.about-founded{margin-top:2rem;padding:1.1rem 1.3rem;border-left:2px solid var(--teal);background:rgba(43,212,196,.04);}
+.about-founded h4{font-family:'Fraunces',serif;font-weight:400;font-size:1.1rem;letter-spacing:-.015em;color:var(--fog);margin-bottom:.55rem;}
+.about-founded p{font-size:.88rem;color:var(--slate-2);line-height:1.7;margin-bottom:0;}
 
 /* RESOURCES */
 .about-band{margin-top:5rem;padding-top:3.5rem;border-top:1px solid var(--rule);}
@@ -232,7 +243,7 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 
 /* FOOTER CTA */
 .footer-cta{background:var(--ink-3);padding:5.5rem 2.5rem;text-align:center;border-top:1px solid var(--rule);}
-.footer-cta p{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;color:var(--fog);max-width:650px;margin:0 auto 2rem;}
+.footer-cta p{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;color:var(--fog);max-width:900px;margin:0 auto 2rem;}
 
 /* FOOTER */
 footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);padding:5rem 2.5rem 3rem;}
@@ -441,7 +452,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
     </div>
   </section>
 
-  <div class="footer-cta"><p>Ready to accelerate your next project?</p><a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Let's talk →</a></div>
+  <div class="footer-cta"><p>Ready to bridge research with deployment?</p><a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Bring it →</a></div>
 
 </div><!-- /home -->
 
@@ -674,6 +685,10 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
           <p>Structured specifically to address the well-known challenge many firms have in transitioning applied research to advanced development, ARiA brings together top-quality research scientists with system and software engineers in an environment where research and development mutually benefit from joint leveraging of in-house expertise.</p>
           <p>By strategically placing offices in communities with superior quality of life but low cost of living and aggressively managing indirect costs, ARiA maintains DCAA-approved indirect rates that lead the sector in value. With robust cash-flow reserves, significant owner-equity backing, and no debt, ARiA is positioned for growth.</p>
           <p style="font-family:'Fraunces',serif;font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA — Real Research. Deployed.</p>
+          <div class="about-founded">
+            <h4>Founded 2010</h4>
+            <p>Founded by Dr. Jason E. Summers after a career serving customers at NAVSEA, NSWC CD, NUWC, ONI, ONR, and commercial industry — both consumer-electronics firms and firms serving government customers.</p>
+          </div>
         </div>
         <div>
           <div class="offices">
@@ -723,41 +738,113 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
                   <p style="font-size:.75rem; margin-top:.6rem;">Serving NAS Whidbey Island and NOPF Whidbey Island; adjacent to Amazon campus.</p>
                 </div>
               </div>
-              <div class="office-item" onclick="toggleOffice('off-sec')">
-                <div class="office-head">
-                  <div><strong>Facility Security</strong>Contact Information</div>
-                  <span class="office-arr" id="arr-off-sec">+</span>
-                </div>
-                <div class="office-detail" id="off-sec">
-                  <p style="color:var(--teal);">(540) 496-0386</p>
-                  <p style="margin-top:.4rem;"><a href="mailto:security@ariacoustics.com" style="color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:border-color .3s;" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--rule)'">security@ariacoustics.com</a></p>
+            </div>
+          </div>
+          <div class="contact-box">
+            <div class="sec-eyebrow" style="margin-bottom:.9rem;">Direct Contact</div>
+            <p>To discuss partnering on a project or for general inquiries:</p>
+            <a href="mailto:info@ariacoustics.com" class="btn btn-teal" style="width:100%;justify-content:center;">info@ariacoustics.com</a>
+            <div class="contact-sub">
+              <div class="contact-row">
+                <div class="contact-row-label">Facility<br/>Security</div>
+                <div class="contact-row-val">
+                  <a href="tel:+15404960386">(540) 496-0386</a>
+                  <a href="mailto:security@ariacoustics.com">security@ariacoustics.com</a>
                 </div>
               </div>
-              <div class="office-item" onclick="toggleOffice('off-mail')">
-                <div class="office-head">
-                  <div><strong>Mailing Address</strong>Sensitive Information and Materials</div>
-                  <span class="office-arr" id="arr-off-mail">+</span>
-                </div>
-                <div class="office-detail" id="off-mail">
-                  <p>P.O. Box 1624<br/>Culpeper, VA 22701-6624</p>
+              <div class="contact-row">
+                <div class="contact-row-label">Mailing<br/>Address</div>
+                <div class="contact-row-val plain">
+                  P.O. Box 1624<br/>Culpeper, VA 22701-6624
+                  <span class="contact-row-note">For sensitive information and materials</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="contact-box">
-            <div class="sec-eyebrow" style="margin-bottom:.9rem;">Contact</div>
-            <p>To discuss partnering on a project or for general inquiries:</p>
-            <a href="mailto:info@ariacoustics.com" class="btn btn-teal" style="width:100%;justify-content:center;">info@ariacoustics.com</a>
+        </div>
+      </div>
+
+      <!-- RESOURCES -->
+      <div class="about-band">
+        <div class="about-band-head">
+          <div>
+            <div class="sec-eyebrow">Resources</div>
+            <h3>Infrastructure for <em>classified, compute-heavy R&amp;D</em></h3>
           </div>
-          <div class="contact-box" style="margin-top:1rem;">
-            <div class="sec-eyebrow" style="margin-bottom:.9rem;">Founded</div>
-            <p>Founded in 2010 by Dr. Jason E. Summers after a career serving customers at NAVSEA, NSWC CD, NUWC, ONI, ONR, and commercial industry — both consumer-electronics firms and firms serving government customers.</p>
+          <p class="about-band-intro">Cleared space, on-prem compute, and direct water access — positioned so research can move from whiteboard to at-sea test without leaving the company footprint.</p>
+        </div>
+        <div class="resource-grid">
+          <div class="resource">
+            <div class="resource-num">01 / SECURITY</div>
+            <div class="resource-key">SECRET</div>
+            <div class="resource-label">Facility Clearance</div>
+            <p>Facility clearances support on-site classified computing up to the SECRET level.</p>
+          </div>
+          <div class="resource">
+            <div class="resource-num">02 / COMPUTE</div>
+            <div class="resource-key">&gt;1<span class="unit">petaflop</span></div>
+            <div class="resource-label">Dedicated On-Prem</div>
+            <p>Well over a petaflop of in-house compute supports AI/ML development on CUI and classified data.</p>
+          </div>
+          <div class="resource">
+            <div class="resource-num">03 / AT-SEA</div>
+            <div class="resource-key">5,000<span class="unit">sq ft</span></div>
+            <div class="resource-label">Seattle Shoreside</div>
+            <p>Office and shoreside facility with moorage for ARiA's research vessel — rapid, low-cost at-sea testing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPANY FIRSTS -->
+      <div class="about-band">
+        <div class="about-band-head">
+          <div>
+            <div class="sec-eyebrow">Company Firsts</div>
+            <h3>A record of <em>technical firsts</em></h3>
+          </div>
+          <p class="about-band-intro">Original applications of machine learning, signal processing, and array design — demonstrated by ARiA before the field at large.</p>
+        </div>
+        <div class="firsts-list">
+          <div class="first-row">
+            <div class="first-year">2020</div>
+            <div class="first-desc">First closed-loop active control system for 3D printing.</div>
+            <div class="first-tag">Additive Manufacturing</div>
+          </div>
+          <div class="first-row">
+            <div class="first-year">2020</div>
+            <div class="first-desc">First application of deep-learning object detection for active sonar.</div>
+            <div class="first-tag">Active Sonar · DL</div>
+          </div>
+          <div class="first-row">
+            <div class="first-year">2019</div>
+            <div class="first-desc">First application of generative adversarial networks to sparse interpolation of ocean noise.</div>
+            <div class="first-tag">Ocean Noise · GAN</div>
+          </div>
+          <div class="first-row">
+            <div class="first-year">2018</div>
+            <div class="first-desc">First application of deep reinforcement learning to active sonar.</div>
+            <div class="first-tag">Active Sonar · RL</div>
+          </div>
+          <div class="first-row">
+            <div class="first-year">2017</div>
+            <div class="first-desc">First application of generative adversarial networks to interpolation of underwater propagation.</div>
+            <div class="first-tag">Underwater Propagation · GAN</div>
+          </div>
+          <div class="first-row">
+            <div class="first-year">2014</div>
+            <div class="first-desc">First empirical validation of co-prime arrays.</div>
+            <div class="first-tag">Array Design</div>
+          </div>
+          <div class="first-row">
+            <div class="first-year">2014</div>
+            <div class="first-desc">First application of deep learning to synthetic-aperture sonar imaging.</div>
+            <div class="first-tag">SAS Imaging · DL</div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <div class="footer-cta"><p>Ready to accelerate your next project?</p><a href="mailto:info@ariacoustics.com" class="btn btn-teal">Let's talk →</a></div>
+  <div class="footer-cta"><p>Ready to bridge research with deployment?</p><a href="mailto:info@ariacoustics.com" class="btn btn-teal">Bring it →</a></div>
 </div>
 
 
