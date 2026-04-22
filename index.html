@@ -30,7 +30,8 @@ body{font-family:'Manrope',sans-serif;background:var(--ink);color:var(--fog);fon
 
 /* NAV */
 header.site{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(16px);background:rgba(7,18,28,.72);border-bottom:1px solid var(--rule);}
-.logo{font-family:'Manrope',sans-serif;font-size:1.5rem;font-weight:300;letter-spacing:.08em;color:var(--teal);text-decoration:none;line-height:1;flex-shrink:0;}
+.logo{display:inline-flex;align-items:center;color:var(--teal);text-decoration:none;flex-shrink:0;}
+.logo svg{height:22px;width:auto;fill:currentColor;}
 nav ul{display:flex;gap:2rem;list-style:none;}
 nav a{font-size:.85rem;font-weight:500;color:var(--slate-2);text-decoration:none;position:relative;padding-bottom:2px;transition:color .25s;}
 nav a:hover,nav a.active{color:var(--fog);}
@@ -172,6 +173,32 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .contact-box{padding:1.7rem;border:1px solid var(--rule);margin-top:1rem;}
 .contact-box p{font-size:.88rem;color:var(--slate-2);line-height:1.65;margin-bottom:1.1rem;}
 
+/* RESOURCES */
+.about-band{margin-top:5rem;padding-top:3.5rem;border-top:1px solid var(--rule);}
+.about-band-head{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:2.2rem;}
+.about-band-head h3{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.55rem,2.6vw,2.1rem);line-height:1.1;letter-spacing:-.025em;}
+.about-band-head h3 em{font-style:italic;color:var(--teal);}
+.about-band-head .sec-eyebrow{margin-bottom:1rem;}
+.about-band-intro{font-size:.92rem;color:var(--slate-2);line-height:1.72;max-width:460px;justify-self:end;}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:rgba(7,18,28,.35);}
+.resource{padding:2.1rem 1.9rem;border-right:1px solid var(--rule);position:relative;}
+.resource:last-child{border-right:none;}
+.resource-num{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.14em;margin-bottom:1.3rem;display:flex;align-items:center;gap:.55rem;}
+.resource-num::after{content:'';flex:1;height:1px;background:var(--rule);}
+.resource-key{font-family:'Fraunces',serif;font-weight:300;font-size:2.2rem;line-height:1;letter-spacing:-.03em;color:var(--teal);}
+.resource-key .unit{font-size:.88rem;color:var(--slate-2);margin-left:.35rem;font-style:italic;letter-spacing:0;}
+.resource-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--fog);letter-spacing:.1em;text-transform:uppercase;margin:.6rem 0 .9rem;}
+.resource p{font-size:.84rem;color:var(--slate-2);line-height:1.68;}
+
+/* COMPANY FIRSTS */
+.firsts-list{display:flex;flex-direction:column;border-top:1px solid var(--rule);}
+.first-row{display:grid;grid-template-columns:110px 1fr auto;gap:2rem;align-items:baseline;padding:1.3rem .2rem;border-bottom:1px solid var(--rule);transition:padding-left .3s,background .3s;}
+.first-row:hover{padding-left:1rem;background:rgba(255,255,255,.025);}
+.first-year{font-family:'Fraunces',serif;font-weight:300;font-size:1.9rem;color:var(--teal);letter-spacing:-.02em;line-height:1;}
+.first-desc{font-size:.96rem;color:var(--fog);line-height:1.55;}
+.first-desc .lede{color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;margin-right:.55rem;vertical-align:middle;}
+.first-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+
 /* CAREERS */
 .careers-sec{background:var(--fog);color:var(--ink);padding:8rem 2.5rem;position:relative;}
 .careers-sec h2{color:var(--ink);}
@@ -236,6 +263,15 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
   .footer-inner{grid-template-columns:1fr 1fr;}
   .advantage,.cap-sec,.proj-sec,.team-sec,.about-sec,.careers-sec{padding:5rem 1.4rem;}
   .footer-cta{padding:4rem 1.4rem;}
+  .about-band-head{grid-template-columns:1fr;gap:1.2rem;}
+  .about-band-intro{justify-self:start;}
+  .resource-grid{grid-template-columns:1fr;}
+  .resource{border-right:none;border-bottom:1px solid var(--rule);}
+  .resource:last-child{border-bottom:none;}
+  .first-row{grid-template-columns:70px 1fr;gap:1.1rem;padding:1.1rem .2rem;}
+  .first-year{font-size:1.4rem;}
+  .first-desc{font-size:.9rem;}
+  .first-tag{grid-column:2;font-size:.62rem;color:var(--teal);opacity:.75;}
 }
 @media(max-width:580px){
   .hero-inner{padding:9rem 1.4rem 4rem;}
@@ -246,17 +282,22 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
 </style>
 </head>
 <body>
+<svg style="display: none;">
+  <symbol id="logo-aria" viewBox="0 0 1012 321">
+    <path d="M 162.217 3.631 C 158.244 11.534, 15 319.686, 15 320.330 C 15 320.699, 26.167 321, 39.816 321 L 64.631 321 81.257 284.750 L 97.882 248.500 162.262 248.243 L 226.642 247.986 234.957 267.243 C 239.530 277.834, 246.638 294.262, 250.753 303.750 L 258.234 321 283.724 321 C 303.727 321, 309.102 320.731, 308.692 319.750 C 304.824 310.479, 165.568 1.258, 164.979 0.631 C 164.530 0.153, 163.287 1.503, 162.217 3.631 M 859.653 7.074 C 857.786 11.158, 824.250 83.241, 785.129 167.259 C 746.008 251.276, 714 320.238, 714 320.509 C 714 320.779, 725.194 321, 738.874 321 L 763.749 321 776.283 293.750 C 783.176 278.762, 790.722 262.338, 793.051 257.250 L 797.285 248 861.525 248 925.766 248 933.247 265.250 C 937.362 274.738, 944.468 291.163, 949.040 301.750 L 957.351 321 982.676 321 C 996.604 321, 1008 320.811, 1008 320.580 C 1008 319.569, 864.800 1.406, 863.971 0.574 C 863.405 0.006, 861.731 2.525, 859.653 7.074 M 366.667 18.667 C 366.300 19.033, 366 87.208, 366 170.167 L 366 321 389.500 321 L 413 321 413 259.500 L 413 198 416.780 198 L 420.560 198 463.463 259.500 L 506.367 321 534.684 321 C 550.258 321, 563 320.868, 563 320.706 C 563 320.544, 542.105 291.657, 516.567 256.512 L 470.134 192.612 479.440 189.495 C 497.219 183.542, 511.374 172.724, 521.818 157.112 C 531.614 142.467, 535.954 127.370, 535.983 107.838 C 536.018 84.353, 530.221 67.249, 516.697 50.930 C 500.254 31.088, 475.767 21.440, 435.656 19.001 C 417.396 17.890, 367.684 17.649, 366.667 18.667 M 633.891 23.322 C 625.489 25.687, 616.891 33.777, 614.148 41.899 C 612.162 47.780, 612.727 57.876, 615.358 63.500 C 618.029 69.210, 625.075 76.140, 630.683 78.573 C 636.994 81.311, 647.673 80.884, 654.331 77.627 C 664.934 72.439, 670.499 63.233, 670.426 51 C 670.377 42.739, 668.529 37.950, 662.925 31.568 C 656.575 24.335, 643.494 20.620, 633.891 23.322 M 413 109.348 L 413 157 423.776 157 C 466.838 157, 488.624 142.523, 490.677 112.543 C 492.041 92.635, 484.520 77.835, 469.079 70.040 C 459.261 65.084, 448.691 63.006, 429.750 62.311 L 413 61.695 413 109.348 M 141.060 152.726 C 128.799 179.552, 118.547 202.063, 118.277 202.750 C 117.889 203.739, 127.112 204, 162.393 204 C 186.927 204, 207 203.715, 207 203.366 C 207 202.445, 164.828 105.646, 164.027 104.726 C 163.656 104.300, 153.320 125.900, 141.060 152.726 M 839.982 153.192 C 827.617 180.211, 817.350 202.697, 817.167 203.159 C 816.983 203.622, 837.061 204, 861.784 204 L 906.734 204 885.275 154.750 C 873.472 127.662, 863.511 105.177, 863.140 104.782 C 862.769 104.388, 852.348 126.172, 839.982 153.192 M 619 225.500 L 619 321 641.500 321 L 664 321 664 225.500 L 664 130 641.500 130 L 619 130 619 225.500" fill-rule="evenodd" />
+  </symbol>
+</svg>
 
 <!-- HEADER -->
 <header class="site">
-  <a href="#" class="logo" onclick="showPage('home');return false;">ARiA</a>
+  <a href="#" class="logo" onclick="showPage('home');return false;"><svg viewBox="0 0 1012 321"><use href="#logo-aria"></use></svg></a>
   <nav>
     <ul>
       <li><a href="#" onclick="showPage('capabilities');return false;" id="nav-capabilities">Capabilities</a></li>
-      <li><a href="#" onclick="showPage('projects');return false;"    id="nav-projects">Projects</a></li>
-      <li><a href="#" onclick="showPage('team');return false;"        id="nav-team">Team</a></li>
-      <li><a href="#" onclick="showPage('about');return false;"       id="nav-about">About</a></li>
-      <li><a href="#" onclick="showPage('careers');return false;"     id="nav-careers">Careers</a></li>
+      <li><a href="#" onclick="showPage('projects');return false;"     id="nav-projects">Projects</a></li>
+      <li><a href="#" onclick="showPage('team');return false;"         id="nav-team">Team</a></li>
+      <li><a href="#" onclick="showPage('about');return false;"        id="nav-about">About</a></li>
+      <li><a href="#" onclick="showPage('careers');return false;"      id="nav-careers">Careers</a></li>
     </ul>
   </nav>
   <a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Partner with ARiA →</a>
@@ -628,15 +669,15 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
       <h2 class="sec-title">Applied Research<br/>in <em>Acoustics</em></h2>
       <div class="about-grid">
         <div class="about-body">
-          <p>ARiA is a research-and-development firm with core capabilities in machine learning, numerical modeling, signal processing, and software development.</p>
+          <p>ARiA is a research-and-development firm with core capabilities in signal and information processing, machine learning, physics-based computational simulation, and software engineering.</p>
           <p>We tackle real-world problems that cut across our core capabilities, where the tight cohesion of our teams of software engineers and research scientists enables ARiA to deliver fielded solutions at the leading edge of technology.</p>
           <p>Structured specifically to address the well-known challenge many firms have in transitioning applied research to advanced development, ARiA brings together top-quality research scientists with system and software engineers in an environment where research and development mutually benefit from joint leveraging of in-house expertise.</p>
           <p>By strategically placing offices in communities with superior quality of life but low cost of living and aggressively managing indirect costs, ARiA maintains DCAA-approved indirect rates that lead the sector in value. With robust cash-flow reserves, significant owner-equity backing, and no debt, ARiA is positioned for growth.</p>
-          <p style="font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA: Real Research. Deployed.™</p>
+          <p style="font-family:'Fraunces',serif;font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA — Real Research. Deployed.</p>
         </div>
         <div>
           <div class="offices">
-            <h4>Offices</h4>
+            <h4>Locations & Information</h4>
             <div class="office-list">
               <div class="office-item" onclick="toggleOffice('off-hq')">
                 <div class="office-head">
@@ -680,6 +721,25 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
                   <p>1500 Westlake Ave N, Ste 001<br/>Seattle, WA 98109</p>
                   <p style="color:var(--teal);">(206) 312-8181</p>
                   <p style="font-size:.75rem; margin-top:.6rem;">Serving NAS Whidbey Island and NOPF Whidbey Island; adjacent to Amazon campus.</p>
+                </div>
+              </div>
+              <div class="office-item" onclick="toggleOffice('off-sec')">
+                <div class="office-head">
+                  <div><strong>Facility Security</strong>Contact Information</div>
+                  <span class="office-arr" id="arr-off-sec">+</span>
+                </div>
+                <div class="office-detail" id="off-sec">
+                  <p style="color:var(--teal);">(540) 496-0386</p>
+                  <p style="margin-top:.4rem;"><a href="mailto:security@ariacoustics.com" style="color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:border-color .3s;" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--rule)'">security@ariacoustics.com</a></p>
+                </div>
+              </div>
+              <div class="office-item" onclick="toggleOffice('off-mail')">
+                <div class="office-head">
+                  <div><strong>Mailing Address</strong>Sensitive Information and Materials</div>
+                  <span class="office-arr" id="arr-off-mail">+</span>
+                </div>
+                <div class="office-detail" id="off-mail">
+                  <p>P.O. Box 1624<br/>Culpeper, VA 22701-6624</p>
                 </div>
               </div>
             </div>
@@ -859,8 +919,8 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
   <div class="inner">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="logo" onclick="showPage('home');return false;">ARiA</a>
-        <p>Applied Research in Acoustics LLC.<br/>Real Research. Deployed.™</p>
+        <a href="#" class="logo" onclick="showPage('home');return false;"><svg viewBox="0 0 1012 321"><use href="#logo-aria"></use></svg></a>
+        <p>Applied Research in Acoustics.<br/>Real Research. Deployed.</p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -888,8 +948,8 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 APPLIED RESEARCH IN ACOUSTICS LLC</span>
-      <span>ALEXANDRIA, VA · MADISON, VA · SEATTLE, WA</span>
+      <span>© 2026 ARiA · All Rights Reserved</span>
+      <span>MADISON, VA · ALEXANDRIA, VA · CULPEPER, VA · SEATTLE, WA</span>
     </div>
   </div>
 </footer>
