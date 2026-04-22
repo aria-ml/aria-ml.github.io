@@ -21,6 +21,8 @@
   --rule:      rgba(255,255,255,0.08);
   --rule-ink:  rgba(7,18,28,0.10);
   --max:       1280px;
+  --mono:      'JetBrains Mono',monospace;
+  --serif:     'Fraunces',serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -48,9 +50,11 @@ nav a:hover::after,nav a.active::after{width:100%;}
 .page.active{display:block;}
 
 /* SHARED */
-.sec-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.65rem;margin-bottom:1.1rem;}
-.sec-eyebrow::before{content:'';width:20px;height:1px;background:var(--teal);}
-h2.sec-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,4vw,3.3rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;}
+.sec-eyebrow,.hero-eyebrow{font-family:var(--mono);font-size:.73rem;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;}
+.sec-eyebrow{gap:.65rem;margin-bottom:1.1rem;}
+.sec-eyebrow::before,.hero-eyebrow::before{content:'';height:1px;background:var(--teal);}
+.sec-eyebrow::before{width:20px;}
+h2.sec-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.3rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;}
 h2.sec-title em{font-style:italic;color:var(--teal);}
 .teal-line{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);}
 
@@ -58,9 +62,9 @@ h2.sec-title em{font-style:italic;color:var(--teal);}
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(43,212,196,.09),transparent 60%),radial-gradient(ellipse 50% 50% at 15% 80%,rgba(15,167,154,.07),transparent 60%),var(--ink);}
 #waveCanvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.5;pointer-events:none;}
 .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.35fr 1fr;gap:4rem;align-items:center;padding:8rem 2.5rem 6rem;}
-.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.8rem;display:flex;align-items:center;gap:.8rem;}
-.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--teal);}
-h1.hero-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(3.2rem,7vw,5.8rem);line-height:.97;letter-spacing:-.04em;margin-bottom:1.8rem;}
+.hero-eyebrow{gap:.8rem;margin-bottom:1.8rem;}
+.hero-eyebrow::before{width:28px;}
+h1.hero-title{font-family:var(--serif);font-weight:300;font-size:clamp(3.2rem,7vw,5.8rem);line-height:.97;letter-spacing:-.04em;margin-bottom:1.8rem;}
 h1.hero-title em{font-style:italic;color:var(--teal);}
 .hero-sub{font-size:1.08rem;color:var(--slate-2);max-width:510px;margin-bottom:2.5rem;line-height:1.68;}
 .hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
@@ -68,16 +72,16 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .sec-link:hover{border-color:var(--teal);}
 .arr{display:inline-block;transition:transform .3s;}
 .sec-link:hover .arr{transform:translateX(4px);}
-.corner-tag{position:absolute;font-family:'JetBrains Mono',monospace;font-size:.67rem;color:var(--slate);letter-spacing:.1em;}
+.corner-tag{position:absolute;font-family:var(--mono);font-size:.67rem;color:var(--slate);letter-spacing:.1em;}
 .corner-bl{bottom:2rem;left:2.5rem;}
 .corner-br{bottom:2rem;right:2.5rem;}
 
 /* HERO PANEL */
 .hero-panel{border:1px solid var(--rule);background:rgba(14,30,44,.55);backdrop-filter:blur(10px);padding:1.7rem;}
-.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--slate-2);}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:.73rem;color:var(--slate-2);}
 .dot-live{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(43,212,196,.18);}50%{box-shadow:0 0 0 9px rgba(43,212,196,.04);}}
-.panel-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--slate);gap:1rem;}
+.panel-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:var(--mono);font-size:.73rem;color:var(--slate);gap:1rem;}
 .panel-row:last-child{border-bottom:none;}
 .val{color:var(--fog);text-align:right;}
 .val.hi{color:var(--teal);}
@@ -94,32 +98,32 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .col{padding:2.8rem 2.5rem 2.8rem 0;border-right:1px solid var(--rule-ink);}
 .col:last-child{border-right:none;}
 .col:not(:first-child){padding-left:2.5rem;}
-.col-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.1em;margin-bottom:1.8rem;display:flex;align-items:center;gap:.6rem;}
+.col-num{font-family:var(--mono);font-size:.7rem;color:var(--slate);letter-spacing:.1em;margin-bottom:1.8rem;display:flex;align-items:center;gap:.6rem;}
 .col-num::after{content:'';flex:1;height:1px;background:var(--rule-ink);}
 .col-icon{width:42px;height:42px;margin-bottom:1.4rem;color:var(--teal-deep);}
-.col h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem;color:var(--ink);}
+.col h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem;color:var(--ink);}
 .col p{font-size:.93rem;color:#3d4d5a;line-height:1.68;}
 
 /* CAPABILITIES TABS */
 .cap-sec{background:var(--ink-2);padding:8rem 2.5rem;position:relative;}
 .cap-tabs{display:flex;gap:0;margin-top:3rem;border-bottom:1px solid var(--rule);overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
 .cap-tabs::-webkit-scrollbar{display:none;}
-.cap-tab{padding:.85rem 1.7rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .25s,border-color .25s;white-space:nowrap;}
+.cap-tab{padding:.85rem 1.7rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .25s,border-color .25s;white-space:nowrap;}
 .cap-tab:hover{color:var(--fog);}
 .cap-tab.active{color:var(--teal);border-color:var(--teal);}
 .cap-panels{margin-top:3rem;}
 .cap-panel{display:none;}
 .cap-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.cap-panel h3{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:1.1rem;}
+.cap-panel h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:1.1rem;}
 .cap-panel h3 em{font-style:italic;color:var(--teal);}
 .cap-panel p{font-size:.93rem;color:var(--slate-2);line-height:1.72;margin-bottom:1.3rem;}
 .cap-panel ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
 .cap-panel ul li{font-size:.86rem;color:var(--slate-2);line-height:1.55;padding-left:1.1rem;position:relative;}
 .cap-panel ul li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:.78rem;}
 .cap-sponsors{margin-top:1.8rem;}
-.cap-sponsors h4{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--slate);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;}
+.cap-sponsors h4{font-family:var(--mono);font-size:.68rem;color:var(--slate);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;}
 .sponsor-list{display:flex;flex-wrap:wrap;gap:.4rem;}
-.sponsor-tag{padding:.28rem .7rem;border:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--slate-2);letter-spacing:.05em;}
+.sponsor-tag{padding:.28rem .7rem;border:1px solid var(--rule);font-family:var(--mono);font-size:.68rem;color:var(--slate-2);letter-spacing:.05em;}
 .cap-visual{background:var(--ink-3);border:1px solid var(--rule);aspect-ratio:4/3;position:relative;overflow:hidden;}
 .cap-visual canvas{width:100%;height:100%;display:block;}
 
@@ -132,8 +136,8 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-ink);border:1px solid var(--rule-ink);margin-top:3.5rem;}
 .proj-card{background:var(--fog);padding:2.2rem;cursor:pointer;transition:background .25s;position:relative;}
 .proj-card:hover{background:var(--fog-2);}
-.proj-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--teal-deep);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;}
-.proj-card h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.2rem;line-height:1.25;letter-spacing:-.015em;margin-bottom:.7rem;color:var(--ink);}
+.proj-tag{font-family:var(--mono);font-size:.66rem;color:var(--teal-deep);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;}
+.proj-card h3{font-family:var(--serif);font-weight:400;font-size:1.2rem;line-height:1.25;letter-spacing:-.015em;margin-bottom:.7rem;color:var(--ink);}
 .proj-card p{font-size:.86rem;color:var(--slate);line-height:1.62;padding-bottom:2rem;}
 .proj-arrow{position:absolute;bottom:1.7rem;right:1.7rem;font-size:.85rem;color:var(--teal-deep);transition:transform .25s;}
 .proj-card:hover .proj-arrow{transform:translate(3px,-3px);}
@@ -143,14 +147,14 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .team-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);margin:3.5rem 0;}
 .stat{padding:2rem 2.2rem;border-right:1px solid var(--rule);text-align:center;}
 .stat:last-child{border-right:none;}
-.stat .num{font-family:'Fraunces',serif;font-weight:300;font-size:3.3rem;line-height:1;letter-spacing:-.04em;color:var(--teal);margin-bottom:.5rem;}
+.stat .num{font-family:var(--serif);font-weight:300;font-size:3.3rem;line-height:1;letter-spacing:-.04em;color:var(--teal);margin-bottom:.5rem;}
 .stat .label{font-size:.83rem;color:var(--slate-2);line-height:1.5;}
 .team-bio{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;border-top:1px solid var(--rule);padding-top:3rem;}
-.discipline-tag{padding:.45rem 1rem;border:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--slate-2);letter-spacing:.05em;transition:border-color .25s,color .25s;}
+.discipline-tag{padding:.45rem 1rem;border:1px solid var(--rule);font-family:var(--mono);font-size:.72rem;color:var(--slate-2);letter-spacing:.05em;transition:border-color .25s,color .25s;}
 .discipline-tag.hi{border-color:rgba(43,212,196,.35);color:var(--teal);}
 .discipline-tag:hover{border-color:var(--teal);color:var(--fog);}
-.team-bio-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--teal);letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.1rem;}
-.team-bio h3{font-family:'Fraunces',serif;font-weight:300;font-size:1.75rem;letter-spacing:-.025em;margin-bottom:.3rem;}
+.team-bio-label{font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.1rem;}
+.team-bio h3{font-family:var(--serif);font-weight:300;font-size:1.75rem;letter-spacing:-.025em;margin-bottom:.3rem;}
 .team-bio .role{font-size:.86rem;color:var(--slate-2);margin-bottom:1.4rem;}
 .team-bio p{font-size:.93rem;color:var(--slate-2);line-height:1.78;margin-bottom:1rem;}
 
@@ -159,7 +163,7 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem;}
 .about-body p{font-size:.97rem;color:var(--slate-2);line-height:1.82;margin-bottom:1.1rem;}
 .about-body p:first-child{font-size:1.1rem;color:var(--fog);}
-.offices h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
+.offices h4{font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
 .office-list{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem;}
 .office-item{padding:.95rem 1.1rem;border:1px solid var(--rule);font-size:.86rem;color:var(--slate-2);cursor:pointer;transition:background .25s,border-color .25s;}
 .office-item:hover{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.15);}
@@ -174,41 +178,41 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .contact-box p{font-size:.88rem;color:var(--slate-2);line-height:1.65;margin-bottom:1.1rem;}
 .contact-sub{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:1.1rem;}
 .contact-row{display:grid;grid-template-columns:90px 1fr;gap:1.2rem;align-items:start;}
-.contact-row-label{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.13em;text-transform:uppercase;line-height:1.35;padding-top:.25rem;}
+.contact-row-label{font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.13em;text-transform:uppercase;line-height:1.35;padding-top:.25rem;}
 .contact-row-val{font-size:.82rem;color:var(--slate-2);line-height:1.55;display:flex;flex-direction:column;gap:.35rem;}
 .contact-row-val a{color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;width:fit-content;transition:border-color .3s,color .3s;}
 .contact-row-val a:hover{border-color:var(--teal);color:var(--teal);}
 .contact-row-val.plain{color:var(--fog);}
 .contact-row-note{font-size:.72rem;color:var(--slate);margin-top:.25rem;font-style:italic;}
 .about-founded{margin-top:2rem;padding:1.1rem 1.3rem;border-left:2px solid var(--teal);background:rgba(43,212,196,.04);}
-.about-founded h4{font-family:'Fraunces',serif;font-weight:400;font-size:1.1rem;letter-spacing:-.015em;color:var(--fog);margin-bottom:.55rem;}
+.about-founded h4{font-family:var(--serif);font-weight:400;font-size:1.1rem;letter-spacing:-.015em;color:var(--fog);margin-bottom:.55rem;}
 .about-founded p{font-size:.88rem;color:var(--slate-2);line-height:1.7;margin-bottom:0;}
 
 /* RESOURCES */
 .about-band{margin-top:5rem;padding-top:3.5rem;border-top:1px solid var(--rule);}
 .about-band-head{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:2.2rem;}
-.about-band-head h3{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.55rem,2.6vw,2.1rem);line-height:1.1;letter-spacing:-.025em;}
+.about-band-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.55rem,2.6vw,2.1rem);line-height:1.1;letter-spacing:-.025em;}
 .about-band-head h3 em{font-style:italic;color:var(--teal);}
 .about-band-head .sec-eyebrow{margin-bottom:1rem;}
 .about-band-intro{font-size:.92rem;color:var(--slate-2);line-height:1.72;max-width:460px;justify-self:end;}
 .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:rgba(7,18,28,.35);}
 .resource{padding:2.1rem 1.9rem;border-right:1px solid var(--rule);position:relative;}
 .resource:last-child{border-right:none;}
-.resource-num{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.14em;margin-bottom:1.3rem;display:flex;align-items:center;gap:.55rem;}
+.resource-num{font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.14em;margin-bottom:1.3rem;display:flex;align-items:center;gap:.55rem;}
 .resource-num::after{content:'';flex:1;height:1px;background:var(--rule);}
-.resource-key{font-family:'Fraunces',serif;font-weight:300;font-size:2.2rem;line-height:1;letter-spacing:-.03em;color:var(--teal);}
+.resource-key{font-family:var(--serif);font-weight:300;font-size:2.2rem;line-height:1;letter-spacing:-.03em;color:var(--teal);}
 .resource-key .unit{font-size:.88rem;color:var(--slate-2);margin-left:.35rem;font-style:italic;letter-spacing:0;}
-.resource-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--fog);letter-spacing:.1em;text-transform:uppercase;margin:.6rem 0 .9rem;}
+.resource-label{font-family:var(--mono);font-size:.7rem;color:var(--fog);letter-spacing:.1em;text-transform:uppercase;margin:.6rem 0 .9rem;}
 .resource p{font-size:.84rem;color:var(--slate-2);line-height:1.68;}
 
 /* COMPANY FIRSTS */
 .firsts-list{display:flex;flex-direction:column;border-top:1px solid var(--rule);}
 .first-row{display:grid;grid-template-columns:110px 1fr auto;gap:2rem;align-items:baseline;padding:1.3rem .2rem;border-bottom:1px solid var(--rule);transition:padding-left .3s,background .3s;}
 .first-row:hover{padding-left:1rem;background:rgba(255,255,255,.025);}
-.first-year{font-family:'Fraunces',serif;font-weight:300;font-size:1.9rem;color:var(--teal);letter-spacing:-.02em;line-height:1;}
+.first-year{font-family:var(--serif);font-weight:300;font-size:1.9rem;color:var(--teal);letter-spacing:-.02em;line-height:1;}
 .first-desc{font-size:.96rem;color:var(--fog);line-height:1.55;}
-.first-desc .lede{color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;margin-right:.55rem;vertical-align:middle;}
-.first-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.first-desc .lede{color:var(--teal);font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;margin-right:.55rem;vertical-align:middle;}
+.first-tag{font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
 
 /* CAREERS */
 .careers-sec{background:var(--fog);color:var(--ink);padding:8rem 2.5rem;position:relative;}
@@ -222,12 +226,12 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .job-list{display:flex;flex-direction:column;border-top:1px solid var(--rule-ink);}
 .job-item{display:flex;justify-content:space-between;align-items:center;padding:1.7rem 0;border-bottom:1px solid var(--rule-ink);cursor:pointer;transition:padding-left .25s;}
 .job-item:hover{padding-left:.8rem;}
-.job-info h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;letter-spacing:-.015em;margin-bottom:.3rem;color:var(--ink);}
-.job-meta{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.07em;}
+.job-info h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;letter-spacing:-.015em;margin-bottom:.3rem;color:var(--ink);}
+.job-meta{font-family:var(--mono);font-size:.7rem;color:var(--slate);letter-spacing:.07em;}
 .job-arrow{font-size:1.1rem;color:var(--teal-deep);transition:transform .25s;}
 .job-item:hover .job-arrow{transform:translateX(4px);}
 .values-box{margin-top:3.5rem;padding:2.3rem;background:var(--fog-2);border-left:3px solid var(--teal-deep);}
-.values-box h4{font-family:'Fraunces',serif;font-weight:400;font-size:1.15rem;margin-bottom:.75rem;color:var(--ink);}
+.values-box h4{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin-bottom:.75rem;color:var(--ink);}
 .values-box p{font-size:.91rem;color:var(--slate);line-height:1.72;}
 .apply-box{margin-top:2.5rem;padding:1.8rem;border:1px solid var(--rule-ink);background:var(--fog-2);}
 .apply-box p{font-size:.88rem;color:var(--slate);margin-bottom:1rem;}
@@ -235,7 +239,7 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .job-detail.open{display:block;}
 .job-detail-inner{padding:2rem 2.2rem 2.4rem;}
 .job-detail-inner p{font-size:.93rem;color:var(--slate);line-height:1.72;}
-.job-section-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal-deep);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;}
+.job-section-label{font-family:var(--mono);font-size:.68rem;color:var(--teal-deep);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;}
 .job-ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
 .job-ul li{font-size:.88rem;color:var(--slate);line-height:1.55;padding-left:1rem;position:relative;}
 .job-ul li::before{content:'→';position:absolute;left:0;color:var(--teal-deep);font-size:.75rem;}
@@ -243,18 +247,63 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 
 /* FOOTER CTA */
 .footer-cta{background:var(--ink-3);padding:5.5rem 2.5rem;text-align:center;border-top:1px solid var(--rule);}
-.footer-cta p{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;color:var(--fog);max-width:900px;margin:0 auto 2rem;}
+.footer-cta p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;color:var(--fog);max-width:900px;margin:0 auto 2rem;}
 
 /* FOOTER */
 footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);padding:5rem 2.5rem 3rem;}
 .footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:4rem;}
 .footer-brand .logo{display:block;margin-bottom:.9rem;}
 .footer-brand p{font-size:.86rem;color:var(--slate);line-height:1.65;max-width:240px;}
-.footer-col h4{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
+.footer-col h4{font-family:var(--mono);font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
 .footer-col a{font-size:.86rem;color:var(--slate);text-decoration:none;transition:color .25s;}
 .footer-col a:hover{color:var(--fog);}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--slate);letter-spacing:.06em;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.65rem;color:var(--slate);letter-spacing:.06em;}
+
+/* PUBLICATIONS */
+.pubs-sec{background:var(--ink-2);padding:9rem 2.5rem 7rem;position:relative;}
+.pubs-head{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:end;margin-bottom:4.5rem;}
+.pubs-head p{font-size:1rem;color:var(--slate-2);line-height:1.72;max-width:460px;justify-self:end;}
+.pubs-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:rgba(7,18,28,.35);margin-bottom:4.5rem;}
+.pub-stat{padding:1.6rem 1.8rem;border-right:1px solid var(--rule);}
+.pub-stat:last-child{border-right:none;}
+.pub-stat .n{font-family:var(--serif);font-weight:300;font-size:2.3rem;line-height:1;letter-spacing:-.03em;color:var(--teal);margin-bottom:.35rem;}
+.pub-stat .l{font-family:var(--mono);font-size:.68rem;color:var(--slate);letter-spacing:.12em;text-transform:uppercase;}
+.pub-year-group{display:grid;grid-template-columns:120px 1fr;gap:3rem;border-top:1px solid var(--rule);padding:2.4rem 0;}
+.pub-year-group:last-child{border-bottom:1px solid var(--rule);}
+.pub-year-label{font-family:var(--serif);font-weight:300;font-size:2.6rem;line-height:1;color:var(--teal);letter-spacing:-.03em;position:sticky;top:6.5rem;align-self:start;}
+.pub-list{display:flex;flex-direction:column;gap:1.7rem;list-style:none;}
+.pub-entry{padding-bottom:1.55rem;border-bottom:1px dotted rgba(255,255,255,.07);}
+.pub-entry:last-child{border-bottom:none;padding-bottom:0;}
+.pub-title{display:block;font-family:var(--serif);font-weight:400;font-size:1.08rem;line-height:1.35;color:var(--fog);letter-spacing:-.005em;margin-bottom:.5rem;}
+.pub-title em{font-style:italic;}
+.pub-authors{display:block;font-size:.84rem;color:var(--slate-2);line-height:1.55;margin-bottom:.35rem;}
+.pub-venue{display:block;font-family:var(--mono);font-size:.7rem;color:var(--slate);letter-spacing:.04em;line-height:1.5;}
+.pub-venue a{color:var(--teal-deep);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s;}
+.pub-venue a:hover{border-color:var(--teal-deep);color:var(--teal);}
+.pub-award{display:inline-block;font-family:var(--mono);font-size:.64rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid rgba(43,212,196,.3);margin-left:.55rem;vertical-align:middle;}
+.pub-invited{color:var(--slate-2);font-style:italic;}
+
+/* PRIVACY MODAL */
+.privacy-backdrop{position:fixed;inset:0;background:rgba(7,18,28,.82);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;animation:fadeIn .28s ease;}
+.privacy-backdrop.open{display:flex;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.privacy-modal{background:var(--ink-2);border:1px solid var(--rule);max-width:680px;width:100%;max-height:85vh;display:flex;flex-direction:column;position:relative;animation:slideUp .35s cubic-bezier(.2,.8,.2,1);}
+@keyframes slideUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.privacy-head{padding:2rem 2.3rem 1.5rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;}
+.privacy-head .sec-eyebrow{margin-bottom:.7rem;}
+.privacy-head h3{font-family:var(--serif);font-weight:300;font-size:1.8rem;letter-spacing:-.025em;line-height:1.1;color:var(--fog);}
+.privacy-close{background:none;border:1px solid var(--rule);color:var(--slate-2);width:34px;height:34px;cursor:pointer;font-size:1.1rem;line-height:1;flex-shrink:0;transition:background .2s,color .2s,border-color .2s;}
+.privacy-close:hover{background:rgba(244,241,234,.06);color:var(--fog);border-color:var(--slate-2);}
+.privacy-body{padding:1.8rem 2.3rem;overflow-y:auto;font-size:.9rem;color:var(--slate-2);line-height:1.72;}
+.privacy-body h4{font-family:var(--mono);font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin:1.6rem 0 .7rem;}
+.privacy-body h4:first-child{margin-top:0;}
+.privacy-body p{margin-bottom:.9rem;}
+.privacy-body p:last-child{margin-bottom:0;}
+.privacy-body a{color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .3s;}
+.privacy-body a:hover{border-color:var(--teal);}
+.privacy-foot{padding:1.2rem 2.3rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.1em;text-transform:uppercase;}
+body.modal-open{overflow:hidden;}
 
 /* RESPONSIVE */
 @media(max-width:960px){
@@ -283,6 +332,14 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
   .first-year{font-size:1.4rem;}
   .first-desc{font-size:.9rem;}
   .first-tag{grid-column:2;font-size:.62rem;color:var(--teal);opacity:.75;}
+  .pubs-sec{padding:7rem 1.4rem 5rem;}
+  .pubs-head,.pub-year-group{grid-template-columns:1fr;gap:1.4rem;}
+  .pubs-head p{justify-self:start;}
+  .pub-year-label{position:static;font-size:1.9rem;}
+  .pubs-stats{grid-template-columns:1fr;}
+  .pub-stat{border-right:none;border-bottom:1px solid var(--rule);}
+  .pub-stat:last-child{border-bottom:none;}
+  .privacy-head,.privacy-body,.privacy-foot{padding-left:1.4rem;padding-right:1.4rem;}
 }
 @media(max-width:580px){
   .hero-inner{padding:9rem 1.4rem 4rem;}
@@ -295,7 +352,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
 <body>
 <svg style="display: none;">
   <symbol id="logo-aria" viewBox="0 0 1012 321">
-    <path d="M 162.217 3.631 C 158.244 11.534, 15 319.686, 15 320.330 C 15 320.699, 26.167 321, 39.816 321 L 64.631 321 81.257 284.750 L 97.882 248.500 162.262 248.243 L 226.642 247.986 234.957 267.243 C 239.530 277.834, 246.638 294.262, 250.753 303.750 L 258.234 321 283.724 321 C 303.727 321, 309.102 320.731, 308.692 319.750 C 304.824 310.479, 165.568 1.258, 164.979 0.631 C 164.530 0.153, 163.287 1.503, 162.217 3.631 M 859.653 7.074 C 857.786 11.158, 824.250 83.241, 785.129 167.259 C 746.008 251.276, 714 320.238, 714 320.509 C 714 320.779, 725.194 321, 738.874 321 L 763.749 321 776.283 293.750 C 783.176 278.762, 790.722 262.338, 793.051 257.250 L 797.285 248 861.525 248 925.766 248 933.247 265.250 C 937.362 274.738, 944.468 291.163, 949.040 301.750 L 957.351 321 982.676 321 C 996.604 321, 1008 320.811, 1008 320.580 C 1008 319.569, 864.800 1.406, 863.971 0.574 C 863.405 0.006, 861.731 2.525, 859.653 7.074 M 366.667 18.667 C 366.300 19.033, 366 87.208, 366 170.167 L 366 321 389.500 321 L 413 321 413 259.500 L 413 198 416.780 198 L 420.560 198 463.463 259.500 L 506.367 321 534.684 321 C 550.258 321, 563 320.868, 563 320.706 C 563 320.544, 542.105 291.657, 516.567 256.512 L 470.134 192.612 479.440 189.495 C 497.219 183.542, 511.374 172.724, 521.818 157.112 C 531.614 142.467, 535.954 127.370, 535.983 107.838 C 536.018 84.353, 530.221 67.249, 516.697 50.930 C 500.254 31.088, 475.767 21.440, 435.656 19.001 C 417.396 17.890, 367.684 17.649, 366.667 18.667 M 633.891 23.322 C 625.489 25.687, 616.891 33.777, 614.148 41.899 C 612.162 47.780, 612.727 57.876, 615.358 63.500 C 618.029 69.210, 625.075 76.140, 630.683 78.573 C 636.994 81.311, 647.673 80.884, 654.331 77.627 C 664.934 72.439, 670.499 63.233, 670.426 51 C 670.377 42.739, 668.529 37.950, 662.925 31.568 C 656.575 24.335, 643.494 20.620, 633.891 23.322 M 413 109.348 L 413 157 423.776 157 C 466.838 157, 488.624 142.523, 490.677 112.543 C 492.041 92.635, 484.520 77.835, 469.079 70.040 C 459.261 65.084, 448.691 63.006, 429.750 62.311 L 413 61.695 413 109.348 M 141.060 152.726 C 128.799 179.552, 118.547 202.063, 118.277 202.750 C 117.889 203.739, 127.112 204, 162.393 204 C 186.927 204, 207 203.715, 207 203.366 C 207 202.445, 164.828 105.646, 164.027 104.726 C 163.656 104.300, 153.320 125.900, 141.060 152.726 M 839.982 153.192 C 827.617 180.211, 817.350 202.697, 817.167 203.159 C 816.983 203.622, 837.061 204, 861.784 204 L 906.734 204 885.275 154.750 C 873.472 127.662, 863.511 105.177, 863.140 104.782 C 862.769 104.388, 852.348 126.172, 839.982 153.192 M 619 225.500 L 619 321 641.500 321 L 664 321 664 225.500 L 664 130 641.500 130 L 619 130 619 225.500" fill-rule="evenodd" />
+    <path d="M 162.2 3.6 C 158.2 11.5, 15 319.7, 15 320.3 C 15 320.7, 26.2 321, 39.8 321 L 64.6 321 81.3 284.8 L 97.9 248.5 162.3 248.2 L 226.6 248 235 267.2 C 239.5 277.8, 246.6 294.3, 250.8 303.8 L 258.2 321 283.7 321 C 303.7 321, 309.1 320.7, 308.7 319.8 C 304.8 310.5, 165.6 1.3, 165 0.6 C 164.5 0.2, 163.3 1.5, 162.2 3.6 M 859.7 7.1 C 857.8 11.2, 824.2 83.2, 785.1 167.3 C 746 251.3, 714 320.2, 714 320.5 C 714 320.8, 725.2 321, 738.9 321 L 763.7 321 776.3 293.8 C 783.2 278.8, 790.7 262.3, 793.1 257.2 L 797.3 248 861.5 248 925.8 248 933.2 265.2 C 937.4 274.7, 944.5 291.2, 949 301.8 L 957.4 321 982.7 321 C 996.6 321, 1008 320.8, 1008 320.6 C 1008 319.6, 864.8 1.4, 864 0.6 C 863.4 0, 861.7 2.5, 859.7 7.1 M 366.7 18.7 C 366.3 19, 366 87.2, 366 170.2 L 366 321 389.5 321 L 413 321 413 259.5 L 413 198 416.8 198 L 420.6 198 463.5 259.5 L 506.4 321 534.7 321 C 550.3 321, 563 320.9, 563 320.7 C 563 320.5, 542.1 291.7, 516.6 256.5 L 470.1 192.6 479.4 189.5 C 497.2 183.5, 511.4 172.7, 521.8 157.1 C 531.6 142.5, 536 127.4, 536 107.8 C 536 84.4, 530.2 67.2, 516.7 50.9 C 500.3 31.1, 475.8 21.4, 435.7 19 C 417.4 17.9, 367.7 17.6, 366.7 18.7 M 633.9 23.3 C 625.5 25.7, 616.9 33.8, 614.1 41.9 C 612.2 47.8, 612.7 57.9, 615.4 63.5 C 618 69.2, 625.1 76.1, 630.7 78.6 C 637 81.3, 647.7 80.9, 654.3 77.6 C 664.9 72.4, 670.5 63.2, 670.4 51 C 670.4 42.7, 668.5 38, 662.9 31.6 C 656.6 24.3, 643.5 20.6, 633.9 23.3 M 413 109.3 L 413 157 423.8 157 C 466.8 157, 488.6 142.5, 490.7 112.5 C 492 92.6, 484.5 77.8, 469.1 70 C 459.3 65.1, 448.7 63, 429.8 62.3 L 413 61.7 413 109.3 M 141.1 152.7 C 128.8 179.6, 118.5 202.1, 118.3 202.8 C 117.9 203.7, 127.1 204, 162.4 204 C 186.9 204, 207 203.7, 207 203.4 C 207 202.4, 164.8 105.6, 164 104.7 C 163.7 104.3, 153.3 125.9, 141.1 152.7 M 840 153.2 C 827.6 180.2, 817.4 202.7, 817.2 203.2 C 817 203.6, 837.1 204, 861.8 204 L 906.7 204 885.3 154.8 C 873.5 127.7, 863.5 105.2, 863.1 104.8 C 862.8 104.4, 852.3 126.2, 840 153.2 M 619 225.5 L 619 321 641.5 321 L 664 321 664 225.5 L 664 130 641.5 130 L 619 130 619 225.5" fill-rule="evenodd" />
   </symbol>
 </svg>
 
@@ -304,11 +361,12 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
   <a href="#" class="logo" onclick="showPage('home');return false;"><svg viewBox="0 0 1012 321"><use href="#logo-aria"></use></svg></a>
   <nav>
     <ul>
-      <li><a href="#" onclick="showPage('capabilities');return false;" id="nav-capabilities">Capabilities</a></li>
-      <li><a href="#" onclick="showPage('projects');return false;"     id="nav-projects">Projects</a></li>
-      <li><a href="#" onclick="showPage('team');return false;"         id="nav-team">Team</a></li>
-      <li><a href="#" onclick="showPage('about');return false;"        id="nav-about">About</a></li>
-      <li><a href="#" onclick="showPage('careers');return false;"      id="nav-careers">Careers</a></li>
+      <li><a href="#" onclick="showPage('capabilities');return false;"  id="nav-capabilities">Capabilities</a></li>
+      <li><a href="#" onclick="showPage('projects');return false;"      id="nav-projects">Projects</a></li>
+      <li><a href="#" onclick="showPage('publications');return false;"  id="nav-publications">Publications</a></li>
+      <li><a href="#" onclick="showPage('team');return false;"          id="nav-team">Team</a></li>
+      <li><a href="#" onclick="showPage('about');return false;"         id="nav-about">About</a></li>
+      <li><a href="#" onclick="showPage('careers');return false;"       id="nav-careers">Careers</a></li>
     </ul>
   </nav>
   <a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Partner with ARiA →</a>
@@ -334,10 +392,10 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
       </div>
       <div class="hero-panel">
         <div class="panel-head"><span>◦ SYS.STATUS</span><span class="dot-live"></span></div>
-        <div class="panel-row"><span>domains</span> <span class="val hi">sonar · acoustics · AI/ML · computer_vision</span></div>
+        <div class="panel-row"><span>domains</span> <span class="val hi">sonar · acoustics · AI/ML · computer vision</span></div>
         <div class="panel-row"><span>methods</span> <span class="val">signal processing · deep learning</span></div>
-        <div class="panel-row"><span>pipeline</span><span class="val">sim → train → deploy</span></div>
-        <div class="panel-row"><span>sponsors</span><span class="val">CDAO · NAVSEA · NAVAIR · NAWCAD · AFRL · DOJ · ONR</span></div>
+        <div class="panel-row"><span>framework</span><span class="val">research → development → validation</span></div>
+        <div class="panel-row"><span>sponsors</span><span class="val">CDAO · NAVSEA · NAVAIR · NAWCAD · AFRL/RI · ONR</span></div>
         <div class="panel-row"><span>est.</span>    <span class="val">2010 · Alexandria, VA</span></div>
       </div>
     </div>
@@ -393,7 +451,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
             <h3>Machine Learning &amp; <em>Artificial Intelligence</em></h3>
             <p>Broad expertise across supervised, unsupervised, and semi-supervised ML — from synthetic-aperture sonar imagery to computer vision and legal document analysis.</p>
             <ul>
-              <li>dataeval: open-source Python library for dataset quality analysis across the AI/ML lifecycle</li>
+              <li>DataEval: open-source Python library for dataset quality analysis across the AI/ML lifecycle</li>
               <li>Deep learning for classification and synthesis of synthetic-aperture images</li>
               <li>Physics-informed neural networks for sonar performance prediction</li>
               <li>Computer vision for automated detection and recognition</li>
@@ -467,7 +525,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2.5rem;margin-top:1rem;">
         <p style="color:var(--slate-2);line-height:1.75;">ARiA applies broad interdisciplinary experience in acoustics, signal processing, machine learning / AI, modeling &amp; simulation, and cognitive science toward innovative basic and applied R&amp;D.</p>
         <div style="padding:1.4rem 1.6rem;border-left:2px solid var(--teal);background:rgba(43,212,196,.04);">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;">Overcoming the Valley of Death</div>
+          <div style="font-family:var(--mono);font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;">Overcoming the Valley of Death</div>
           <p style="font-size:.88rem;color:var(--slate-2);line-height:1.7;">Coupling research expertise with advanced development and validation of critical DoD systems, ARiA is uniquely poised to transition basic and applied research (DoD 6.1/6.2) to advanced technology development and beyond (DoD 6.3/6.4+).</p>
         </div>
       </div>
@@ -483,7 +541,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
             <h3>Machine Learning &amp; <em>Artificial Intelligence</em></h3>
             <p>Broad expertise in ML and AI for multiple domains — from synthetic-aperture imagery to legal documents — using supervised, unsupervised, semi-supervised, active, and on-line learning techniques including deep learning, statistical learning, and formal logic approaches.</p>
             <ul>
-              <li>dataeval: open-source Python library for dataset quality analysis and model-performance impact across computer vision tasks</li>
+              <li>DataEval: open-source Python library for dataset quality analysis and model-performance impact across computer vision tasks</li>
               <li>Deep learning for explainable classification and parametric synthesis of synthetic-aperture images</li>
               <li>Physics-informed neural networks for sonar performance prediction</li>
               <li>Computer vision for automated detection, classification, and recognition</li>
@@ -590,8 +648,8 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
       <div class="proj-grid">
         <div class="proj-card" style="background:var(--ink);color:var(--fog);grid-column:span 2;">
           <div class="proj-tag" style="color:var(--teal);">Featured · AI / ML · Open Source</div>
-          <h3 style="color:var(--fog);font-size:1.6rem;">dataeval — Dataset Quality &amp; Model Performance Analysis</h3>
-          <p style="color:var(--slate-2);max-width:620px;">A Python library for analyzing data quality and its impact on model performance across computer vision tasks. Funded through the Chief Digital and Artificial Intelligence Office (CDAO), dataeval supports rigorous analysis of datasets throughout the AI/ML lifecycle — from curation through training and evaluation.</p>
+          <h3 style="color:var(--fog);font-size:1.6rem;">DataEval — Dataset Quality &amp; Model Performance Analysis</h3>
+          <p style="color:var(--slate-2);max-width:620px;">A Python library for analyzing data quality and its impact on model performance across computer vision tasks. Funded through the Chief Digital and Artificial Intelligence Office (CDAO), DataEval supports rigorous analysis of datasets throughout the AI/ML lifecycle — from curation through training and evaluation.</p>
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.4rem;">
             <span class="sponsor-tag" style="border-color:var(--rule);color:var(--teal);">CDAO</span>
             <span class="sponsor-tag" style="border-color:var(--rule);color:var(--slate-2);">Python</span>
@@ -684,7 +742,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
           <p>We tackle real-world problems that cut across our core capabilities, where the tight cohesion of our teams of software engineers and research scientists enables ARiA to deliver fielded solutions at the leading edge of technology.</p>
           <p>Structured specifically to address the well-known challenge many firms have in transitioning applied research to advanced development, ARiA brings together top-quality research scientists with system and software engineers in an environment where research and development mutually benefit from joint leveraging of in-house expertise.</p>
           <p>By strategically placing offices in communities with superior quality of life but low cost of living and aggressively managing indirect costs, ARiA maintains DCAA-approved indirect rates that lead the sector in value. With robust cash-flow reserves, significant owner-equity backing, and no debt, ARiA is positioned for growth.</p>
-          <p style="font-family:'Fraunces',serif;font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA — Real Research. Deployed.</p>
+          <p style="font-family:var(--serif);font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA — Real Research. Deployed.</p>
           <div class="about-founded">
             <h4>Founded 2010</h4>
             <p>Founded by Dr. Jason E. Summers after a career serving customers at NAVSEA, NSWC CD, NUWC, ONI, ONR, and commercial industry — both consumer-electronics firms and firms serving government customers.</p>
@@ -1001,6 +1059,826 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
 </div>
 
 
+<!-- ══ PUBLICATIONS ══ -->
+<div class="page" id="page-publications">
+  <section class="pubs-sec">
+    <div class="teal-line"></div>
+    <div class="inner">
+      <div class="pubs-head">
+        <div>
+          <div class="sec-eyebrow">Publications</div>
+          <h2 class="sec-title">Peer-reviewed,<br/><em>in the field.</em></h2>
+        </div>
+        <p>Over two decades of refereed publications, invited lectures, and conference proceedings spanning underwater acoustics, machine learning, signal processing, room acoustics, and computational methods. What we publish is what we deploy.</p>
+      </div>
+
+      <div class="pubs-stats">
+        <div class="pub-stat"><div class="n">130+</div><div class="l">Publications</div></div>
+        <div class="pub-stat"><div class="n">25</div><div class="l">Years of output</div></div>
+        <div class="pub-stat"><div class="n">7</div><div class="l">Journals &amp; venues</div></div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2024</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Generative EO/IR multi-scale vision transformer for improved object detection</span>
+            <span class="pub-authors">J. Christian, M. Bright, J. E. Summers, A. Olson, T. C. Havens</span>
+            <span class="pub-venue">SPIE Defense + Commercial Sensing — Synthetic Data for AI &amp; ML · Apr 2024, National Harbor, MD<span class="pub-award">Best Presentation</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Unsupervised vision-transformer training for semantic segmentation of sparsely labeled datasets</span>
+            <span class="pub-authors">M. Bright, J. Christian, R. Wood, J. E. Summers</span>
+            <span class="pub-venue">Naval Applications of Machine Learning (NAML) · Mar 2024, San Diego, CA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Utilizing sophisticated metrics to enhance machine-learning workflow for sonar data</span>
+            <span class="pub-authors">T. Fisher et al.</span>
+            <span class="pub-venue">Naval Applications of Machine Learning (NAML) · Mar 2024, San Diego, CA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Machine Learning Qualification Process and Impact to System Assurance</span>
+            <span class="pub-authors">B. D. Werner, B. J. Schumeg, J. E. Summers, V. Berisha</span>
+            <span class="pub-venue">Reliability &amp; Maintainability Symposium (RAMS) · Jan 2024, Albuquerque, NM</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2023</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">A Data-Analysis Metrics Library for Identifying and Managing Risks in Artificial-Intelligence Enabled Systems</span>
+            <span class="pub-authors">J. E. Summers et al.</span>
+            <span class="pub-venue">AAAI Fall Symposium Series · Oct 2023, Arlington, VA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Machine Learning Qualification Process for Safety-Critical Applications of AI in Armaments Systems</span>
+            <span class="pub-authors">J. E. Summers et al.</span>
+            <span class="pub-venue">AAAI Fall Symposium Series · Oct 2023, Arlington, VA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Certification of Learning-Based Systems <span class="pub-invited">(panel)</span></span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">AI4SE &amp; SE4AI Workshop · Sep 2023, Washington, DC</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Few-Shot Learning for ATR using Contrastive Loss and Modeled Data</span>
+            <span class="pub-authors">J. McMillan, S. Jullens, C. Amein, J. E. Summers</span>
+            <span class="pub-venue">Underwater Acoustics Conference &amp; Exhibition (UACE2023) · Jun 2023, Kalamata, Greece</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Object Detection in Active-Sonar Data</span>
+            <span class="pub-authors">J. Botts, J. Christian, J. McMillan, J. E. Summers</span>
+            <span class="pub-venue">7th Annual NAML Workshop · Mar 2023, San Diego, CA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Zero-Shot Signal Decomposition for Active Sonar</span>
+            <span class="pub-authors">J. Botts, J. Christian, J. McMillan, J. E. Summers</span>
+            <span class="pub-venue">7th Annual NAML Workshop · Mar 2023, San Diego, CA</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2022</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Deep Reinforcement Learning for Cognitive Active-Sonar Employment</span>
+            <span class="pub-authors">J. McMillan, J. Botts, J. E. Summers</span>
+            <span class="pub-venue">182nd Meeting of the Acoustical Society of America · May 2022, Denver, CO</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2021</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Tagging ocean soundscapes with machine learning and topological approaches</span>
+            <span class="pub-authors">K. Thilges, M. Plumley, J. McMillan, J. E. Summers</span>
+            <span class="pub-venue">181st Meeting of the ASA · Nov–Dec 2021, Seattle, WA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Reconstruction of sparse ocean noise fields with generative neural networks</span>
+            <span class="pub-authors">K. Thilges, M. Plumley, Z. Zuberi, S. Delmerico, C. Einstein, A. Ramamurti, J. E. Summers</span>
+            <span class="pub-venue">181st Meeting of the ASA · Nov–Dec 2021, Seattle, WA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Physics-informed neural networks for predicting ocean spatio-temporal fields</span>
+            <span class="pub-authors">K. Thilges, M. Plumley, J. E. Summers</span>
+            <span class="pub-venue">181st Meeting of the ASA · Nov–Dec 2021, Seattle, WA</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2020</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">A numerical method for acoustic scattering from linear elastic shells on overlapping grids</span>
+            <span class="pub-authors">D. Serino, P. Koh, M. Cunningham, C. F. Gaumond, J. E. Summers</span>
+            <span class="pub-venue">179th Meeting of the ASA · May 2020, Chicago, IL</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Object Detection Neural-Network for Active-Sonar Detection and Classification</span>
+            <span class="pub-authors">J. L. Chen, J. Botts, T. Cuprak, A. Moore, M. Castellanos, B. Evers, J. E. Summers</span>
+            <span class="pub-venue">4th Annual NAML Workshop · Feb 2020, San Diego, CA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">A numerical method for linear elastic shells on overlapping grids</span>
+            <span class="pub-authors">D. Serino, P. Koh, M. Cunningham, C. F. Gaumond, J. E. Summers</span>
+            <span class="pub-venue">14th ASA Mini Conference on Acoustics · Nov 2019, Washington, DC<span class="pub-award">Best Student Paper</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2019</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Deep learning for underwater noise classification</span>
+            <span class="pub-authors">J. L. Chen, S. Nguyen, J. M. Trader, D. A. Moore, J. E. Summers</span>
+            <span class="pub-venue">177th Meeting of the ASA · May 2019, Louisville, KY</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Estimation of shipping noise from sparse measurements via generative adversarial networks</span>
+            <span class="pub-authors">J. L. Chen, J. E. Summers</span>
+            <span class="pub-venue">177th Meeting of the ASA · May 2019, Louisville, KY</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Conditional synthetic aperture sonar imagery simulation with generative adversarial networks</span>
+            <span class="pub-authors">J. M. Trader, D. A. Moore, J. L. Chen, M. A. Flores, J. E. Summers</span>
+            <span class="pub-venue">SPIE Defense + Commercial Sensing — Automatic Target Recognition XXIX · Apr 2019, Baltimore, MD</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Interpretable deep learning for sonar automatic target recognition</span>
+            <span class="pub-authors">J. L. Chen, J. M. Trader, J. E. Summers</span>
+            <span class="pub-venue">SPIE Defense + Commercial Sensing — Automatic Target Recognition XXIX · Apr 2019, Baltimore, MD</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Interpretable Deep Learning and Conditional Simulation with GANs for Synthetic-Aperture Sonar</span>
+            <span class="pub-authors">J. E. Summers, J. L. Chen, J. M. Trader, D. A. Moore</span>
+            <span class="pub-venue">3rd Annual NAML Workshop · Feb 2019, San Diego, CA</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2018</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Interpretable semi-supervised deep learning with synthetic aperture sonar for automatic target recognition</span>
+            <span class="pub-authors">J. L. Chen, J. E. Summers, J. M. Trader</span>
+            <span class="pub-venue">4th Intl. Conf. on Synthetic Aperture Sonar &amp; Synthetic Aperture Radar · Sep 2018, Lerici, Italy</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Accuracy aspects for diffraction-based computation of scattering</span>
+            <span class="pub-authors">U. P. Svensson, S. Martin, J. E. Summers, B. H. Teres, C. F. Gaumond</span>
+            <span class="pub-venue">EURONOISE 2018 · May 2018, Hersonissos, Crete · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Design of a signal normalizer for high-clutter active-sonar detection</span>
+            <span class="pub-authors">F. W. Bentrem, J. Botts, J. E. Summers</span>
+            <span class="pub-venue">175th Meeting of the ASA · May 2018, Minneapolis, MN · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Dimension-reduced adaptive pulse compression with model error compensation</span>
+            <span class="pub-authors">J. Botts, J. E. Summers, F. W. Bentrem, C. F. Gaumond</span>
+            <span class="pub-venue">175th Meeting of the ASA · May 2018, Minneapolis, MN · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Deep reinforcement learning for cognitive sonar</span>
+            <span class="pub-authors">J. E. Summers, J. M. Trader, C. F. Gaumond, J. L. Chen</span>
+            <span class="pub-venue">175th Meeting of the ASA · May 2018, Minneapolis, MN · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Combining interactive simulation with scaffolded visualization in ESAIL to teach fundamental concepts of acoustical oceanography</span>
+            <span class="pub-authors">J. E. Summers, M. A. Ross, Z. W. Walker, P. T. Longerbeam, D. T. Redmond</span>
+            <span class="pub-venue">175th Meeting of the ASA · May 2018, Minneapolis, MN</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2017</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">In-situ estimation of transmission loss based on learned dictionaries and sparse reconstruction</span>
+            <span class="pub-authors">J. Botts, M. A. Ross, J. E. Summers, C. F. Gaumond</span>
+            <span class="pub-venue">173rd ASA / 8th Forum Acusticum · Jun 2017, Boston, MA · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Model-error-compensated reiterative adaptive beamforming on a physically shaded cylindrical array</span>
+            <span class="pub-authors">J. Botts, C. F. Gaumond, J. E. Summers</span>
+            <span class="pub-venue">173rd ASA / 8th Forum Acusticum · Jun 2017, Boston, MA · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Deep convolutional neural networks for semi-supervised learning from synthetic aperture sonar (SAS) images</span>
+            <span class="pub-authors">J. L. Chen, J. E. Summers</span>
+            <span class="pub-venue">173rd ASA / 8th Forum Acusticum · Jun 2017, Boston, MA · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Evaluating simulations of acoustic environments by learning time-frequency kernels that optimally separate classes of simulated signals</span>
+            <span class="pub-authors">J. E. Summers, J. Botts, C. F. Gaumond</span>
+            <span class="pub-venue">173rd ASA / 8th Forum Acusticum · Jun 2017, Boston, MA · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Regularized learning of linear ordered-statistic constant false alarm rate filters</span>
+            <span class="pub-authors">T. C. Havens, I. Cummings, J. Botts, J. E. Summers</span>
+            <span class="pub-venue">SPIE Defense + Security — Ocean Sensing and Monitoring IX · Apr 2017, Anaheim, CA · Paper 10186-30</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2016</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Deep neural networks for learning classification features and generative models from synthetic aperture sonar big data</span>
+            <span class="pub-authors">J. L. Chen, J. E. Summers</span>
+            <span class="pub-venue">Proc. of Meetings on Acoustics (POMA) · 2016 · DOI 10.1121/2.0000458</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Compressive beamforming on a cylindrical array</span>
+            <span class="pub-authors">C. F. Gaumond, J. Botts, J. E. Summers</span>
+            <span class="pub-venue">172nd ASA / 5th Joint Meeting · Nov–Dec 2016, Honolulu, HI · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Machine Interface for Contracting Assistance (MICA)</span>
+            <span class="pub-authors">J. E. Summers, D. T. Redmond, J. Botts, C. Langston-Bombino, S. Carlson-Thies, S. A. Summers</span>
+            <span class="pub-venue">Workshop on Legal Text, Document, and Corpus Analytics (LTDCA 2016) · Jun 2016, San Diego, CA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Adaptive pulse compression for clutter mitigation in midfrequency active sonar</span>
+            <span class="pub-authors">J. E. Summers, J. Botts, C. F. Gaumond, I. Cummings</span>
+            <span class="pub-venue">171st Meeting of the ASA · May 2016</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Learning a Linear Ordered-Statistic Constant False-Alarm Rate Detector</span>
+            <span class="pub-authors">T. C. Havens, I. Cummings, J. Botts, J. E. Summers</span>
+            <span class="pub-venue">171st Meeting of the ASA · May 2016</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">A modal time-domain method for modeling dispersive and dissipative linear waves</span>
+            <span class="pub-authors">J. Botts, C. F. Gaumond, L. Savioja</span>
+            <span class="pub-venue">171st Meeting of the ASA · May 2016</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Subarray compressive beamforming for midfrequency active sonar on a cylindrical array</span>
+            <span class="pub-authors">J. Botts, J. E. Summers</span>
+            <span class="pub-venue">171st Meeting of the ASA · May 2016</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Shot in the dark: Physical and psychophysical limitations on shooter identification from earwitness testimony</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">171st Meeting of the ASA · May 2016</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Audibility of dispersion error in room acoustic FDTD simulation as a function of simulation distance</span>
+            <span class="pub-authors">J. Saarelma, J. Botts, B. Hamilton, L. Savioja</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 139 · 2016 · DOI 10.1121/1.4945746</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Finite Volume Time Domain Simulations of Frequency-Dependent Boundary Conditions and Absorbing Layer</span>
+            <span class="pub-authors">P. Chobeau, S. Prepelita, J. Saarelma, J. Botts, L. Savioja</span>
+            <span class="pub-venue">Proc. 60th Intl. Conference: DREAMS · Jan 2016</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Finite volume time domain room acoustics simulation under general impedance boundary conditions</span>
+            <span class="pub-authors">S. Bilbao, B. Hamilton, J. Botts, L. Savioja</span>
+            <span class="pub-venue">IEEE/ACM Trans. Audio, Speech, and Language Processing · 24(1) 161–173 · 2016</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2015</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Machine Interface for Contracting Assistance (MICA)</span>
+            <span class="pub-authors">J. E. Summers, D. T. Redmond, C. F. Gaumond</span>
+            <span class="pub-venue">AAAI Fall Symposium · Nov 2015, Arlington, VA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Textual and graphical semantic query of sound-speed-profile databases for acoustical training</span>
+            <span class="pub-authors">D. T. Redmond, C. F. Gaumond, J. E. Summers</span>
+            <span class="pub-venue">5th ASA Mini Conference on Acoustics · May 2015, Washington, DC</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">A parametric ambient-noise model for video-game based education in acoustics</span>
+            <span class="pub-authors">V. Rennoll, D. T. Redmond, J. E. Summers</span>
+            <span class="pub-venue">5th ASA Mini Conference on Acoustics · May 2015, Washington, DC<span class="pub-award">Best Student Paper</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Dynamically coupled 3D visualization and real-time simulation as an aid to developing mental models of sonar</span>
+            <span class="pub-authors">J. E. Summers, D. T. Redmond, C. F. Gaumond</span>
+            <span class="pub-venue">MODSIM World 2015 Conference &amp; Exposition · Mar–Apr 2015</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Experimental validation of a coprime linear microphone array for high-resolution direction-of-arrival measurements</span>
+            <span class="pub-authors">N. Xiang, D. R. Bush, J. E. Summers</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 137, EL261 · 2015 · DOI 10.1121/1.4915000</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2014</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Experimental investigations on coprime microphone arrays for direction-of-arrival estimation</span>
+            <span class="pub-authors">D. R. Bush, N. Xiang, J. E. Summers</span>
+            <span class="pub-venue">168th Meeting of the ASA · Oct 2014</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Collaboratively Identifying and Referring to Sounds with Words and Phrases</span>
+            <span class="pub-authors">D. Brock, C. F. Gaumond, C. Wasylyshyn, B. McClimens</span>
+            <span class="pub-venue">20th Intl. Conference on Auditory Display (ICAD2014) · Jun 2014, New York, NY</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Learning environmentally dependent feature representations for classification of objects on or buried in the seafloor</span>
+            <span class="pub-authors">J. E. Summers, T. C. Havens, T. K. Meyer</span>
+            <span class="pub-venue">167th Meeting of the ASA · May 2014</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Detection and identification of helicopter noise in beach environments</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">167th Meeting of the ASA · May 2014</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Fortuitous coupling: A recollection of how Chris Jaffe brought together coupled rooms and Texas oil money</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">167th Meeting of the ASA · May 2014 · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Real-time Underwater-Acoustics Simulations in WaveQuest</span>
+            <span class="pub-authors">T. K. Meyer, D. T. Redmond, J. E. Summers</span>
+            <span class="pub-venue">3rd ASA Washington D.C. Chapter Mini Conference · Apr 2014, Washington, DC</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">A quadtree data structure for topographical big data</span>
+            <span class="pub-authors">T. K. Meyer, D. T. Redmond, J. E. Summers</span>
+            <span class="pub-venue">Capital Science 2014 · Mar 2014, Arlington, VA</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Simulation of fish-grouping behavioral patterns in video games: A physics- and biology-based approach</span>
+            <span class="pub-authors">D. T. Redmond, T. K. Meyer, J. E. Summers</span>
+            <span class="pub-venue">Capital Science 2014 · Mar 2014, Arlington, VA</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2013</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Sparse array design using statistical restricted isometry property</span>
+            <span class="pub-authors">C. F. Gaumond, G. F. Edelmann</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 134, EL191 · 2013 · DOI 10.1121/1.4812817</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Application of statistical reduced isometry property to design of line arrays for compressive beamforming</span>
+            <span class="pub-authors">C. F. Gaumond, G. F. Edelmann</span>
+            <span class="pub-venue">POMA 19, 070083 · 2013 · DOI 10.1121/1.4800574</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Preliminary results from collaborative referring to impulsive sonar sounds</span>
+            <span class="pub-authors">C. F. Gaumond, D. Brock, C. Wasylyshyn</span>
+            <span class="pub-venue">POMA 19, 010046 · 2013 · DOI 10.1121/1.4800966</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Numerical simulations of compressive beamforming with a vertical line array in the deep ocean</span>
+            <span class="pub-authors">G. F. Edelmann, I. M. Rooney, C. F. Gaumond</span>
+            <span class="pub-venue">POMA 19, 070088 · 2013 · DOI 10.1121/1.4799789</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Inferring delays between subrooms in systems of coupled rooms</span>
+            <span class="pub-authors">J. E. Summers, J. Botts</span>
+            <span class="pub-venue">166th Meeting of the ASA · Dec 2013 · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Adaptive processing for mitigation of biologically induced active-sonar clutter and reverberation</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">166th Meeting of the ASA · Dec 2013</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Using game-based learning with integrated computer simulation to teach core concepts in underwater acoustics</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">166th Meeting of the ASA · Dec 2013</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Inaccuracy in the treatment of multiple-order diffraction by secondary-edge-source methods</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 133, 3673–3676 · 2013 · DOI 10.1121/1.4802650</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Information transfer in auditoria and room-acoustical quality</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 133, EL242–EL248 · 2013 · DOI 10.1121/1.4793579</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2012</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Fidelity-Adaptive Sonar Modeling and Simulation for Game-Based Learning</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">POMA 17, 070003 · Nov 2012 · DOI 10.1121/1.4764503</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Simulation-based Military Training: An Engineering Approach to Competing Environmental, Fiscal, and Security Concerns</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">J. Washington Academy of Sciences 98(1), 9–29 · Spring 2012</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Accounting for delay of energy transfer between coupled rooms in statistical-acoustics models of reverberant-energy decay</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 132, EL129–EL134 · 2012 · DOI 10.1121/1.4734591</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Inverse problems and auralization</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">INTER-NOISE 2012 · Aug 2012, New York · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Fidelity-Adaptive Sonar Modeling and Simulation for Game-Based Learning</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">ECUA 2012, 11th European Conference on Underwater Acoustics · Jul 2012, Edinburgh</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Bayesian inference approach to room-acoustics modal analysis</span>
+            <span class="pub-authors">N. Xiang, W. Henderson, J. Botts, J. E. Summers</span>
+            <span class="pub-venue">EURONOISE 2012 · Jun 2012, Prague</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Acoustics in coupled-volume systems — recent development</span>
+            <span class="pub-authors">N. Xiang, Y. Jing, J. E. Summers</span>
+            <span class="pub-venue">9th Intl. Symposium on Modern Acoustics · May 2012, Nanjing · <span class="pub-invited">invited</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2011</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Effects of surface scattering and room shape on the correspondence between statistical- and geometrical-acoustics model predictions</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">POMA 12, 015005 · Aug 2011</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Efficient simulation of active sonar using concepts from room acoustics and auralization</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">161st Meeting of the ASA · May 2011 · J. Acoust. Soc. Am. 129, 2365 (A) · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Effects of surface scattering and room shape on statistical- and geometrical-acoustics model predictions vs real sound fields</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">161st Meeting of the ASA · May 2011 · J. Acoust. Soc. Am. 129, 2503 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Letter on acoustic array processing</span>
+            <span class="pub-authors">G. F. Edelmann, C. F. Gaumond</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 130, EL232 · 2011 · DOI 10.1121/1.3632046</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2010</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">An information theoretic performance bound for passive sonar localization of a moving source</span>
+            <span class="pub-authors">C. W. Jemmott, R. L. Culver, B. E. Bissinger, C. F. Gaumond</span>
+            <span class="pub-venue">44th Annual Conference on Information Sciences and Systems (CISS) · Mar 2010 · DOI 10.1109/CISS.2010.5464728</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Information-theoretic performance analysis of azimuthal localization for spatial-auditory display of beamformed sonar data</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">ICAD 2010, 16th Intl. Conference on Auditory Display · Jun 2010, Washington, DC</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2009</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">What do cognitive models and human judgments suggest about the desired structure of automatic classifiers?</span>
+            <span class="pub-authors">J. E. Summers, C. F. Gaumond, C. W. Jemmott, D. Brock</span>
+            <span class="pub-venue">157th Meeting of the ASA · May 2009 · J. Acoust. Soc. Am. 125, 2577 (A) · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">What is Auralization?</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">EAA Symposium on Auralization · Jun 2009, Espoo, Finland · <span class="pub-invited">keynote</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2008</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Perception-physics based classification of impulsive-source active sonar echoes</span>
+            <span class="pub-authors">J. E. Summers, D. Brock, C. F. Gaumond, R. N. Baer, B. McClimens</span>
+            <span class="pub-venue">J. Underwater Acoustics 58, 1127–1148 · 2008</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Information requirements for active classification using physics-based signal models</span>
+            <span class="pub-authors">C. F. Gaumond, R. J. Soukup, R. N. Baer, J. E. Summers</span>
+            <span class="pub-venue">Intl. Symposium on Underwater Reverberation and Clutter (ISURC) · Sep 2008, Lerici, Italy</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Backscattering from scale models of elastic ocean bottoms with power-law roughness</span>
+            <span class="pub-authors">R. J. Soukup, E. L. Kunz, G. Canepa, H. J. Simpson, J. E. Summers</span>
+            <span class="pub-venue">Acoustics '08: 155th ASA / 5th Forum Acusticum · Jun–Jul 2008 · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Modeling the mechanism and neural substrate for aural categorization of sonar echoes</span>
+            <span class="pub-authors">J. E. Summers, C. F. Gaumond, D. Brock, R. N. Baer</span>
+            <span class="pub-venue">Acoustics '08 · Jun–Jul 2008, Paris · J. Acoust. Soc. Am. 123, 3910 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Soundfields in coupled rooms: A theoretical and phenomenological synopsis</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">Acoustics '08 · Jun–Jul 2008, Paris · J. Acoust. Soc. Am. 123, 3345 (A) · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Ur[ban]sonate: Echoes of twentieth-century sound art in the urban classroom</span>
+            <span class="pub-authors">K. N. Summers, J. E. Summers</span>
+            <span class="pub-venue">Acoustics '08 · Jun–Jul 2008, Paris · J. Acoust. Soc. Am. 123, 3519 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Review of Vorländer's "Auralization: Fundamentals of Acoustics, Modelling, Simulation, Algorithms and Acoustic Virtual Reality"</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 123, 4028–4029 · 2008</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">What exactly is meant by the term "auralization"?</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 124, 697 · 2008</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2007</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Mathematical modeling and computer-aided manufacturing of rough surfaces for experimental study of seafloor scattering</span>
+            <span class="pub-authors">J. E. Summers, R. J. Soukup, R. F. Gragg</span>
+            <span class="pub-venue">IEEE J. Oceanic Engineering 32, 897–914 · 2007</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Small-slope simulation of acoustic backscatter from a physical model of an elastic ocean bottom</span>
+            <span class="pub-authors">R. J. Soukup, G. Canepa, H. J. Simpson, J. E. Summers, R. F. Gragg</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 122, 2551–2559 · 2007</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Evaluating the perceptual accuracy of model-based auralization</span>
+            <span class="pub-authors">J. E. Summers, C. F. Gaumond, R. N. Baer, D. Brock</span>
+            <span class="pub-venue">19th Intl. Congress on Acoustics · Sep 2007, Madrid</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Information transfer in auditoria</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">19th Intl. Congress on Acoustics · Sep 2007, Madrid</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Acoustics in coupled rooms: Modeling and data analysis</span>
+            <span class="pub-authors">N. Xiang, J. E. Summers</span>
+            <span class="pub-venue">Intl. Symposium on Room Acoustics · Sep 2007, Seville · <span class="pub-invited">keynote</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Human-mimetic classification of impulsive-source active-sonar echoes</span>
+            <span class="pub-authors">J. E. Summers, C. F. Gaumond, D. Brock, R. N. Baer</span>
+            <span class="pub-venue">IEEE Underwater Acoustic Signal Processing (UASP) Workshop · Oct 2007</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Psychoacoustic active-sonar classification features</span>
+            <span class="pub-authors">J. E. Summers, C. F. Gaumond, D. Brock, R. N. Baer</span>
+            <span class="pub-venue">ONR 321US Program Review · Aug 2007</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2006</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Topography measurement of scale-model representations of the rough ocean bottom by touch-trigger probe and its implications for spectral characterization</span>
+            <span class="pub-authors">J. E. Summers, R. F. Gragg, R. J. Soukup</span>
+            <span class="pub-venue">MTS/IEEE OCEANS '06 · Sep 2006, Boston</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Frequency-dependent models of sound fields in coupled-room concert halls</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">WESPAC IX · Jun 2006, Seoul · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Characterizations of acoustic interactions with a scale model of an elastic ocean bottom using deterministic and stochastic representations of the rough surface</span>
+            <span class="pub-authors">R. J. Soukup, J. E. Summers, R. F. Gragg</span>
+            <span class="pub-venue">US/EU-Baltic Intl. Symposium · May 2006, Klaipeda, Lithuania</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Perceptual dimensions of impulsive-source active sonar echoes</span>
+            <span class="pub-authors">J. E. Summers, D. Brock, B. McClimens, C. F. Gaumond, R. N. Baer</span>
+            <span class="pub-venue">152nd Meeting of the ASA · Nov–Dec 2006 · J. Acoust. Soc. Am. 120, 3125 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Information-theoretic limits on spatial auditory display of sonar beam data</span>
+            <span class="pub-authors">J. E. Summers, C. F. Gaumond</span>
+            <span class="pub-venue">151st Meeting of the ASA · Jun 2006 · J. Acoust. Soc. Am. 119, 3396 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Further investigations on acoustically coupled spaces using scale-model technique</span>
+            <span class="pub-authors">Z. Su, N. Xiang, J. E. Summers</span>
+            <span class="pub-venue">152nd Meeting of the ASA · Nov–Dec 2006 · J. Acoust. Soc. Am. 120, 3236 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Experimental investigations of acoustically coupled spaces</span>
+            <span class="pub-authors">Z. Su, N. Xiang, J. E. Summers</span>
+            <span class="pub-venue">151st Meeting of the ASA · Jun 2006 · J. Acoust. Soc. Am. 119, 3208 (A)</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2005</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Adapting a computational geometrical-acoustics algorithm based on randomized beam-axis tracing to modeling of coupled rooms via late-part ray tracing</span>
+            <span class="pub-authors">J. E. Summers, R. R. Torres, Y. Shimizu, B.-I. L. Dalenbäck</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 118, 1491–1502 · 2005</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Remark on the formal identity of two statistical-acoustics models of coupled rooms</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">Building Acoustics 12, 41–50 · 2005</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Verification of rough surface scattering predictions using an elastic scale model</span>
+            <span class="pub-authors">R. J. Soukup, R. F. Gragg, E. L. Kunz, J. E. Summers, G. Canepa, E. Pouliquen</span>
+            <span class="pub-venue">Boundary Influences in High-Frequency, Shallow Water Acoustics · Sep 2005, University of Bath, UK</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Direct-path rough surface scattering experiments with milled surfaces in acoustic tank facilities</span>
+            <span class="pub-authors">R. J. Soukup, R. F. Gragg, E. L. Kunz, J. E. Summers</span>
+            <span class="pub-venue">149th Meeting of the ASA · May 2005 · J. Acoust. Soc. Am. 117, 2432 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Characterization and fabrication of synthetic rough surfaces for acoustical scale-model experiments</span>
+            <span class="pub-authors">J. E. Summers, R. J. Soukup, R. F. Gragg</span>
+            <span class="pub-venue">NRL Memorandum Report NRL/MR-MM/7140–05-8871 · Aug 2005</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2004</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Estimating mid-frequency effects of aperture diffraction on reverberant-energy decay in coupled-room auditoria</span>
+            <span class="pub-authors">J. E. Summers, R. R. Torres, Y. Shimizu</span>
+            <span class="pub-venue">Building Acoustics 11, 271–291 · 2004 · <span class="pub-invited">invited publication</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Statistical-acoustics models of energy decay in systems of coupled rooms and their relation to geometrical acoustics</span>
+            <span class="pub-authors">J. E. Summers, R. R. Torres, Y. Shimizu</span>
+            <span class="pub-venue">J. Acoust. Soc. Am. 116, 958–969 · 2004</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Scale-model studies of reverberant energy decay in a coupled-room system</span>
+            <span class="pub-authors">J. E. Summers, R. R. Torres, Y. Shimizu</span>
+            <span class="pub-venue">148th Meeting of the ASA · Nov 2004 · J. Acoust. Soc. Am. 116, 2552 (A) · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Functional-differential-equation models of reverberant energy decay in systems of coupled rooms</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">148th Meeting of the ASA · Nov 2004 · J. Acoust. Soc. Am. 116, 2553 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Assessing the accuracy of auralizations computed using a hybrid geometrical-acoustics and wave-acoustics method</span>
+            <span class="pub-authors">J. E. Summers, K. Takahashi, Y. Shimizu, T. Yamakawa</span>
+            <span class="pub-venue">147th Meeting of the ASA · May 2004 · J. Acoust. Soc. Am. 115, 2514 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Geoacoustic Physical Modeling Rough Surface Scattering 2 (GPM RSS2) Experiment: Measurement Report, Acoustic Data, and Profilometry</span>
+            <span class="pub-authors">R. J. Soukup, H. J. Simpson, E. C. Porse, J. E. Summers, R. F. Gragg</span>
+            <span class="pub-venue">NRL Memorandum Report NRL/MR-MM/7140–04-8827 · Nov 2004</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2003</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Measurement of audience seat absorption for use in geometrical-acoustics software</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">Acoustics Research Letters Online (ARLO) 4, 77–82 · 2003 · DOI 10.1121/1.1582072</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Comments on "Absorbing surfaces in ray-tracing programs for coupled spaces"</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">Applied Acoustics 64, 825–831 (L) · 2003</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Acoustical modeling of sound fields in auditoria that have coupled volumes</span>
+            <span class="pub-authors">J. E. Summers, Y. Shimizu, R. R. Torres</span>
+            <span class="pub-venue">Meeting of the Acoustical Society of Japan, TC on Architectural Acoustics · Nov 2003, Fukuoka · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Acoustical modeling of sound fields in auditoria that have coupled rooms</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">Tachibana Laboratory, Tokyo University · Oct 2003</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Reverberant acoustic energy in auditoria that comprise systems of coupled rooms</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">Dissertation, Rensselaer Polytechnic Institute · 2003</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2002</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Fixed angle, energy-dispersive x-ray reflectivity measurement of thin tantalum film thickness</span>
+            <span class="pub-authors">D. Windover, E. Barnat, J. Summers, T.-M. Lu, A. Kumar, H. Bakhru, S. L. Lee</span>
+            <span class="pub-venue">J. Electronic Materials 31, 848–856 · 2002</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Mid-frequency modeling of coupled-room performance spaces by computation of transmission coefficients of apertures and arrays of apertures</span>
+            <span class="pub-authors">J. E. Summers, R. R. Torres, Y. Shimizu</span>
+            <span class="pub-venue">1st Pan-American/Iberian Meeting / 144th ASA · Dec 2002 · J. Acoust. Soc. Am. 112, 2226 (A)</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Uses and limitations of statistical and geometrical modeling of non-exponential decay curves in performance spaces</span>
+            <span class="pub-authors">J. E. Summers, R. R. Torres, Y. Shimizu, J. C. Jaffe</span>
+            <span class="pub-venue">143rd ASA · Jun 2002 · J. Acoust. Soc. Am. 111, 2390 (A) · <span class="pub-invited">invited</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2001</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">Development of an in-line x-ray reflectivity technique for metal film thickness measurement</span>
+            <span class="pub-authors">D. Windover, E. Barnat, J. Summers, C. Gribbin, T.-M. Lu, A. Kumar, H. Bakhru, S. L. Lee</span>
+            <span class="pub-venue">Characterization and Metrology for ULSI Technology 2000 · AIP Conf. Proc. 550, 243–248 · 2001</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Stage acoustics as affected by an array of apertures incorporated into the orchestra shell of a stagehouse coupled auditorium</span>
+            <span class="pub-authors">J. E. Summers, Y. Shimizu</span>
+            <span class="pub-venue">141st Meeting of the ASA · Jun 2001 · J. Acoust. Soc. Am. 109, 2283 (A) · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Concert hall acoustics at Bass Hall</span>
+            <span class="pub-authors">D. Knight, et al.</span>
+            <span class="pub-venue">141st Meeting of the ASA · Jun 2001 · J. Acoust. Soc. Am. 109, 2283–2284 (A) · <span class="pub-invited">invited</span></span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">In-situ measurement of growing thin films by energy-dispersive x-ray reflectivity: Theory and experimental design</span>
+            <span class="pub-authors">J. Summers, T.-M. Lu, D. Windover, S. L. Lee</span>
+            <span class="pub-venue">US Army ARDEC Technical Report ARCCB-TR-01015 · Jul 2001</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2000</div>
+        <ul class="pub-list">
+          <li class="pub-entry">
+            <span class="pub-title">X-ray digital image plate detector for phase and texture analysis of thin tantalum films</span>
+            <span class="pub-authors">D. Windover, E. Barnat, J. Summers, T.-M. Lu, S. L. Lee</span>
+            <span class="pub-venue">US Army ARDEC Technical Report ARCCB-TR-00012 · Jul 2000</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">Nancy Lee and Perry R. Bass Performance Hall: Comparative investigations</span>
+            <span class="pub-authors">J. Summers, et al.</span>
+            <span class="pub-venue">Sonics Research Laboratory Report · 2000</span>
+          </li>
+          <li class="pub-entry">
+            <span class="pub-title">In-situ measurement of growing thin films by energy-dispersive x-ray reflectivity: Theory and experimental design</span>
+            <span class="pub-authors">J. E. Summers</span>
+            <span class="pub-venue">Dissertation, Rensselaer Polytechnic Institute · 2000</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+  <div class="footer-cta"><p>Interested in our research?</p><a href="mailto:info@ariacoustics.com" class="btn btn-teal">Contact the team →</a></div>
+</div>
+
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="inner">
@@ -1015,8 +1893,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
           <li><a href="#" onclick="showPage('about');return false;">About</a></li>
           <li><a href="#" onclick="showPage('team');return false;">Team</a></li>
           <li><a href="#" onclick="showPage('careers');return false;">Careers</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Publications</a></li>
+          <li><a href="#" onclick="showPage('publications');return false;">Publications</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1030,7 +1907,7 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:info@ariacoustics.com">info@ariacoustics.com</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#" onclick="openPrivacy();return false;">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
@@ -1041,7 +1918,65 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
   </div>
 </footer>
 
+<!-- PRIVACY POLICY MODAL -->
+<div class="privacy-backdrop" id="privacyBackdrop" onclick="if(event.target===this)closePrivacy()" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true">
+  <div class="privacy-modal">
+    <div class="privacy-head">
+      <div>
+        <div class="sec-eyebrow">Legal</div>
+        <h3 id="privacyTitle">Privacy Policy</h3>
+      </div>
+      <button class="privacy-close" onclick="closePrivacy()" aria-label="Close">×</button>
+    </div>
+    <div class="privacy-body">
+      <p>ARiA (Applied Research in Acoustics, LLC) respects your privacy. This policy describes what information we collect when you visit <a href="#" onclick="return false;">ariacoustics.com</a> or contact us, and how we use it.</p>
+
+      <h4>Information we collect</h4>
+      <p>We collect only the information you voluntarily provide — typically your name, email address, and any content you include when reaching out to us via email or a contact form. Our servers may log standard technical data (IP address, browser type, pages viewed) for security and analytics purposes.</p>
+
+      <h4>How we use it</h4>
+      <p>We use your information solely to respond to your inquiry, evaluate candidacy for open positions, or fulfill a specific business relationship you initiate. We do not sell, rent, or share personal information with third parties for marketing purposes.</p>
+
+      <h4>Cookies &amp; analytics</h4>
+      <p>This site may use cookies and aggregate analytics tools to understand how visitors interact with our content. These tools do not personally identify you. You can disable cookies in your browser settings without affecting core functionality.</p>
+
+      <h4>Data security</h4>
+      <p>We apply reasonable administrative, technical, and physical safeguards to protect the information you provide. No transmission over the Internet is fully secure, but we work to minimize risk.</p>
+
+      <h4>Your rights</h4>
+      <p>You may request access to, correction of, or deletion of personal information you have provided to us. Requests can be sent to <a href="mailto:info@ariacoustics.com">info@ariacoustics.com</a>.</p>
+
+      <h4>Changes to this policy</h4>
+      <p>We may update this policy from time to time. Material changes will be reflected by updating the effective date below. Continued use of the site constitutes acceptance.</p>
+
+      <h4>Contact</h4>
+      <p>Questions? Email <a href="mailto:info@ariacoustics.com">info@ariacoustics.com</a>.</p>
+    </div>
+    <div class="privacy-foot">
+      <span>Effective — April 2026</span>
+      <button class="btn btn-teal" onclick="closePrivacy()" style="padding:.5rem 1rem;font-size:.74rem;">Dismiss</button>
+    </div>
+  </div>
+</div>
+
 <script>
+// ── PRIVACY MODAL ──
+function openPrivacy(){
+  const m = document.getElementById('privacyBackdrop');
+  m.classList.add('open');
+  m.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+}
+function closePrivacy(){
+  const m = document.getElementById('privacyBackdrop');
+  m.classList.remove('open');
+  m.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape' && document.getElementById('privacyBackdrop').classList.contains('open')) closePrivacy();
+});
+
 // ── JOB ACCORDION ──
 function toggleJob(id) {
   const detail = document.getElementById(id);
