@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ARiA — Real Research. Deployed.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #07121C;
+  --ink-2:     #0E1E2C;
+  --ink-3:     #12263A;
+  --fog:       #F4F1EA;
+  --fog-2:     #E8E3D6;
+  --slate:     #6B7986;
+  --slate-2:   #9AA6B2;
+  --teal:      #2BD4C4;
+  --teal-deep: #0FA79A;
+  --rule:      rgba(255,255,255,0.08);
+  --rule-ink:  rgba(7,18,28,0.10);
+  --max:       1280px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:var(--ink);color:var(--fog);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+.inner{max-width:var(--max);margin:0 auto;width:100%;padding:0 2.5rem;}
+
+/* NAV */
+header.site{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(16px);background:rgba(7,18,28,.72);border-bottom:1px solid var(--rule);}
+.logo{font-family:'Manrope',sans-serif;font-size:1.5rem;font-weight:300;letter-spacing:.08em;color:var(--teal);text-decoration:none;line-height:1;flex-shrink:0;}
+nav ul{display:flex;gap:2rem;list-style:none;}
+nav a{font-size:.85rem;font-weight:500;color:var(--slate-2);text-decoration:none;position:relative;padding-bottom:2px;transition:color .25s;}
+nav a:hover,nav a.active{color:var(--fog);}
+nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--teal);transition:width .3s;}
+nav a:hover::after,nav a.active::after{width:100%;}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.62rem 1.2rem;font-family:'Manrope',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.025em;text-decoration:none;border-radius:2px;cursor:pointer;transition:transform .2s,background .2s,color .2s;border:none;}
+.btn-teal{background:var(--teal);color:var(--ink);}
+.btn-teal:hover{background:var(--fog);transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--fog);border:1px solid var(--rule);}
+.btn-ghost:hover{background:rgba(244,241,234,.07);border-color:var(--slate-2);}
+
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;}
+
+/* SHARED */
+.sec-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.65rem;margin-bottom:1.1rem;}
+.sec-eyebrow::before{content:'';width:20px;height:1px;background:var(--teal);}
+h2.sec-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,4vw,3.3rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;}
+h2.sec-title em{font-style:italic;color:var(--teal);}
+.teal-line{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(43,212,196,.09),transparent 60%),radial-gradient(ellipse 50% 50% at 15% 80%,rgba(15,167,154,.07),transparent 60%),var(--ink);}
+#waveCanvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.5;pointer-events:none;}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.35fr 1fr;gap:4rem;align-items:center;padding:8rem 2.5rem 6rem;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.8rem;display:flex;align-items:center;gap:.8rem;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--teal);}
+h1.hero-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(3.2rem,7vw,5.8rem);line-height:.97;letter-spacing:-.04em;margin-bottom:1.8rem;}
+h1.hero-title em{font-style:italic;color:var(--teal);}
+.hero-sub{font-size:1.08rem;color:var(--slate-2);max-width:510px;margin-bottom:2.5rem;line-height:1.68;}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
+.sec-link{color:var(--fog);text-decoration:none;font-size:.87rem;font-weight:500;padding:.6rem .1rem;border-bottom:1px solid var(--rule);transition:border-color .3s;}
+.sec-link:hover{border-color:var(--teal);}
+.arr{display:inline-block;transition:transform .3s;}
+.sec-link:hover .arr{transform:translateX(4px);}
+.corner-tag{position:absolute;font-family:'JetBrains Mono',monospace;font-size:.67rem;color:var(--slate);letter-spacing:.1em;}
+.corner-bl{bottom:2rem;left:2.5rem;}
+.corner-br{bottom:2rem;right:2.5rem;}
+
+/* HERO PANEL */
+.hero-panel{border:1px solid var(--rule);background:rgba(14,30,44,.55);backdrop-filter:blur(10px);padding:1.7rem;}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--slate-2);}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(43,212,196,.18);}50%{box-shadow:0 0 0 9px rgba(43,212,196,.04);}}
+.panel-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--slate);gap:1rem;}
+.panel-row:last-child{border-bottom:none;}
+.val{color:var(--fog);text-align:right;}
+.val.hi{color:var(--teal);}
+
+/* SECTION 2 — ADVANTAGE */
+.advantage{background:var(--fog);color:var(--ink);padding:8rem 2.5rem;position:relative;}
+.sec-head-2{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;margin-bottom:5rem;align-items:end;}
+.sec-head-2 h2{color:var(--ink);}
+.sec-head-2 h2 em{color:var(--teal-deep);}
+.sec-head-2 .sec-eyebrow{color:var(--teal-deep);}
+.sec-head-2 .sec-eyebrow::before{background:var(--teal-deep);}
+.sec-head-2 .sec-desc{font-size:1.02rem;color:var(--slate);line-height:1.72;}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule-ink);}
+.col{padding:2.8rem 2.5rem 2.8rem 0;border-right:1px solid var(--rule-ink);}
+.col:last-child{border-right:none;}
+.col:not(:first-child){padding-left:2.5rem;}
+.col-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.1em;margin-bottom:1.8rem;display:flex;align-items:center;gap:.6rem;}
+.col-num::after{content:'';flex:1;height:1px;background:var(--rule-ink);}
+.col-icon{width:42px;height:42px;margin-bottom:1.4rem;color:var(--teal-deep);}
+.col h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem;color:var(--ink);}
+.col p{font-size:.93rem;color:#3d4d5a;line-height:1.68;}
+
+/* CAPABILITIES TABS */
+.cap-sec{background:var(--ink-2);padding:8rem 2.5rem;position:relative;}
+.cap-tabs{display:flex;gap:0;margin-top:3rem;border-bottom:1px solid var(--rule);overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+.cap-tabs::-webkit-scrollbar{display:none;}
+.cap-tab{padding:.85rem 1.7rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .25s,border-color .25s;white-space:nowrap;}
+.cap-tab:hover{color:var(--fog);}
+.cap-tab.active{color:var(--teal);border-color:var(--teal);}
+.cap-panels{margin-top:3rem;}
+.cap-panel{display:none;}
+.cap-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.cap-panel h3{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:1.1rem;}
+.cap-panel h3 em{font-style:italic;color:var(--teal);}
+.cap-panel p{font-size:.93rem;color:var(--slate-2);line-height:1.72;margin-bottom:1.3rem;}
+.cap-panel ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+.cap-panel ul li{font-size:.86rem;color:var(--slate-2);line-height:1.55;padding-left:1.1rem;position:relative;}
+.cap-panel ul li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:.78rem;}
+.cap-sponsors{margin-top:1.8rem;}
+.cap-sponsors h4{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--slate);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;}
+.sponsor-list{display:flex;flex-wrap:wrap;gap:.4rem;}
+.sponsor-tag{padding:.28rem .7rem;border:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--slate-2);letter-spacing:.05em;}
+.cap-visual{background:var(--ink-3);border:1px solid var(--rule);aspect-ratio:4/3;position:relative;overflow:hidden;}
+.cap-visual canvas{width:100%;height:100%;display:block;}
+
+/* PROJECTS */
+.proj-sec{background:var(--fog);color:var(--ink);padding:8rem 2.5rem;position:relative;}
+.proj-sec h2{color:var(--ink);}
+.proj-sec h2 em{color:var(--teal-deep);}
+.proj-sec .sec-eyebrow{color:var(--teal-deep);}
+.proj-sec .sec-eyebrow::before{background:var(--teal-deep);}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-ink);border:1px solid var(--rule-ink);margin-top:3.5rem;}
+.proj-card{background:var(--fog);padding:2.2rem;cursor:pointer;transition:background .25s;position:relative;}
+.proj-card:hover{background:var(--fog-2);}
+.proj-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--teal-deep);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;}
+.proj-card h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.2rem;line-height:1.25;letter-spacing:-.015em;margin-bottom:.7rem;color:var(--ink);}
+.proj-card p{font-size:.86rem;color:var(--slate);line-height:1.62;padding-bottom:2rem;}
+.proj-arrow{position:absolute;bottom:1.7rem;right:1.7rem;font-size:.85rem;color:var(--teal-deep);transition:transform .25s;}
+.proj-card:hover .proj-arrow{transform:translate(3px,-3px);}
+
+/* TEAM */
+.team-sec{background:var(--ink);padding:8rem 2.5rem;position:relative;}
+.team-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);margin:3.5rem 0;}
+.stat{padding:2rem 2.2rem;border-right:1px solid var(--rule);text-align:center;}
+.stat:last-child{border-right:none;}
+.stat .num{font-family:'Fraunces',serif;font-weight:300;font-size:3.3rem;line-height:1;letter-spacing:-.04em;color:var(--teal);margin-bottom:.5rem;}
+.stat .label{font-size:.83rem;color:var(--slate-2);line-height:1.5;}
+.team-bio{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;border-top:1px solid var(--rule);padding-top:3rem;}
+.discipline-tag{padding:.45rem 1rem;border:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--slate-2);letter-spacing:.05em;transition:border-color .25s,color .25s;}
+.discipline-tag.hi{border-color:rgba(43,212,196,.35);color:var(--teal);}
+.discipline-tag:hover{border-color:var(--teal);color:var(--fog);}
+.team-bio-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--teal);letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.1rem;}
+.team-bio h3{font-family:'Fraunces',serif;font-weight:300;font-size:1.75rem;letter-spacing:-.025em;margin-bottom:.3rem;}
+.team-bio .role{font-size:.86rem;color:var(--slate-2);margin-bottom:1.4rem;}
+.team-bio p{font-size:.93rem;color:var(--slate-2);line-height:1.78;margin-bottom:1rem;}
+
+/* ABOUT */
+.about-sec{background:var(--ink-2);padding:8rem 2.5rem;position:relative;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem;}
+.about-body p{font-size:.97rem;color:var(--slate-2);line-height:1.82;margin-bottom:1.1rem;}
+.about-body p:first-child{font-size:1.1rem;color:var(--fog);}
+.offices h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
+.office-list{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem;}
+.office{padding:.95rem 1.1rem;border:1px solid var(--rule);font-size:.86rem;color:var(--slate-2);}
+.office strong{display:block;color:var(--fog);margin-bottom:.2rem;font-weight:500;}
+.contact-box{padding:1.7rem;border:1px solid var(--rule);margin-top:1rem;}
+.contact-box p{font-size:.88rem;color:var(--slate-2);line-height:1.65;margin-bottom:1.1rem;}
+
+/* CAREERS */
+.careers-sec{background:var(--fog);color:var(--ink);padding:8rem 2.5rem;position:relative;}
+.careers-sec h2{color:var(--ink);}
+.careers-sec h2 em{color:var(--teal-deep);}
+.careers-sec .sec-eyebrow{color:var(--teal-deep);}
+.careers-sec .sec-eyebrow::before{background:var(--teal-deep);}
+.careers-intro{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin:2rem 0 3.5rem;}
+.careers-intro p{font-size:.95rem;color:var(--slate);line-height:1.78;}
+.careers-intro p:first-child{font-size:1.02rem;color:var(--ink);}
+.job-list{display:flex;flex-direction:column;border-top:1px solid var(--rule-ink);}
+.job-item{display:flex;justify-content:space-between;align-items:center;padding:1.7rem 0;border-bottom:1px solid var(--rule-ink);cursor:pointer;transition:padding-left .25s;}
+.job-item:hover{padding-left:.8rem;}
+.job-info h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.3rem;letter-spacing:-.015em;margin-bottom:.3rem;color:var(--ink);}
+.job-meta{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.07em;}
+.job-arrow{font-size:1.1rem;color:var(--teal-deep);transition:transform .25s;}
+.job-item:hover .job-arrow{transform:translateX(4px);}
+.values-box{margin-top:3.5rem;padding:2.3rem;background:var(--fog-2);border-left:3px solid var(--teal-deep);}
+.values-box h4{font-family:'Fraunces',serif;font-weight:400;font-size:1.15rem;margin-bottom:.75rem;color:var(--ink);}
+.values-box p{font-size:.91rem;color:var(--slate);line-height:1.72;}
+.apply-box{margin-top:2.5rem;padding:1.8rem;border:1px solid var(--rule-ink);background:var(--fog-2);}
+.apply-box p{font-size:.88rem;color:var(--slate);margin-bottom:1rem;}
+.apply-box .fine{font-size:.78rem;margin-top:.9rem;margin-bottom:0;}
+
+/* FOOTER CTA */
+.footer-cta{background:var(--ink-3);padding:5.5rem 2.5rem;text-align:center;border-top:1px solid var(--rule);}
+.footer-cta p{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;color:var(--fog);max-width:650px;margin:0 auto 2rem;}
+
+/* FOOTER */
+footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);padding:5rem 2.5rem 3rem;}
+.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:4rem;}
+.footer-brand .logo{display:block;margin-bottom:.9rem;}
+.footer-brand p{font-size:.86rem;color:var(--slate);line-height:1.65;max-width:240px;}
+.footer-col h4{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.footer-col a{font-size:.86rem;color:var(--slate);text-decoration:none;transition:color .25s;}
+.footer-col a:hover{color:var(--fog);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--slate);letter-spacing:.06em;}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  header.site{padding:.9rem 1.4rem;}
+  nav ul{display:none;}
+  .inner{padding:0 1.4rem;}
+  .hero-inner,.sec-head-2,.cap-panel.active,.about-grid,.careers-intro,.team-bio{grid-template-columns:1fr;gap:2.5rem;}
+  .hero-inner{padding:8rem 1.4rem 4rem;}
+  .hero-panel{margin:0;}
+  .cols3,.proj-grid{grid-template-columns:1fr;}
+  .col{border-right:none;border-bottom:1px solid var(--rule-ink);padding:2rem 0!important;}
+  .col:last-child{border-bottom:none;}
+  .proj-grid{gap:1px;}
+  .team-stats{grid-template-columns:1fr;}
+  .stat{border-right:none;border-bottom:1px solid var(--rule);}
+  .stat:last-child{border-bottom:none;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .advantage,.cap-sec,.proj-sec,.team-sec,.about-sec,.careers-sec{padding:5rem 1.4rem;}
+  .footer-cta{padding:4rem 1.4rem;}
+}
+@media(max-width:580px){
+  .hero-inner{padding:9rem 1.4rem 4rem;}
+  .proj-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;gap:.7rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site">
+  <a href="#" class="logo" onclick="showPage('home');return false;">ARiA</a>
+  <nav>
+    <ul>
+      <li><a href="#" onclick="showPage('capabilities');return false;" id="nav-capabilities">Capabilities</a></li>
+      <li><a href="#" onclick="showPage('projects');return false;"    id="nav-projects">Projects</a></li>
+      <li><a href="#" onclick="showPage('team');return false;"        id="nav-team">Team</a></li>
+      <li><a href="#" onclick="showPage('about');return false;"       id="nav-about">About</a></li>
+      <li><a href="#" onclick="showPage('careers');return false;"     id="nav-careers">Careers</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Partner with ARiA →</a>
+</header>
+
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <canvas id="waveCanvas"></canvas>
+    <div class="corner-tag corner-bl">ARiA / 2026 — HOME</div>
+    <div class="corner-tag corner-br">38.8°N · 77.0°W</div>
+    <div class="inner hero-inner">
+      <div>
+        <div class="hero-eyebrow">Acoustics · AI/ML · Computer Vision · Simulation</div>
+        <h1 class="hero-title">Real Research.<br/><em>Deployed.</em></h1>
+        <p class="hero-sub">ARiA pairs research scientists with software and systems engineers to solve hard, physics-grounded problems — and ship the systems that carry solutions into the field.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-teal" onclick="showPage('capabilities');return false;">Explore Capabilities</a>
+          <a href="#" class="sec-link" onclick="showPage('projects');return false;">See recent projects <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="panel-head"><span>◦ SYS.STATUS</span><span class="dot-live"></span></div>
+        <div class="panel-row"><span>domains</span> <span class="val hi">sonar · acoustics · AI/ML · computer_vision</span></div>
+        <div class="panel-row"><span>methods</span> <span class="val">signal processing · deep learning</span></div>
+        <div class="panel-row"><span>pipeline</span><span class="val">sim → train → deploy</span></div>
+        <div class="panel-row"><span>sponsors</span><span class="val">ONR · DARPA · CDAO · NAVSEA</span></div>
+        <div class="panel-row"><span>est.</span>    <span class="val">2010 · Alexandria, VA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="advantage">
+    <div class="teal-line"></div>
+    <div class="inner">
+      <div class="sec-head-2">
+        <div>
+          <div class="sec-eyebrow">02 / The ARiA Difference</div>
+          <h2 class="sec-title">Where research meets <em>deployment.</em></h2>
+        </div>
+        <p class="sec-desc">ARiA is built differently. Scientists and engineers work side-by-side — not in sequence — so discoveries reach the field as working systems, not reports left on a shelf.</p>
+      </div>
+      <div class="cols3">
+        <div class="col">
+          <div class="col-num">01 — METHOD</div>
+          <svg class="col-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="14" cy="14" r="5"/><circle cx="34" cy="34" r="5"/><path d="M19 14 H 29 M19 34 H 29" stroke-dasharray="2 2"/><path d="M14 19 V 29 M34 19 V 29"/></svg>
+          <h3>Research that ships.</h3>
+          <p>Our scientists and software engineers work on the same projects from day one — so novel algorithms become deployable systems without the translation loss of a handoff.</p>
+        </div>
+        <div class="col">
+          <div class="col-num">02 — FOUNDATION</div>
+          <svg class="col-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 28 Q 10 18, 18 28 T 34 28 T 46 28"/><path d="M2 36 Q 10 26, 18 36 T 34 36 T 46 36" opacity=".5"/><path d="M2 20 Q 10 10, 18 20 T 34 20 T 46 20" opacity=".3"/></svg>
+          <h3>Grounded in physics.</h3>
+          <p>Born in underwater acoustics — a domain that punishes shortcuts — that discipline shapes everything we build, from signal processing to ML models that hold up in real, noisy environments.</p>
+        </div>
+        <div class="col">
+          <div class="col-num">03 — TEAM</div>
+          <svg class="col-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="24" cy="12" r="4"/><circle cx="12" cy="32" r="4"/><circle cx="36" cy="32" r="4"/><path d="M24 16 L 12 28 M24 16 L 36 28 M16 32 H 32"/></svg>
+          <h3>Cross-disciplinary by design.</h3>
+          <p>Acoustic physicists, ML researchers, software engineers, and cognitive scientists on the same problem — so solutions account for the physics, the data, the system, and the human using it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cap-sec">
+    <div class="teal-line"></div>
+    <div class="inner">
+      <div class="sec-eyebrow">03 / Core Capabilities</div>
+      <h2 class="sec-title">Built at the intersection of<br/><em>science and systems.</em></h2>
+      <div class="cap-tabs">
+        <button class="cap-tab active" onclick="switchTab(this,'ht-mlai')">Applied AI &amp; ML</button>
+        <button class="cap-tab" onclick="switchTab(this,'ht-asip')">Acoustics &amp; Signal Processing</button>
+        <button class="cap-tab" onclick="switchTab(this,'ht-gbst')">Simulation &amp; Training</button>
+        <button class="cap-tab" onclick="switchTab(this,'ht-capm')">Computational Acoustics</button>
+      </div>
+      <div class="cap-panels">
+        <div class="cap-panel active" id="ht-mlai">
+          <div>
+            <h3>Machine Learning &amp; <em>Artificial Intelligence</em></h3>
+            <p>Broad expertise across supervised, unsupervised, and semi-supervised ML — from synthetic-aperture sonar imagery to computer vision and legal document analysis.</p>
+            <ul>
+              <li>dataeval: open-source Python library for dataset quality analysis across the AI/ML lifecycle</li>
+              <li>Deep learning for classification and synthesis of synthetic-aperture images</li>
+              <li>Physics-informed neural networks for sonar performance prediction</li>
+              <li>Computer vision for automated detection and recognition</li>
+              <li>MICA: natural-language QA for federal acquisition regulations</li>
+              <li>SAGE: ML-driven scenario generation for simulation-based training</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">CDAO</span><span class="sponsor-tag">ONR</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">AFRL/RI</span><span class="sponsor-tag">SAF/AQ</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="mlC" width="600" height="450"></canvas></div>
+        </div>
+        <div class="cap-panel" id="ht-asip">
+          <div>
+            <h3>Array, Signal &amp; <em>Information Processing</em></h3>
+            <p>End-to-end expertise across ASW and MCM sonar processing chains — from sensor-array processing through detection, classification, and tracking.</p>
+            <ul>
+              <li>Distributed sensor fusion for tactical ASW systems</li>
+              <li>Compressive and model-based beamforming</li>
+              <li>Topological signal processing for MCM sonar echoes</li>
+              <li>Sparse processing for transmission-loss prediction</li>
+              <li>Biomimetic algorithms for detection and classification</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAWCAD</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="sigC" width="600" height="450"></canvas></div>
+        </div>
+        <div class="cap-panel" id="ht-gbst">
+          <div>
+            <h3>Game-Based &amp; <em>Simulation Training</em></h3>
+            <p>Integrating physics-based research models in commercial game engines and deploying commercial-grade training systems on military tactical platforms.</p>
+            <ul>
+              <li>ESAIL™: 3D ASW visualization and interactive learning environment</li>
+              <li>WaveQuest™: game-based underwater acoustics education</li>
+              <li>AIRS: VR spatial-disorientation training for pilots</li>
+              <li>Fidelity-adaptive scenario generation algorithms</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAWCTSD</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="simC" width="600" height="450"></canvas></div>
+        </div>
+        <div class="cap-panel" id="ht-capm">
+          <div>
+            <h3>Computational Acoustic &amp; <em>Psychoacoustic Modeling</em></h3>
+            <p>Models of sound propagation and scattering across underwater, outdoor, and interior environments, leveraging multi-core CPU and many-core GPU architectures.</p>
+            <ul>
+              <li>Underwater acoustic modeling in uncertain environments</li>
+              <li>Edge-source modeling of midfrequency target scattering</li>
+              <li>Real-time acoustic simulation for training and decision aids</li>
+              <li>Helicopter and projectile noise propagation modeling</li>
+              <li>Information-theoretic models of auditory detection</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span><span class="sponsor-tag">DoJ</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="acC" width="600" height="450"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-cta"><p>Ready to accelerate your next project?</p><a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Let's talk →</a></div>
+
+</div><!-- /home -->
+
+
+<!-- ══ CAPABILITIES PAGE ══ -->
+<div class="page" id="page-capabilities">
+  <section class="cap-sec" style="padding-top:9rem;">
+    <div class="teal-line"></div>
+    <div class="inner">
+      <div class="sec-eyebrow">Capabilities</div>
+      <h2 class="sec-title">Interdisciplinary research<br/>applied to <em>real systems.</em></h2>
+      <p style="color:var(--slate-2);max-width:660px;margin-bottom:.5rem;line-height:1.72;">ARiA applies broad interdisciplinary experience in acoustics, signal processing, machine learning / AI, modeling &amp; simulation, and cognitive science toward innovative basic and applied R&amp;D.</p>
+      <div class="cap-tabs" style="margin-top:2.5rem;">
+        <button class="cap-tab active" onclick="switchTab(this,'ct-mlai')">Applied AI &amp; ML</button>
+        <button class="cap-tab" onclick="switchTab(this,'ct-asip')">Acoustics &amp; Signal Processing</button>
+        <button class="cap-tab" onclick="switchTab(this,'ct-gbst')">Simulation &amp; Training</button>
+        <button class="cap-tab" onclick="switchTab(this,'ct-capm')">Computational Acoustics</button>
+      </div>
+      <div class="cap-panels">
+        <div class="cap-panel active" id="ct-mlai">
+          <div>
+            <h3>Machine Learning &amp; <em>Artificial Intelligence</em></h3>
+            <p>Broad expertise in ML and AI for multiple domains — from synthetic-aperture imagery to legal documents — using supervised, unsupervised, and semi-supervised techniques including deep learning, statistical learning, and formal logic approaches.</p>
+            <ul>
+              <li>dataeval: open-source Python library for dataset quality analysis and model-performance impact across computer vision tasks</li>
+              <li>Deep learning for explainable classification and parametric synthesis of synthetic-aperture images</li>
+              <li>Physics-informed neural networks for sonar performance prediction</li>
+              <li>Computer vision for automated detection, classification, and recognition</li>
+              <li>MICA: natural-language QA system for federal acquisition regulations</li>
+              <li>SAGE: ML + formal-logic scenario generation engine for ASW training</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">CDAO</span><span class="sponsor-tag">ONR</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">AFRL/RI</span><span class="sponsor-tag">SAF/AQ</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="cml" width="600" height="450"></canvas></div>
+        </div>
+        <div class="cap-panel" id="ct-asip">
+          <div>
+            <h3>Array, Signal &amp; <em>Information Processing</em></h3>
+            <p>End-to-end expertise across ASW and MCM sonar processing chains, improving fielded systems and developing novel approaches including compressive sensing and topological signal processing.</p>
+            <ul>
+              <li>Distributed sensor fusion for tactical ASW systems</li>
+              <li>Sparse processing for transmission-loss prediction</li>
+              <li>Topological signal processing for MCM sonar echo classification</li>
+              <li>Compressive and model-based beamforming for detection</li>
+              <li>Adaptive matched-filtering, detection and normalization</li>
+              <li>Biomimetic algorithms for detection and classification of complex signals</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAWCAD</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="csig" width="600" height="450"></canvas></div>
+        </div>
+        <div class="cap-panel" id="ct-gbst">
+          <div>
+            <h3>Game-Based &amp; <em>Simulation-Based Training</em></h3>
+            <p>An early adopter of game platforms for simulation-based training, ARiA integrates research models in commercial game engines and deploys on military tactical systems.</p>
+            <ul>
+              <li>WaveQuest™: game-based underwater acoustics education and training</li>
+              <li>ESAIL™: 3D ASW visualization and interactive learning environment</li>
+              <li>AIRS: VR spatial-disorientation training for pilots and nonpilot crew</li>
+              <li>Fidelity-adaptive scenario generation algorithms (SAGE)</li>
+              <li>Real-time physics-based simulation engines</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAWCTSD</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="csim" width="600" height="450"></canvas></div>
+        </div>
+        <div class="cap-panel" id="ct-capm">
+          <div>
+            <h3>Computational Acoustic &amp; <em>Psychoacoustic Modeling</em></h3>
+            <p>Models of sound propagation and scattering across diverse environments and human perception of those sounds, leveraging multi-core CPU and many-core GPU architectures.</p>
+            <ul>
+              <li>Edge-source modeling of midfrequency target scattering</li>
+              <li>Underwater acoustic modeling in uncertain environments</li>
+              <li>Real-time acoustic simulation for training and tactical decision aids</li>
+              <li>Synthetic target simulation in real sonar data via physical modeling</li>
+              <li>Helicopter and projectile noise propagation modeling</li>
+              <li>Information-theoretic models of auditory detection and spatial hearing</li>
+            </ul>
+            <div class="cap-sponsors"><h4>Sponsors</h4><div class="sponsor-list"><span class="sponsor-tag">NAVAIR</span><span class="sponsor-tag">NAVSEA</span><span class="sponsor-tag">ONR</span><span class="sponsor-tag">DoJ</span><span class="sponsor-tag">NY Supreme Court</span></div></div>
+          </div>
+          <div class="cap-visual"><canvas id="cac" width="600" height="450"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="footer-cta"><p>Interested in our capabilities?</p><a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Get in touch →</a></div>
+</div>
+
+
+<!-- ══ PROJECTS PAGE ══ -->
+<div class="page" id="page-projects">
+  <section class="proj-sec" style="padding-top:9rem;">
+    <div class="teal-line" style="background:linear-gradient(90deg,transparent,var(--teal-deep),transparent);"></div>
+    <div class="inner">
+      <div class="sec-eyebrow">Projects</div>
+      <h2 class="sec-title">Selected work in research<br/>and <em>deployment.</em></h2>
+      <p style="color:var(--slate);max-width:640px;margin-top:.5rem;line-height:1.72;">A unified approach to modeling &amp; simulation that leverages deep domain knowledge within a state-of-the-art ML and knowledge-engineering framework.</p>
+      <div class="proj-grid">
+        <div class="proj-card" style="background:var(--ink);color:var(--fog);grid-column:span 2;">
+          <div class="proj-tag" style="color:var(--teal);">Featured · AI / ML · Open Source</div>
+          <h3 style="color:var(--fog);font-size:1.6rem;">dataeval — Dataset Quality &amp; Model Performance Analysis</h3>
+          <p style="color:var(--slate-2);max-width:620px;">A Python library for analyzing data quality and its impact on model performance across computer vision tasks. Funded through the Chief Digital and Artificial Intelligence Office (CDAO), dataeval supports rigorous analysis of datasets throughout the AI/ML lifecycle — from curation through training and evaluation.</p>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.4rem;">
+            <span class="sponsor-tag" style="border-color:var(--rule);color:var(--teal);">CDAO</span>
+            <span class="sponsor-tag" style="border-color:var(--rule);color:var(--slate-2);">Python</span>
+            <span class="sponsor-tag" style="border-color:var(--rule);color:var(--slate-2);">Computer Vision</span>
+            <span class="sponsor-tag" style="border-color:var(--rule);color:var(--slate-2);">Open Source</span>
+          </div>
+          <span class="proj-arrow" style="color:var(--teal);">↗</span>
+        </div>
+        <div class="proj-card"><div class="proj-tag">AI / ML</div><h3>MICA — Machine Interface for Contracting Assistance</h3><p>Natural-language QA system for federal acquisition regulations, combining semi-supervised statistical learning and formal logic reasoning.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>ESAIL™ — Environment for Surface ASW Interactive Learning</h3><p>3D visualization platform for ASW training using physics simulation, data reconstruction, and interactive scenario analysis on tactical systems.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>WaveQuest™</h3><p>Game-based education and training on underwater acoustics concepts with real-time fidelity-adaptive modeling &amp; simulation, produced with Filament Games.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card"><div class="proj-tag">Simulation · Training</div><h3>AIRS — Spatial-Disorientation Awareness Training</h3><p>Portable VR simulation and game-based spatial-awareness training for mitigation of spatial-disorientation in pilots and nonpilot crew.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card"><div class="proj-tag">AI / ML · Signal Processing</div><h3>SAGE™ — Synthetic ASW Generation Engine</h3><p>Novel automatic scenario generation for simulation-based training, integrating an inference engine with active semi-supervised ML for fidelity-adaptive ASW training.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card"><div class="proj-tag">Signal Processing · Deep Learning</div><h3>Deep Representation Learning for ATR</h3><p>Unsupervised feature-space learning from large MCM and EOD sonar datasets, extending commercial image-recognition advances to Navy applications.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card"><div class="proj-tag">Signal Processing</div><h3>Topological MCM Sonar Feature Investigation</h3><p>Algebraic-geometric methods and stratified-manifold learning for new feature-space representations of scattering from targets and clutter.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card"><div class="proj-tag">Signal Processing · Acoustics</div><h3>Biologically Induced Sonar Reverberation Mitigation</h3><p>Data-driven, clutter-adaptive waveform synthesis and CFAR normalization based on physical models of resonant backscattering from fish aggregations.</p><span class="proj-arrow">↗</span></div>
+        <div class="proj-card" style="display:flex;align-items:center;justify-content:center;background:var(--fog-2);"><a href="#" class="btn btn-ghost" style="color:var(--ink);border-color:var(--rule-ink);" onclick="showPage('capabilities');return false;">View all capabilities →</a></div>
+      </div>
+    </div>
+  </section>
+  <div class="footer-cta"><p>Want to discuss a project?</p><a href="#" class="btn btn-teal" onclick="showPage('about');return false;">Let's talk →</a></div>
+</div>
+
+
+<!-- ══ TEAM PAGE ══ -->
+<div class="page" id="page-team">
+  <section class="team-sec" style="padding-top:9rem;">
+    <div class="teal-line"></div>
+    <div class="inner">
+      <div class="sec-eyebrow">Team</div>
+      <h2 class="sec-title">World-class minds.<br/><em>Cross-disciplinary solutions.</em></h2>
+      <p style="color:var(--slate-2);max-width:620px;margin-top:.5rem;line-height:1.72;">Our technical staff have delivered fielded Navy systems and served as principal investigators, project managers, and technical leads across industry and government.</p>
+      <div style="margin:3.5rem 0;padding:2.5rem;border:1px solid var(--rule);">
+        <div class="sec-eyebrow" style="margin-bottom:1.8rem;">Areas of Expertise</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
+          <span class="discipline-tag">Underwater Acoustics</span>
+          <span class="discipline-tag">Signal Processing</span>
+          <span class="discipline-tag hi">Machine Learning</span>
+          <span class="discipline-tag hi">Computer Vision</span>
+          <span class="discipline-tag">Sonar Systems</span>
+          <span class="discipline-tag">Computational Acoustics</span>
+          <span class="discipline-tag">Psychoacoustics</span>
+          <span class="discipline-tag hi">Deep Learning</span>
+          <span class="discipline-tag">Physics-Based Modeling</span>
+          <span class="discipline-tag">Cognitive Science</span>
+          <span class="discipline-tag hi">Data Science</span>
+          <span class="discipline-tag">Simulation & Training</span>
+          <span class="discipline-tag">Software Engineering</span>
+          <span class="discipline-tag">Game Development</span>
+          <span class="discipline-tag">Anti-Submarine Warfare</span>
+          <span class="discipline-tag hi">AI Systems</span>
+        </div>
+      </div>
+      <div class="team-bio">
+        <div>
+          <div class="team-bio-label">ARiA Management</div>
+          <h3>Dr. Jason E. Summers</h3>
+          <div class="role">Ph.D. · Chief Scientist &amp; Managing Member</div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+            <span class="sponsor-tag" style="border-color:var(--rule);">ASW Signal Processing</span>
+            <span class="sponsor-tag" style="border-color:var(--rule);">Computational Acoustics</span>
+            <span class="sponsor-tag" style="border-color:var(--rule);">Room Acoustics</span>
+          </div>
+          <a href="https://www.linkedin.com/in/jesummers" target="_blank" class="btn btn-ghost" style="font-size:.78rem;padding:.5rem .95rem;">LinkedIn Profile →</a>
+        </div>
+        <div>
+          <p>Dr. Summers established ARiA to use real research to meet real-world challenges by bringing together innovation and rigor cultivated in academia and at top DoD laboratories with the agility, field knowledge, and customer focus refined while directing development of key Navy systems in industry.</p>
+          <p>Recognized worldwide as a leading expert in signal processing for Anti-Submarine Warfare (ASW) and in theoretical and computational modeling of acoustic processes in air and underwater, Dr. Summers has been central to the development of multiple computational models now in active use by the US Navy.</p>
+          <p>As Technical Lead for the Advanced-Development Team of NAVSEA's Surface ASW Synthetic Trainer (SAST) Program, he oversaw development of the first fully physics-based system for shipboard and schoolhouse training on surface-ship sonar. He also provided R&amp;D support for the award-winning Submarine Multi-Mission Team Trainer (SMMTT).</p>
+          <p>Working in room acoustics, he developed and validated improved mathematical and computational models for predicting sound fields in coupled-room concert halls — broadly cited in the literature and widely adopted by the worldwide consulting community. Leo L. Beranek nominated him for the MacArthur "Genius" Award in 2004.</p>
+          <p>Dr. Summers serves on dissertation committees at Rensselaer Polytechnic Institute and Aalto University, Finland, and as associate editor of the <em>Journal of the Acoustical Society of America</em>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="footer-cta"><p>Interested in joining our team?</p><a href="#" class="btn btn-teal" onclick="showPage('careers');return false;">View open roles →</a></div>
+</div>
+
+
+<!-- ══ ABOUT PAGE ══ -->
+<div class="page" id="page-about">
+  <section class="about-sec" style="padding-top:9rem;">
+    <div class="teal-line"></div>
+    <div class="inner">
+      <div class="sec-eyebrow">About ARiA</div>
+      <h2 class="sec-title">Applied Research<br/>in <em>Acoustics</em></h2>
+      <div class="about-grid">
+        <div class="about-body">
+          <p>ARiA is a research-and-development firm with core capabilities in machine learning, numerical modeling, signal processing, and software development.</p>
+          <p>We tackle real-world problems that cut across our core capabilities, where the tight cohesion of our teams of software engineers and research scientists enables ARiA to deliver fielded solutions at the leading edge of technology.</p>
+          <p>Structured specifically to address the well-known challenge many firms have in transitioning applied research to advanced development, ARiA brings together top-quality research scientists with system and software engineers in an environment where research and development mutually benefit from joint leveraging of in-house expertise.</p>
+          <p>By strategically placing offices in communities with superior quality of life but low cost of living and aggressively managing indirect costs, ARiA maintains DCAA-approved indirect rates that lead the sector in value. With robust cash-flow reserves, significant owner-equity backing, and no debt, ARiA is positioned for growth.</p>
+          <p style="font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA: Real Research. Deployed.™</p>
+        </div>
+        <div>
+          <div class="offices">
+            <h4>Offices</h4>
+            <div class="office-list">
+              <div class="office"><strong>Headquarters</strong>Madison, VA (Central Virginia)</div>
+              <div class="office"><strong>Washington DC Metro</strong>Old Town Alexandria, VA</div>
+              <div class="office"><strong>Pacific Northwest</strong>Seattle, WA (Westlake)</div>
+            </div>
+          </div>
+          <div class="contact-box">
+            <div class="sec-eyebrow" style="margin-bottom:.9rem;">Contact</div>
+            <p>To discuss partnering on a project or for general inquiries:</p>
+            <a href="mailto:info@ariacoustics.com" class="btn btn-teal" style="width:100%;justify-content:center;">info@ariacoustics.com</a>
+          </div>
+          <div class="contact-box" style="margin-top:1rem;">
+            <div class="sec-eyebrow" style="margin-bottom:.9rem;">Founded</div>
+            <p>Founded in 2010 by Dr. Jason E. Summers after a career serving customers at NAVSEA, NSWC CD, NUWC, ONI, ONR, and commercial industry — both consumer-electronics firms and firms serving government customers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="footer-cta"><p>Ready to accelerate your next project?</p><a href="mailto:info@ariacoustics.com" class="btn btn-teal">Let's talk →</a></div>
+</div>
+
+
+<!-- ══ CAREERS PAGE ══ -->
+<div class="page" id="page-careers">
+  <section class="careers-sec" style="padding-top:9rem;">
+    <div class="teal-line" style="background:linear-gradient(90deg,transparent,var(--teal-deep),transparent);"></div>
+    <div class="inner">
+      <div class="sec-eyebrow">Careers</div>
+      <h2 class="sec-title">High-stakes problems.<br/><em>No-ego team.</em></h2>
+      <div class="careers-intro">
+        <p>ARiA is looking for highly motivated self-starters and low-ego team players. Openings at ARiA are an opportunity to join a rapidly growing firm where you will be an integral part of a team that engages deeply in challenging problems while enabling development of cutting-edge technologies that address crucial national needs.</p>
+        <p>Strong candidates must value excellence and work with confidence — but without ego. Employees that thrive at ARiA have strongly-held, defensible ideas and advocate for what they believe is right, but are quick to exercise intellectual humility and acknowledge they can often be wrong.</p>
+      </div>
+      <div class="job-list">
+        <div class="job-item"><div class="job-info"><h3>Software Engineer / Senior Software Engineer</h3><div class="job-meta">ALL LOCATIONS · FULL TIME</div></div><span class="job-arrow">→</span></div>
+        <div class="job-item"><div class="job-info"><h3>R&amp;D Scientist / Engineer</h3><div class="job-meta">ALL LOCATIONS · FULL TIME</div></div><span class="job-arrow">→</span></div>
+        <div class="job-item"><div class="job-info"><h3>R&amp;D Intern</h3><div class="job-meta">ALL LOCATIONS · INTERNSHIP</div></div><span class="job-arrow">→</span></div>
+      </div>
+      <div class="values-box">
+        <h4>Our Commitment to You</h4>
+        <p>Based on the convictions of our founder, ARiA is committed to creating sustainable lifestyles for our employees — beyond a competitive salary-and-benefit package. From our physical office environments to our choice to locate facilities in communities with superior quality of life, we are committed to your professional and personal development as your needs change over time.</p>
+      </div>
+      <div class="apply-box">
+        <p>To apply, submit resume/CV and cover letter to:</p>
+        <a href="mailto:resumes@ariacoustics.com" class="btn btn-teal">resumes@ariacoustics.com</a>
+        <p class="fine" style="font-size:.78rem;color:var(--slate);margin-top:.9rem;">ARiA is an Equal Opportunity Employer.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="inner">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo" onclick="showPage('home');return false;">ARiA</a>
+        <p>Applied Research in Acoustics LLC.<br/>Real Research. Deployed.™</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('about');return false;">About</a></li>
+          <li><a href="#" onclick="showPage('team');return false;">Team</a></li>
+          <li><a href="#" onclick="showPage('careers');return false;">Careers</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Publications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Work</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('capabilities');return false;">Capabilities</a></li>
+          <li><a href="#" onclick="showPage('projects');return false;">Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@ariacoustics.com">info@ariacoustics.com</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 APPLIED RESEARCH IN ACOUSTICS LLC</span>
+      <span>ALEXANDRIA, VA · MADISON, VA · SEATTLE, WA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── ROUTING ──
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  const pg = document.getElementById('page-' + id);
+  if (pg) { pg.classList.add('active'); window.scrollTo(0,0); }
+  const nav = document.getElementById('nav-' + id);
+  if (nav) nav.classList.add('active');
+}
+
+// ── TABS ──
+function switchTab(btn, panelId) {
+  const grp = btn.closest('.cap-sec, .page');
+  grp.querySelectorAll('.cap-tab').forEach(t => t.classList.remove('active'));
+  grp.querySelectorAll('.cap-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const el = document.getElementById(panelId);
+  if (el) el.classList.add('active');
+}
+
+// ── HERO WAVE CANVAS ──
+(function(){
+  const c = document.getElementById('waveCanvas'); if(!c) return;
+  const ctx = c.getContext('2d'); let t=0;
+  const nodes = Array.from({length:28},()=>({x:Math.random(),y:Math.random(),r:1.2+Math.random()*1.8,phase:Math.random()*Math.PI*2}));
+  function resize(){const dpr=window.devicePixelRatio||1;const w=c.offsetWidth,h=c.offsetHeight;c.width=w*dpr;c.height=h*dpr;ctx.scale(dpr,dpr);}
+  window.addEventListener('resize',resize);resize();
+  function draw(){
+    const w=c.offsetWidth,h=c.offsetHeight;
+    ctx.clearRect(0,0,w,h);
+    for(let k=0;k<4;k++){ctx.beginPath();const yb=h*(.45+k*.04),amp=16+k*5,freq=.006-k*.0005,spd=.015+k*.004;for(let x=0;x<=w;x+=4){const y=yb+Math.sin(x*freq+t*spd)*amp*Math.sin(t*.008+k);x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(43,212,196,${.09-k*.016})`;ctx.lineWidth=1;ctx.stroke();}
+    const md=Math.min(w,h)*.22;
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j];const d=Math.hypot((a.x-b.x)*w,(a.y-b.y)*h);if(d<md){ctx.beginPath();ctx.moveTo(a.x*w,a.y*h);ctx.lineTo(b.x*w,b.y*h);ctx.strokeStyle=`rgba(244,241,234,${(1-d/md)*.12})`;ctx.lineWidth=.5;ctx.stroke();}}
+    for(const n of nodes){const p=.5+.5*Math.sin(t*.022+n.phase);ctx.beginPath();ctx.arc(n.x*w,n.y*h,n.r+p*.8,0,Math.PI*2);ctx.fillStyle=`rgba(43,212,196,${.28+p*.38})`;ctx.fill();}
+    t++;requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── CAPABILITY VISUALS ──
+function nodeVis(id){
+  const c=document.getElementById(id);if(!c)return;
+  const ctx=c.getContext('2d');let t=0;
+  const W=c.width,H=c.height;
+  const nodes=Array.from({length:14},()=>({x:(.1+Math.random()*.8)*W,y:(.1+Math.random()*.8)*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:2+Math.random()*3,phase:Math.random()*Math.PI*2}));
+  function draw(){
+    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
+    nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;});
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);if(d<130){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(43,212,196,${(1-d/130)*.35})`;ctx.lineWidth=.8;ctx.stroke();}}
+    nodes.forEach(n=>{const p=.5+.5*Math.sin(t*.03+n.phase);ctx.beginPath();ctx.arc(n.x,n.y,n.r+p,0,Math.PI*2);ctx.fillStyle=`rgba(43,212,196,${.45+p*.4})`;ctx.fill();});
+    t++;requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function sigVis(id){
+  const c=document.getElementById(id);if(!c)return;
+  const ctx=c.getContext('2d');let t=0;
+  const W=c.width,H=c.height;
+  function draw(){
+    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
+    for(let k=0;k<3;k++){ctx.beginPath();for(let x=0;x<W;x++){const y=H/2+Math.sin((x*.011+t*.018)*(1+k*.3))*((28+k*14)*Math.cos(t*.004+k));x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(43,212,196,${.55-k*.13})`;ctx.lineWidth=1.2;ctx.stroke();}
+    for(let i=0;i<38;i++){const bh=15+Math.abs(Math.sin(i*.42+t*.025))*75;ctx.fillStyle=`rgba(43,212,196,${.12+Math.abs(Math.sin(i+t*.035))*.2})`;ctx.fillRect(i*(W/38)+1,H-bh-8,W/38-2,bh);}
+    t++;requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function waveVis(id){
+  const c=document.getElementById(id);if(!c)return;
+  const ctx=c.getContext('2d');let t=0;
+  const W=c.width,H=c.height;
+  function draw(){
+    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
+    for(let k=0;k<5;k++){ctx.beginPath();for(let x=0;x<=W;x+=3){const y=H/2+Math.sin(x*.007*(1+k*.2)+t*(.009+k*.003))*((H*.22)-k*10);x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(43,212,196,${.3-k*.04})`;ctx.lineWidth=1;ctx.stroke();}
+    for(let i=0;i<20;i++){const px=(Math.sin(i*1.7+t*.014)*0.42+.5)*W;const py=(Math.cos(i*2.3+t*.011)*0.34+.5)*H;ctx.beginPath();ctx.arc(px,py,1.5,0,Math.PI*2);ctx.fillStyle='rgba(244,241,234,.3)';ctx.fill();}
+    t++;requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function gridVis(id){
+  const c=document.getElementById(id);if(!c)return;
+  const ctx=c.getContext('2d');let t=0;
+  const W=c.width,H=c.height;
+  function draw(){
+    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
+    const cols=20,rows=15,cw=W/cols,rh=H/rows;
+    for(let r=0;r<rows;r++)for(let col=0;col<cols;col++){const v=Math.abs(Math.sin(col*.4+r*.3+t*.018))*.6;ctx.fillStyle=`rgba(43,212,196,${v*.22})`;ctx.fillRect(col*cw+1,r*rh+1,cw-2,rh-2);}
+    const sx=((t*2)%(W+40))-20;ctx.beginPath();ctx.moveTo(sx,0);ctx.lineTo(sx,H);ctx.strokeStyle='rgba(43,212,196,.45)';ctx.lineWidth=1.5;ctx.stroke();
+    t++;requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// init all cap visuals
+nodeVis('mlC');nodeVis('cml');
+sigVis('sigC');sigVis('csig');
+gridVis('simC');gridVis('csim');
+waveVis('acC');waveVis('cac');
+</script>
+</body>
+</html>
