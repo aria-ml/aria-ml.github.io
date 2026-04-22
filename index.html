@@ -3,47 +3,47 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ARiA — Real Research. Deployed.</title>
+<title>ARiA — Real Research. Real World.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink:       #07121C;
-  --ink-2:     #0E1E2C;
-  --ink-3:     #12263A;
-  --fog:       #F4F1EA;
-  --fog-2:     #E8E3D6;
-  --slate:     #6B7986;
-  --slate-2:   #9AA6B2;
-  --teal:      #2BD4C4;
-  --teal-deep: #0FA79A;
-  --rule:      rgba(255,255,255,0.08);
-  --rule-ink:  rgba(7,18,28,0.10);
+  --ink:       #2A2623;
+  --ink-2:     #FEFBF3;
+  --ink-3:     #F8F2E3;
+  --fog:       #FFFEFA;
+  --fog-2:     #FBF6EB;
+  --slate:     #78716C;
+  --slate-2:   #44403C;
+  --teal:      #931200;
+  --teal-deep: #6B0D00;
+  --rule:      rgba(42,38,35,0.12);
+  --rule-ink:  rgba(42,38,35,0.14);
   --max:       1280px;
   --mono:      'JetBrains Mono',monospace;
   --serif:     'Fraunces',serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Manrope',sans-serif;background:var(--ink);color:var(--fog);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body{font-family:'Manrope',sans-serif;background:var(--fog);color:var(--ink);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
 .inner{max-width:var(--max);margin:0 auto;width:100%;padding:0 2.5rem;}
 
 /* NAV */
-header.site{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(16px);background:rgba(7,18,28,.72);border-bottom:1px solid var(--rule);}
+header.site{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(16px);background:rgba(255,254,250,.85);border-bottom:1px solid var(--rule);}
 .logo{display:inline-flex;align-items:center;color:var(--teal);text-decoration:none;flex-shrink:0;}
 .logo svg{height:22px;width:auto;fill:currentColor;}
 nav ul{display:flex;gap:2rem;list-style:none;}
 nav a{font-size:.85rem;font-weight:500;color:var(--slate-2);text-decoration:none;position:relative;padding-bottom:2px;transition:color .25s;}
-nav a:hover,nav a.active{color:var(--fog);}
+nav a:hover,nav a.active{color:var(--ink);}
 nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--teal);transition:width .3s;}
 nav a:hover::after,nav a.active::after{width:100%;}
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.62rem 1.2rem;font-family:'Manrope',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.025em;text-decoration:none;border-radius:2px;cursor:pointer;transition:transform .2s,background .2s,color .2s;border:none;}
-.btn-teal{background:var(--teal);color:var(--ink);}
-.btn-teal:hover{background:var(--fog);transform:translateY(-1px);}
-.btn-ghost{background:transparent;color:var(--fog);border:1px solid var(--rule);}
-.btn-ghost:hover{background:rgba(244,241,234,.07);border-color:var(--slate-2);}
+.btn-teal{background:var(--teal);color:var(--fog);}
+.btn-teal:hover{background:var(--teal-deep);transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--rule);}
+.btn-ghost:hover{background:rgba(42,38,35,.05);border-color:var(--slate-2);}
 
 /* PAGES */
 .page{display:none;}
@@ -56,10 +56,12 @@ nav a:hover::after,nav a.active::after{width:100%;}
 .sec-eyebrow::before{width:20px;}
 h2.sec-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.3rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;}
 h2.sec-title em{font-style:italic;color:var(--teal);}
+h2.sec-title em.word-cycle{display:inline-block;transition:opacity .22s ease,transform .22s ease;}
+h2.sec-title em.word-cycle.out{opacity:0;transform:translateY(-8px);}
 .teal-line{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);}
 
 /* ── HERO ── */
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(43,212,196,.09),transparent 60%),radial-gradient(ellipse 50% 50% at 15% 80%,rgba(15,167,154,.07),transparent 60%),var(--ink);}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(147,18,0,.05),transparent 60%),radial-gradient(ellipse 50% 50% at 15% 80%,rgba(107,13,0,.04),transparent 60%),var(--fog);}
 #waveCanvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.5;pointer-events:none;}
 .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.35fr 1fr;gap:4rem;align-items:center;padding:8rem 2.5rem 6rem;}
 .hero-eyebrow{gap:.8rem;margin-bottom:1.8rem;}
@@ -68,7 +70,7 @@ h1.hero-title{font-family:var(--serif);font-weight:300;font-size:clamp(3.2rem,7v
 h1.hero-title em{font-style:italic;color:var(--teal);}
 .hero-sub{font-size:1.08rem;color:var(--slate-2);max-width:510px;margin-bottom:2.5rem;line-height:1.68;}
 .hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
-.sec-link{color:var(--fog);text-decoration:none;font-size:.87rem;font-weight:500;padding:.6rem .1rem;border-bottom:1px solid var(--rule);transition:border-color .3s;}
+.sec-link{color:var(--ink);text-decoration:none;font-size:.87rem;font-weight:500;padding:.6rem .1rem;border-bottom:1px solid var(--rule);transition:border-color .3s;}
 .sec-link:hover{border-color:var(--teal);}
 .arr{display:inline-block;transition:transform .3s;}
 .sec-link:hover .arr{transform:translateX(4px);}
@@ -77,13 +79,13 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .corner-br{bottom:2rem;right:2.5rem;}
 
 /* HERO PANEL */
-.hero-panel{border:1px solid var(--rule);background:rgba(14,30,44,.55);backdrop-filter:blur(10px);padding:1.7rem;}
+.hero-panel{border:1px solid var(--rule);background:rgba(255,255,255,.55);backdrop-filter:blur(10px);padding:1.7rem;}
 .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:.73rem;color:var(--slate-2);}
 .dot-live{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(43,212,196,.18);}50%{box-shadow:0 0 0 9px rgba(43,212,196,.04);}}
-.panel-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:var(--mono);font-size:.73rem;color:var(--slate);gap:1rem;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(147,18,0,.22);}50%{box-shadow:0 0 0 9px rgba(147,18,0,.06);}}
+.panel-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid rgba(42,38,35,.08);font-family:var(--mono);font-size:.73rem;color:var(--slate);gap:1rem;}
 .panel-row:last-child{border-bottom:none;}
-.val{color:var(--fog);text-align:right;}
+.val{color:var(--ink);text-align:right;}
 .val.hi{color:var(--teal);}
 
 /* SECTION 2 — ADVANTAGE */
@@ -102,14 +104,14 @@ h1.hero-title em{font-style:italic;color:var(--teal);}
 .col-num::after{content:'';flex:1;height:1px;background:var(--rule-ink);}
 .col-icon{width:42px;height:42px;margin-bottom:1.4rem;color:var(--teal-deep);}
 .col h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem;color:var(--ink);}
-.col p{font-size:.93rem;color:#3d4d5a;line-height:1.68;}
+.col p{font-size:.93rem;color:var(--slate-2);line-height:1.68;}
 
 /* CAPABILITIES TABS */
 .cap-sec{background:var(--ink-2);padding:8rem 2.5rem;position:relative;}
 .cap-tabs{display:flex;gap:0;margin-top:3rem;border-bottom:1px solid var(--rule);overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
 .cap-tabs::-webkit-scrollbar{display:none;}
 .cap-tab{padding:.85rem 1.7rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .25s,border-color .25s;white-space:nowrap;}
-.cap-tab:hover{color:var(--fog);}
+.cap-tab:hover{color:var(--ink);}
 .cap-tab.active{color:var(--teal);border-color:var(--teal);}
 .cap-panels{margin-top:3rem;}
 .cap-panel{display:none;}
@@ -144,7 +146,7 @@ a.proj-card{text-decoration:none;color:inherit;display:block;}
 .proj-card:hover .proj-arrow{transform:translate(3px,-3px);}
 
 /* TEAM */
-.team-sec{background:var(--ink);padding:8rem 2.5rem;position:relative;}
+.team-sec{background:var(--fog);padding:8rem 2.5rem;position:relative;}
 .team-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);margin:3.5rem 0;}
 .stat{padding:2rem 2.2rem;border-right:1px solid var(--rule);text-align:center;}
 .stat:last-child{border-right:none;}
@@ -152,8 +154,8 @@ a.proj-card{text-decoration:none;color:inherit;display:block;}
 .stat .label{font-size:.83rem;color:var(--slate-2);line-height:1.5;}
 .team-bio{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;border-top:1px solid var(--rule);padding-top:3rem;}
 .discipline-tag{padding:.45rem 1rem;border:1px solid var(--rule);font-family:var(--mono);font-size:.72rem;color:var(--slate-2);letter-spacing:.05em;transition:border-color .25s,color .25s;}
-.discipline-tag.hi{border-color:rgba(43,212,196,.35);color:var(--teal);}
-.discipline-tag:hover{border-color:var(--teal);color:var(--fog);}
+.discipline-tag.hi{border-color:rgba(147,18,0,.35);color:var(--teal);}
+.discipline-tag:hover{border-color:var(--teal);color:var(--ink);}
 .team-bio-label{font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.1rem;}
 .team-bio h3{font-family:var(--serif);font-weight:300;font-size:1.75rem;letter-spacing:-.025em;margin-bottom:.3rem;}
 .team-bio .role{font-size:.86rem;color:var(--slate-2);margin-bottom:1.4rem;}
@@ -163,12 +165,12 @@ a.proj-card{text-decoration:none;color:inherit;display:block;}
 .about-sec{background:var(--ink-2);padding:8rem 2.5rem;position:relative;}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem;}
 .about-body p{font-size:.97rem;color:var(--slate-2);line-height:1.82;margin-bottom:1.1rem;}
-.about-body p:first-child{font-size:1.1rem;color:var(--fog);}
+.about-body p:first-child{font-size:1.1rem;color:var(--ink);}
 .offices h4{font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
 .office-list{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem;}
 .office-item{padding:.95rem 1.1rem;border:1px solid var(--rule);font-size:.86rem;color:var(--slate-2);cursor:pointer;transition:background .25s,border-color .25s;}
-.office-item:hover{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.15);}
-.office-item strong{display:block;color:var(--fog);margin-bottom:.2rem;font-weight:500;}
+.office-item:hover{background:rgba(42,38,35,.03);border-color:rgba(42,38,35,.22);}
+.office-item strong{display:block;color:var(--ink);margin-bottom:.2rem;font-weight:500;}
 .office-head{display:flex;justify-content:space-between;align-items:center;}
 .office-arr{font-size:1.2rem;font-weight:300;color:var(--teal);transition:transform .3s ease;line-height:1;}
 .office-detail{display:none;margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--rule);font-size:.8rem;color:var(--slate-2);line-height:1.5;}
@@ -181,12 +183,12 @@ a.proj-card{text-decoration:none;color:inherit;display:block;}
 .contact-row{display:grid;grid-template-columns:90px 1fr;gap:1.2rem;align-items:start;}
 .contact-row-label{font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.13em;text-transform:uppercase;line-height:1.35;padding-top:.25rem;}
 .contact-row-val{font-size:.82rem;color:var(--slate-2);line-height:1.55;display:flex;flex-direction:column;gap:.35rem;}
-.contact-row-val a{color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;width:fit-content;transition:border-color .3s,color .3s;}
+.contact-row-val a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;width:fit-content;transition:border-color .3s,color .3s;}
 .contact-row-val a:hover{border-color:var(--teal);color:var(--teal);}
-.contact-row-val.plain{color:var(--fog);}
+.contact-row-val.plain{color:var(--ink);}
 .contact-row-note{font-size:.72rem;color:var(--slate);margin-top:.25rem;font-style:italic;}
-.about-founded{margin-top:2rem;padding:1.1rem 1.3rem;border-left:2px solid var(--teal);background:rgba(43,212,196,.04);}
-.about-founded h4{font-family:var(--serif);font-weight:400;font-size:1.1rem;letter-spacing:-.015em;color:var(--fog);margin-bottom:.55rem;}
+.about-founded{margin-top:2rem;padding:1.1rem 1.3rem;border-left:2px solid var(--teal);background:rgba(147,18,0,.05);}
+.about-founded h4{font-family:var(--serif);font-weight:400;font-size:1.1rem;letter-spacing:-.015em;color:var(--ink);margin-bottom:.55rem;}
 .about-founded p{font-size:.88rem;color:var(--slate-2);line-height:1.7;margin-bottom:0;}
 
 /* RESOURCES */
@@ -196,22 +198,22 @@ a.proj-card{text-decoration:none;color:inherit;display:block;}
 .about-band-head h3 em{font-style:italic;color:var(--teal);}
 .about-band-head .sec-eyebrow{margin-bottom:1rem;}
 .about-band-intro{font-size:.92rem;color:var(--slate-2);line-height:1.72;max-width:460px;justify-self:end;}
-.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:rgba(7,18,28,.35);}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:rgba(255,255,255,.5);}
 .resource{padding:2.1rem 1.9rem;border-right:1px solid var(--rule);position:relative;}
 .resource:last-child{border-right:none;}
 .resource-num{font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.14em;margin-bottom:1.3rem;display:flex;align-items:center;gap:.55rem;}
 .resource-num::after{content:'';flex:1;height:1px;background:var(--rule);}
 .resource-key{font-family:var(--serif);font-weight:300;font-size:2.2rem;line-height:1;letter-spacing:-.03em;color:var(--teal);}
 .resource-key .unit{font-size:.88rem;color:var(--slate-2);margin-left:.35rem;font-style:italic;letter-spacing:0;}
-.resource-label{font-family:var(--mono);font-size:.7rem;color:var(--fog);letter-spacing:.1em;text-transform:uppercase;margin:.6rem 0 .9rem;}
+.resource-label{font-family:var(--mono);font-size:.7rem;color:var(--ink);letter-spacing:.1em;text-transform:uppercase;margin:.6rem 0 .9rem;}
 .resource p{font-size:.84rem;color:var(--slate-2);line-height:1.68;}
 
 /* COMPANY FIRSTS */
 .firsts-list{display:flex;flex-direction:column;border-top:1px solid var(--rule);}
 .first-row{display:grid;grid-template-columns:110px 1fr auto;gap:2rem;align-items:baseline;padding:1.3rem .2rem;border-bottom:1px solid var(--rule);transition:padding-left .3s,background .3s;}
-.first-row:hover{padding-left:1rem;background:rgba(255,255,255,.025);}
+.first-row:hover{padding-left:1rem;background:rgba(42,38,35,.035);}
 .first-year{font-family:var(--serif);font-weight:300;font-size:1.9rem;color:var(--teal);letter-spacing:-.02em;line-height:1;}
-.first-desc{font-size:.96rem;color:var(--fog);line-height:1.55;}
+.first-desc{font-size:.96rem;color:var(--ink);line-height:1.55;}
 .first-desc .lede{color:var(--teal);font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;margin-right:.55rem;vertical-align:middle;}
 .first-tag{font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
 
@@ -248,24 +250,24 @@ a.proj-card{text-decoration:none;color:inherit;display:block;}
 
 /* FOOTER CTA */
 .footer-cta{background:var(--ink-3);padding:5.5rem 2.5rem;text-align:center;border-top:1px solid var(--rule);}
-.footer-cta p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;color:var(--fog);max-width:900px;margin:0 auto 2rem;}
+.footer-cta p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.25;color:var(--ink);max-width:900px;margin:0 auto 2rem;}
 
 /* FOOTER */
-footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);padding:5rem 2.5rem 3rem;}
+footer.site-footer{background:var(--ink-2);border-top:1px solid var(--rule);padding:5rem 2.5rem 3rem;}
 .footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:4rem;}
 .footer-brand .logo{display:block;margin-bottom:.9rem;}
 .footer-brand p{font-size:.86rem;color:var(--slate);line-height:1.65;max-width:240px;}
 .footer-col h4{font-family:var(--mono);font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
 .footer-col a{font-size:.86rem;color:var(--slate);text-decoration:none;transition:color .25s;}
-.footer-col a:hover{color:var(--fog);}
+.footer-col a:hover{color:var(--ink);}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.65rem;color:var(--slate);letter-spacing:.06em;}
 
 /* PUBLICATIONS */
 .pubs-sec{background:var(--ink-2);padding:9rem 2.5rem 7rem;position:relative;}
 .pubs-head{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:end;margin-bottom:4.5rem;}
 .pubs-head p{font-size:1rem;color:var(--slate-2);line-height:1.72;max-width:460px;justify-self:end;}
-.pubs-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:rgba(7,18,28,.35);margin-bottom:4.5rem;}
+.pubs-stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:rgba(255,255,255,.5);margin-bottom:4.5rem;}
 .pub-stat{padding:1.6rem 1.8rem;border-right:1px solid var(--rule);}
 .pub-stat:last-child{border-right:none;}
 .pub-stat .n{font-family:var(--serif);font-weight:300;font-size:2.3rem;line-height:1;letter-spacing:-.03em;color:var(--teal);margin-bottom:.35rem;}
@@ -274,34 +276,34 @@ footer.site-footer{background:var(--ink);border-top:1px solid var(--rule);paddin
 .pub-year-group:last-child{border-bottom:1px solid var(--rule);}
 .pub-year-label{font-family:var(--serif);font-weight:300;font-size:2.6rem;line-height:1;color:var(--teal);letter-spacing:-.03em;position:sticky;top:6.5rem;align-self:start;}
 .pub-list{display:flex;flex-direction:column;gap:1.7rem;list-style:none;}
-.pub-entry{padding-bottom:1.55rem;border-bottom:1px dotted rgba(255,255,255,.07);}
+.pub-entry{padding-bottom:1.55rem;border-bottom:1px dotted rgba(42,38,35,.14);}
 .pub-entry:last-child{border-bottom:none;padding-bottom:0;}
-.pub-title{display:block;font-family:var(--serif);font-weight:400;font-size:1.08rem;line-height:1.35;color:var(--fog);letter-spacing:-.005em;margin-bottom:.5rem;}
+.pub-title{display:block;font-family:var(--serif);font-weight:400;font-size:1.08rem;line-height:1.35;color:var(--ink);letter-spacing:-.005em;margin-bottom:.5rem;}
 .pub-title em{font-style:italic;}
 .pub-authors{display:block;font-size:.84rem;color:var(--slate-2);line-height:1.55;margin-bottom:.35rem;}
 .pub-venue{display:block;font-family:var(--mono);font-size:.7rem;color:var(--slate);letter-spacing:.04em;line-height:1.5;}
 .pub-venue a{color:var(--teal-deep);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s;}
 .pub-venue a:hover{border-color:var(--teal-deep);color:var(--teal);}
-.pub-award{display:inline-block;font-family:var(--mono);font-size:.64rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid rgba(43,212,196,.3);margin-left:.55rem;vertical-align:middle;}
+.pub-award{display:inline-block;font-family:var(--mono);font-size:.64rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid rgba(147,18,0,.35);margin-left:.55rem;vertical-align:middle;}
 .pub-invited{color:var(--slate-2);font-style:italic;}
 
 /* PRIVACY MODAL */
-.privacy-backdrop{position:fixed;inset:0;background:rgba(7,18,28,.82);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;animation:fadeIn .28s ease;}
+.privacy-backdrop{position:fixed;inset:0;background:rgba(42,38,35,.55);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;animation:fadeIn .28s ease;}
 .privacy-backdrop.open{display:flex;}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 .privacy-modal{background:var(--ink-2);border:1px solid var(--rule);max-width:680px;width:100%;max-height:85vh;display:flex;flex-direction:column;position:relative;animation:slideUp .35s cubic-bezier(.2,.8,.2,1);}
 @keyframes slideUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 .privacy-head{padding:2rem 2.3rem 1.5rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;}
 .privacy-head .sec-eyebrow{margin-bottom:.7rem;}
-.privacy-head h3{font-family:var(--serif);font-weight:300;font-size:1.8rem;letter-spacing:-.025em;line-height:1.1;color:var(--fog);}
+.privacy-head h3{font-family:var(--serif);font-weight:300;font-size:1.8rem;letter-spacing:-.025em;line-height:1.1;color:var(--ink);}
 .privacy-close{background:none;border:1px solid var(--rule);color:var(--slate-2);width:34px;height:34px;cursor:pointer;font-size:1.1rem;line-height:1;flex-shrink:0;transition:background .2s,color .2s,border-color .2s;}
-.privacy-close:hover{background:rgba(244,241,234,.06);color:var(--fog);border-color:var(--slate-2);}
+.privacy-close:hover{background:rgba(42,38,35,.06);color:var(--ink);border-color:var(--slate-2);}
 .privacy-body{padding:1.8rem 2.3rem;overflow-y:auto;font-size:.9rem;color:var(--slate-2);line-height:1.72;}
 .privacy-body h4{font-family:var(--mono);font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin:1.6rem 0 .7rem;}
 .privacy-body h4:first-child{margin-top:0;}
 .privacy-body p{margin-bottom:.9rem;}
 .privacy-body p:last-child{margin-bottom:0;}
-.privacy-body a{color:var(--fog);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .3s;}
+.privacy-body a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .3s;}
 .privacy-body a:hover{border-color:var(--teal);}
 .privacy-foot{padding:1.2rem 2.3rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.66rem;color:var(--slate);letter-spacing:.1em;text-transform:uppercase;}
 body.modal-open{overflow:hidden;}
@@ -383,8 +385,8 @@ body.modal-open{overflow:hidden;}
     <div class="corner-tag corner-br">38.8°N · 77.0°W</div>
     <div class="inner hero-inner">
       <div>
-        <h1 class="hero-title">Real Research.<br/><em>Deployed.</em></h1>
-        <p class="hero-sub">ARiA pairs research scientists with software and systems engineers to solve hard, physics-grounded problems — and ship the systems that carry solutions into the field.</p>
+        <h1 class="hero-title">Real Research.<br/><em>Real World.</em></h1>
+        <p class="hero-sub">ARiA brings together top-quality research scientists with systems and software engineers to solve real-world problems and develop real-world systems based on world-class research.</p>
         <div class="hero-actions">
           <a href="#" class="btn btn-teal" onclick="showPage('capabilities');return false;">Explore Capabilities</a>
           <a href="#" class="sec-link" onclick="showPage('projects');return false;">See recent projects <span class="arr">→</span></a>
@@ -524,7 +526,7 @@ body.modal-open{overflow:hidden;}
       <h2 class="sec-title">Interdisciplinary research<br/>applied to <em>real systems.</em></h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2.5rem;margin-top:1rem;">
         <p style="color:var(--slate-2);line-height:1.75;">ARiA applies broad interdisciplinary experience in acoustics, signal processing, machine learning / AI, modeling &amp; simulation, and cognitive science toward innovative basic and applied R&amp;D.</p>
-        <div style="padding:1.4rem 1.6rem;border-left:2px solid var(--teal);background:rgba(43,212,196,.04);">
+        <div style="padding:1.4rem 1.6rem;border-left:2px solid var(--teal);background:rgba(147,18,0,.04);">
           <div style="font-family:var(--mono);font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;">Overcoming the Valley of Death</div>
           <p style="font-size:.88rem;color:var(--slate-2);line-height:1.7;">Coupling research expertise with advanced development and validation of critical DoD systems, ARiA is uniquely poised to transition basic and applied research (DoD 6.1/6.2) to advanced technology development and beyond (DoD 6.3/6.4+).</p>
         </div>
@@ -609,10 +611,10 @@ body.modal-open{overflow:hidden;}
         <div>
           <div class="sec-eyebrow" style="margin-bottom:1.4rem;">Past Performance</div>
           <div style="display:flex;flex-direction:column;gap:.8rem;">
-            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">WaveQuest™</strong>Design, development, and delivery of a video-game and underwater-acoustics physics engine for game-based sonar training and STEM education.</div>
-            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">SAGE™</strong>Design, development, and delivery of a machine-learning and expert-system technology for automated scenario design in simulation-based sonar training.</div>
-            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">Clutter Mitigation</strong>Clutter-adaptive waveform design, match filtering, and normalization for sonar systems operating in shallow water.</div>
-            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--fog);margin-bottom:.3rem;">Helicopter Noise Modeling</strong>Measurements, modeling, and signal processing for predicting auditory detection of helicopter noise in complex environments.</div>
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--ink);margin-bottom:.3rem;">WaveQuest™</strong>Design, development, and delivery of a video-game and underwater-acoustics physics engine for game-based sonar training and STEM education.</div>
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--ink);margin-bottom:.3rem;">SAGE™</strong>Design, development, and delivery of a machine-learning and expert-system technology for automated scenario design in simulation-based sonar training.</div>
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--ink);margin-bottom:.3rem;">Clutter Mitigation</strong>Clutter-adaptive waveform design, match filtering, and normalization for sonar systems operating in shallow water.</div>
+            <div style="padding:1rem 1.2rem;border:1px solid var(--rule);font-size:.88rem;color:var(--slate-2);line-height:1.6;"><strong style="display:block;color:var(--ink);margin-bottom:.3rem;">Helicopter Noise Modeling</strong>Measurements, modeling, and signal processing for predicting auditory detection of helicopter noise in complex environments.</div>
           </div>
         </div>
         <div>
@@ -646,9 +648,9 @@ body.modal-open{overflow:hidden;}
       <h2 class="sec-title">Selected work in research<br/>and <em>deployment.</em></h2>
       <p style="color:var(--slate);max-width:640px;margin-top:.5rem;line-height:1.72;">A unified approach to modeling &amp; simulation that leverages deep domain knowledge within a state-of-the-art ML and knowledge-engineering framework.</p>
       <div class="proj-grid">
-        <a class="proj-card" href="https://github.com/aria-ml/dataeval" target="_blank" rel="noopener" style="background:var(--ink);color:var(--fog);grid-column:span 2;">
+        <a class="proj-card" href="https://github.com/aria-ml/dataeval" target="_blank" rel="noopener" style="background:var(--fog-2);color:var(--ink);grid-column:span 2;border-left:3px solid var(--teal);">
           <div class="proj-tag" style="color:var(--teal);">Featured · AI / ML · Open Source</div>
-          <h3 style="color:var(--fog);font-size:1.6rem;">DataEval — Dataset Quality &amp; Model Performance Analysis</h3>
+          <h3 style="color:var(--ink);font-size:1.6rem;">DataEval — Dataset Quality &amp; Model Performance Analysis</h3>
           <p style="color:var(--slate-2);max-width:620px;">A Python library for analyzing data quality and its impact on model performance across computer vision tasks. Funded through the Chief Digital and Artificial Intelligence Office (CDAO), DataEval supports rigorous analysis of datasets throughout the AI/ML lifecycle — from curation through training and evaluation.</p>
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.4rem;">
             <span class="sponsor-tag" style="border-color:var(--rule);color:var(--teal);">CDAO</span>
@@ -735,14 +737,14 @@ body.modal-open{overflow:hidden;}
     <div class="teal-line"></div>
     <div class="inner">
       <div class="sec-eyebrow">About ARiA</div>
-      <h2 class="sec-title">Applied Research<br/>in <em>Acoustics</em></h2>
+      <h2 class="sec-title">Applied Research<br/>in <em class="word-cycle" id="aboutCycle">Acoustics</em></h2>
       <div class="about-grid">
         <div class="about-body">
           <p>ARiA is a research-and-development firm with core capabilities in signal and information processing, machine learning, physics-based computational simulation, and software engineering.</p>
           <p>We tackle real-world problems that cut across our core capabilities, where the tight cohesion of our teams of software engineers and research scientists enables ARiA to deliver fielded solutions at the leading edge of technology.</p>
           <p>Structured specifically to address the well-known challenge many firms have in transitioning applied research to advanced development, ARiA brings together top-quality research scientists with system and software engineers in an environment where research and development mutually benefit from joint leveraging of in-house expertise.</p>
           <p>By strategically placing offices in communities with superior quality of life but low cost of living and aggressively managing indirect costs, ARiA maintains DCAA-approved indirect rates that lead the sector in value. With robust cash-flow reserves, significant owner-equity backing, and no debt, ARiA is positioned for growth.</p>
-          <p style="font-family:var(--serif);font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA — Real Research. Deployed.</p>
+          <p style="font-family:var(--serif);font-size:1.1rem;color:var(--teal);margin-top:2rem;line-height:1.5;">ARiA — Real Research. Real World.</p>
           <div class="about-founded">
             <h4>Founded 2010</h4>
             <p>Founded by Dr. Jason E. Summers after a career serving customers at NAVSEA, NSWC CD, NUWC, ONI, ONR, and commercial industry — both consumer-electronics firms and firms serving government customers.</p>
@@ -1095,7 +1097,7 @@ body.modal-open{overflow:hidden;}
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="#" class="logo" onclick="showPage('home');return false;"><svg viewBox="0 0 1012 321"><use href="#logo-aria"></use></svg></a>
-        <p>Applied Research in Acoustics.<br/>Real Research. Deployed.</p>
+        <p>Applied Research in Acoustics.<br/>Real Research. Real World.</p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -1139,7 +1141,7 @@ body.modal-open{overflow:hidden;}
       <button class="privacy-close" onclick="closePrivacy()" aria-label="Close">×</button>
     </div>
     <div class="privacy-body">
-      <p>ARiA (Applied Research in Acoustics, LLC) respects your privacy. This policy describes what information we collect when you visit <a href="#" onclick="return false;">ariacoustics.com</a> or contact us, and how we use it.</p>
+      <p>ARiA respects your privacy. This policy describes what information we collect when you visit <a href="#" onclick="return false;">ariacoustics.com</a> or contact us, and how we use it.</p>
 
       <h4>Information we collect</h4>
       <p>We collect only the information you voluntarily provide — typically your name, email address, and any content you include when reaching out to us via email or a contact form. Our servers may log standard technical data (IP address, browser type, pages viewed) for security and analytics purposes.</p>
@@ -1243,10 +1245,10 @@ function switchTab(btn, panelId) {
   function draw(){
     const w=c.offsetWidth,h=c.offsetHeight;
     ctx.clearRect(0,0,w,h);
-    for(let k=0;k<4;k++){ctx.beginPath();const yb=h*(.45+k*.04),amp=16+k*5,freq=.006-k*.0005,spd=.015+k*.004;for(let x=0;x<=w;x+=4){const y=yb+Math.sin(x*freq+t*spd)*amp*Math.sin(t*.008+k);x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(43,212,196,${.09-k*.016})`;ctx.lineWidth=1;ctx.stroke();}
+    for(let k=0;k<4;k++){ctx.beginPath();const yb=h*(.45+k*.04),amp=16+k*5,freq=.006-k*.0005,spd=.015+k*.004;for(let x=0;x<=w;x+=4){const y=yb+Math.sin(x*freq+t*spd)*amp*Math.sin(t*.008+k);x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(147,18,0,${.09-k*.016})`;ctx.lineWidth=1;ctx.stroke();}
     const md=Math.min(w,h)*.22;
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j];const d=Math.hypot((a.x-b.x)*w,(a.y-b.y)*h);if(d<md){ctx.beginPath();ctx.moveTo(a.x*w,a.y*h);ctx.lineTo(b.x*w,b.y*h);ctx.strokeStyle=`rgba(244,241,234,${(1-d/md)*.12})`;ctx.lineWidth=.5;ctx.stroke();}}
-    for(const n of nodes){const p=.5+.5*Math.sin(t*.022+n.phase);ctx.beginPath();ctx.arc(n.x*w,n.y*h,n.r+p*.8,0,Math.PI*2);ctx.fillStyle=`rgba(43,212,196,${.28+p*.38})`;ctx.fill();}
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j];const d=Math.hypot((a.x-b.x)*w,(a.y-b.y)*h);if(d<md){ctx.beginPath();ctx.moveTo(a.x*w,a.y*h);ctx.lineTo(b.x*w,b.y*h);ctx.strokeStyle=`rgba(42,38,35,${(1-d/md)*.12})`;ctx.lineWidth=.5;ctx.stroke();}}
+    for(const n of nodes){const p=.5+.5*Math.sin(t*.022+n.phase);ctx.beginPath();ctx.arc(n.x*w,n.y*h,n.r+p*.8,0,Math.PI*2);ctx.fillStyle=`rgba(147,18,0,${.28+p*.38})`;ctx.fill();}
     t++;requestAnimationFrame(draw);
   }
   draw();
@@ -1259,10 +1261,10 @@ function nodeVis(id){
   const W=c.width,H=c.height;
   const nodes=Array.from({length:14},()=>({x:(.1+Math.random()*.8)*W,y:(.1+Math.random()*.8)*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:2+Math.random()*3,phase:Math.random()*Math.PI*2}));
   function draw(){
-    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#F8F2E3';ctx.fillRect(0,0,W,H);
     nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;});
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);if(d<130){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(43,212,196,${(1-d/130)*.35})`;ctx.lineWidth=.8;ctx.stroke();}}
-    nodes.forEach(n=>{const p=.5+.5*Math.sin(t*.03+n.phase);ctx.beginPath();ctx.arc(n.x,n.y,n.r+p,0,Math.PI*2);ctx.fillStyle=`rgba(43,212,196,${.45+p*.4})`;ctx.fill();});
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);if(d<130){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(147,18,0,${(1-d/130)*.35})`;ctx.lineWidth=.8;ctx.stroke();}}
+    nodes.forEach(n=>{const p=.5+.5*Math.sin(t*.03+n.phase);ctx.beginPath();ctx.arc(n.x,n.y,n.r+p,0,Math.PI*2);ctx.fillStyle=`rgba(147,18,0,${.45+p*.4})`;ctx.fill();});
     t++;requestAnimationFrame(draw);
   }
   draw();
@@ -1273,9 +1275,9 @@ function sigVis(id){
   const ctx=c.getContext('2d');let t=0;
   const W=c.width,H=c.height;
   function draw(){
-    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
-    for(let k=0;k<3;k++){ctx.beginPath();for(let x=0;x<W;x++){const y=H/2+Math.sin((x*.011+t*.018)*(1+k*.3))*((28+k*14)*Math.cos(t*.004+k));x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(43,212,196,${.55-k*.13})`;ctx.lineWidth=1.2;ctx.stroke();}
-    for(let i=0;i<38;i++){const bh=15+Math.abs(Math.sin(i*.42+t*.025))*75;ctx.fillStyle=`rgba(43,212,196,${.12+Math.abs(Math.sin(i+t*.035))*.2})`;ctx.fillRect(i*(W/38)+1,H-bh-8,W/38-2,bh);}
+    ctx.fillStyle='#F8F2E3';ctx.fillRect(0,0,W,H);
+    for(let k=0;k<3;k++){ctx.beginPath();for(let x=0;x<W;x++){const y=H/2+Math.sin((x*.011+t*.018)*(1+k*.3))*((28+k*14)*Math.cos(t*.004+k));x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(147,18,0,${.55-k*.13})`;ctx.lineWidth=1.2;ctx.stroke();}
+    for(let i=0;i<38;i++){const bh=15+Math.abs(Math.sin(i*.42+t*.025))*75;ctx.fillStyle=`rgba(147,18,0,${.12+Math.abs(Math.sin(i+t*.035))*.2})`;ctx.fillRect(i*(W/38)+1,H-bh-8,W/38-2,bh);}
     t++;requestAnimationFrame(draw);
   }
   draw();
@@ -1286,9 +1288,9 @@ function waveVis(id){
   const ctx=c.getContext('2d');let t=0;
   const W=c.width,H=c.height;
   function draw(){
-    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
-    for(let k=0;k<5;k++){ctx.beginPath();for(let x=0;x<=W;x+=3){const y=H/2+Math.sin(x*.007*(1+k*.2)+t*(.009+k*.003))*((H*.22)-k*10);x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(43,212,196,${.3-k*.04})`;ctx.lineWidth=1;ctx.stroke();}
-    for(let i=0;i<20;i++){const px=(Math.sin(i*1.7+t*.014)*0.42+.5)*W;const py=(Math.cos(i*2.3+t*.011)*0.34+.5)*H;ctx.beginPath();ctx.arc(px,py,1.5,0,Math.PI*2);ctx.fillStyle='rgba(244,241,234,.3)';ctx.fill();}
+    ctx.fillStyle='#F8F2E3';ctx.fillRect(0,0,W,H);
+    for(let k=0;k<5;k++){ctx.beginPath();for(let x=0;x<=W;x+=3){const y=H/2+Math.sin(x*.007*(1+k*.2)+t*(.009+k*.003))*((H*.22)-k*10);x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=`rgba(147,18,0,${.3-k*.04})`;ctx.lineWidth=1;ctx.stroke();}
+    for(let i=0;i<20;i++){const px=(Math.sin(i*1.7+t*.014)*0.42+.5)*W;const py=(Math.cos(i*2.3+t*.011)*0.34+.5)*H;ctx.beginPath();ctx.arc(px,py,1.5,0,Math.PI*2);ctx.fillStyle='rgba(42,38,35,.3)';ctx.fill();}
     t++;requestAnimationFrame(draw);
   }
   draw();
@@ -1299,10 +1301,10 @@ function gridVis(id){
   const ctx=c.getContext('2d');let t=0;
   const W=c.width,H=c.height;
   function draw(){
-    ctx.fillStyle='#0E1E2C';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#F8F2E3';ctx.fillRect(0,0,W,H);
     const cols=20,rows=15,cw=W/cols,rh=H/rows;
-    for(let r=0;r<rows;r++)for(let col=0;col<cols;col++){const v=Math.abs(Math.sin(col*.4+r*.3+t*.018))*.6;ctx.fillStyle=`rgba(43,212,196,${v*.22})`;ctx.fillRect(col*cw+1,r*rh+1,cw-2,rh-2);}
-    const sx=((t*2)%(W+40))-20;ctx.beginPath();ctx.moveTo(sx,0);ctx.lineTo(sx,H);ctx.strokeStyle='rgba(43,212,196,.45)';ctx.lineWidth=1.5;ctx.stroke();
+    for(let r=0;r<rows;r++)for(let col=0;col<cols;col++){const v=Math.abs(Math.sin(col*.4+r*.3+t*.018))*.6;ctx.fillStyle=`rgba(147,18,0,${v*.22})`;ctx.fillRect(col*cw+1,r*rh+1,cw-2,rh-2);}
+    const sx=((t*2)%(W+40))-20;ctx.beginPath();ctx.moveTo(sx,0);ctx.lineTo(sx,H);ctx.strokeStyle='rgba(147,18,0,.45)';ctx.lineWidth=1.5;ctx.stroke();
     t++;requestAnimationFrame(draw);
   }
   draw();
@@ -1313,6 +1315,17 @@ nodeVis('mlC');nodeVis('cml');
 sigVis('sigC');sigVis('csig');
 gridVis('simC');gridVis('csim');
 waveVis('acC');waveVis('cac');
+
+// about page: cycle A-words in heading
+(function(){
+  const el=document.getElementById('aboutCycle');if(!el)return;
+  const words=['Acoustics','Artificial Intelligence','Algorithms','Autonomy','Analytics'];
+  let i=0;
+  setInterval(()=>{
+    el.classList.add('out');
+    setTimeout(()=>{i=(i+1)%words.length;el.textContent=words[i];el.classList.remove('out');},220);
+  },2000);
+})();
 </script>
 </body>
 </html>
